@@ -1,0 +1,36 @@
+#manage-groups{
+	margin-top: 60px;
+	margin-left: 100px;
+}
+#newGroupForm{
+	float: left;
+	border: 1px solid #ccc;
+	padding: 20px;
+/*	width: 500px;*/
+}
+#newGroupForm input[type='text']{
+	font-size: 24px;
+	width: 619px;
+	margin-bottom: 20px;
+	font-family: 'gibsonSemiBold' !important;
+	border-radius: 0;
+	padding: 4px 6px;
+	border-color: #bbbbbb;
+}
+#newGroupForm textarea{
+	width: 625px;
+	height: 33px;
+	resize: auto;
+	margin-bottom: 20px;
+	transition: height .2s linear;
+	-webkit-transition: height .2s linear;
+	-moz-transition: height .2s linear;
+	-ms-transition: height .2s linear;
+	-o-transition: height .2s linear;
+	box-shadow: 0 -8px 10px -8px #DDD inset;
+	resize:none;
+}
+#newGroupForm textarea:focus{
+	height: 66px;
+	box-shadow: none;
+}

@@ -1,0 +1,75 @@
+/*
+ * Shifticons (shifticons.com)
+ * Order #1600
+*/
+
+@font-face {
+  font-family: "Shifticons";
+  src: url("shifticons.eot"); /* IE9 Compat Modes */
+  src: url("shifticons.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+       url("shifticons.woff") format("woff"), /* Modern Browsers */
+       url("shifticons.ttf")  format("truetype"), /* Safari, Android, iOS */
+       url("shifticons.svg#Shifticons") format("svg"); /* Legacy iOS */
+}
+
+/* Shifticon styles */
+[class^="icon-"]:before, [class*=" icon-"]:before {
+  font-family: Shifticons;
+  font-style: normal;
+  font-weight: normal;
+  display: inline-block;
+  vertical-align: baseline;
+  text-decoration: inherit;
+  padding-right: .25em;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Order-specific styles */
+.icon-book:before { content: ""; }
+.icon-pin:before { content: ""; }
+.icon-picture:before { content: ""; }
+.icon-write:before { content: ""; }
+.icon-calendar:before { content: ""; }
+.icon-clock:before { content: ""; }
+.icon-heart:before { content: ""; }
+.icon-email:before { content: ""; }
+.icon-layout:before { content: ""; }
+.icon-list:before { content: ""; }
+.icon-bookmark:before { content: ""; }
+.icon-chart:before { content: ""; }
+.icon-key:before { content: ""; }
+.icon-link:before { content: ""; }
+.icon-trash:before { content: ""; }
+.icon-back:before { content: ""; }
+.icon-upload:before { content: ""; }
+.icon-download:before { content: ""; }
+.icon-sync:before { content: ""; }
+.icon-arrow-right:before { content: ""; }
+.icon-cog:before { content: ""; }
+.icon-folder:before { content: ""; }
+.icon-lock:before { content: ""; }
+.icon-bullhorn:before { content: ""; }
+.icon-paper-plane:before { content: ""; }
+.icon-twitter:before { content: ""; }
+.icon-facebook:before { content: ""; }
+.icon-paintbrush:before { content: ""; }
+.icon-delete:before { content: ""; }
+.icon-eye:before { content: ""; }
+.icon-camera:before { content: ""; }
+.icon-video:before { content: ""; }
+.icon-sixteenth-notes:before { content: ""; }
+.icon-comments:before { content: ""; }
+.icon-close-2:before { content: ""; }
+.icon-down:before { content: ""; }
+.icon-left:before { content: ""; }
+.icon-right:before { content: ""; }
+.icon-up:before { content: ""; }
+.icon-view-by-column:before { content: ""; }
+.icon-grid-solid:before { content: ""; }
+.icon-notify:before { content: ""; }
+.icon-newspaper:before { content: ""; }
+.icon-view-by-row:before { content: ""; }
+
+
+/* IE8 hack */
+@media \0screen\,screen\9 { body:hover{} }

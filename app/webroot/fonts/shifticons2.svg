@@ -1,0 +1,72 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" >
+<svg>
+<metadata>
+Created by Shifticons.com 20110222 at Thu Jun  7 17:58:04 2012
+
+The Weightshift Workshop LLC
+</metadata>
+<defs>
+<font id="Shifticons-Order1650" horiz-adv-x="250" >
+  <font-face 
+    font-family="Shifticons"
+    font-weight="400"
+    font-stretch="normal"
+    units-per-em="1000"
+    panose-1="0 0 0 0 0 0 0 0 0 0"
+    ascent="750"
+    descent="-250"
+    bbox="10 0 868.01 900"
+    underline-thickness="50"
+    underline-position="-50"
+    unicode-range="U+000D-E001"
+  />
+<missing-glyph 
+ />
+    <glyph glyph-name=".notdef" 
+ />
+    <glyph glyph-name=".null" horiz-adv-x="0" 
+ />
+    <glyph glyph-name="uni000D" unicode="&#xd;" 
+ />
+    <glyph glyph-name="uni0000" horiz-adv-x="0" 
+ />
+    <glyph glyph-name="uni0000" horiz-adv-x="0" 
+ />
+    <glyph glyph-name="space" unicode=" " 
+ />
+    <glyph glyph-name="uni00A0" unicode="&#xa0;" 
+ />
+    <glyph glyph-name="uni2000" unicode="&#x2000;" horiz-adv-x="375" 
+ />
+    <glyph glyph-name="uni2001" unicode="&#x2001;" horiz-adv-x="751" 
+ />
+    <glyph glyph-name="uni2002" unicode="&#x2002;" horiz-adv-x="375" 
+ />
+    <glyph glyph-name="uni2003" unicode="&#x2003;" horiz-adv-x="751" 
+ />
+    <glyph glyph-name="uni2004" unicode="&#x2004;" 
+ />
+    <glyph glyph-name="uni2005" unicode="&#x2005;" horiz-adv-x="187" 
+ />
+    <glyph glyph-name="uni2006" unicode="&#x2006;" horiz-adv-x="125" 
+ />
+    <glyph glyph-name="uni2007" unicode="&#x2007;" horiz-adv-x="125" 
+ />
+    <glyph glyph-name="uni2008" unicode="&#x2008;" horiz-adv-x="93" 
+ />
+    <glyph glyph-name="uni2009" unicode="&#x2009;" horiz-adv-x="150" 
+ />
+    <glyph glyph-name="uni200A" unicode="&#x200a;" horiz-adv-x="41" 
+ />
+    <glyph glyph-name="uni202F" unicode="&#x202f;" horiz-adv-x="150" 
+ />
+    <glyph glyph-name="uni205F" unicode="&#x205f;" horiz-adv-x="187" 
+ />
+    <glyph glyph-name="uniE000" unicode="&#xe000;" horiz-adv-x="878" 
+d="M539.71 671.779l-262.01 -154.83l225.149 -102.319l71.6406 -32.5605l-50.3906 -60.4697l-89.8594 -107.87l297.359 168.11l-246.67 102.77l-75.0801 31.29l52.0703 62.5zM808.01 900l-300 -360l360 -150l-690 -390l300 360l-330 150zM10 203.81v0v0v0v0z" />
+    <glyph glyph-name="uniE001" unicode="&#xe001;" horiz-adv-x="824" 
+d="M772.42 343.77l-89 90v-283.77h90v-150h-720v150h90v283.77l-90.5 -90l-42.9199 42.4209l133.42 132.42v231.39h150v-81.3896l119.07 120l260.27 -261.21l141.58 -141.21zM203.42 690v-111.39l30 30v81.3896h-30zM203.42 493.77v-343.77h120v210h180v-210h120v343.77
+l-210 210zM443.42 300h-60v-150h60v150zM713.42 90h-600v-30h600v30z" />
+  </font>
+</defs></svg>
