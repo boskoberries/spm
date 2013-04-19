@@ -7,6 +7,10 @@ class League extends AppModel{
 		return $data['League']['id'];
 	}	
 
+	function getSportLeagues($sport_id){
+		$data = $this->find('list',array('conditions'=>array('sport_id'=>$sport_id)));
+		return $data;
+	}
 	function getAll(){
 		$rows = $this->find('all',array('order'=>'sort ASC'));
 		return $rows;

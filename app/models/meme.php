@@ -167,8 +167,9 @@ class Meme extends AppModel {
 		return $order;
 	}
 
-	function grabMemesBySport($sport_id,$sort=null){
-		$cond[] = array('league_id'=>$sport_id,'active'=>1);
+	function grabMemesByLeague($league_id,$sort=null){
+		//league_id can be a single value OR an array.
+		$cond[] = array('league_id'=>$league_id,'active'=>1);
 		$order = $this->setOrder($sort);
 		$data = $this->find('all',array(
 			'conditions'=>$cond,
@@ -232,9 +233,10 @@ class Meme extends AppModel {
    		$League = ClassRegistry::init('League');
   		$league_id = $League->getLeagueId($sport);
 		$sort = (isset($_GET['sort']))?$_GET['sort']:'viewcount';
-  		$memes = $this->grabMemesBySport($league_id);
+  		$memes = $this->grabMemesByLeague($league_id);
   		return $memes;
   	}
+
 
 
 

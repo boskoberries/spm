@@ -40,10 +40,10 @@ $(document).ready(function(){
 			</a>
 		</div>
 	<? } elseif(isset($data['sport'])){ ?>
-		<h2><?=$data['sport']?> Memes</h2>
+		<h2><?=ucwords($data['sport'])?> Memes</h2>
 		<? if(isset($data['leagues']) && count($data['leagues'])>1){
-			foreach($data['leagues'] as $league){ ?>
-			<a href="/memes/<?=$league?>"><?=$league?></a> | 
+			foreach($data['leagues'] as $k=>$league){ ?>
+			<a href="/leagues/<?=$league?>"><?=$league?></a> <?=($k<(count($data['leagues'])))?'|':''?> 
 			<? }
 	 	} ?>
 	<? } else { ?>
@@ -53,13 +53,13 @@ $(document).ready(function(){
 	<div class="sorting-links">
 		<? if(isset($data['meme_data'])):?>
 			<b>Sort By:</b>
-			<a href="?sort=rating" class="active" title="rating">Rating</a>&nbsp;|&nbsp;
+			<a href="?sort=rating" class="active" title="rating">Most Popular</a>&nbsp;|&nbsp;
 			<a href="?sort=viewcount" title="most views">View Count</a>&nbsp;|&nbsp;
 			<a href="?sort=newest"  title="newest">Newest</a>&nbsp;|&nbsp;
 			<a href="?sort=oldest"  title="oldest">Oldest</a>&nbsp;|&nbsp;
 			<a href="?sort=random"  title="Random">Random</a>
 		<? elseif(isset($data['browse'])):?>
-			<a href="/rating">Highest Rated</a>
+			<a href="/rating">Most Popular</a>
 			<a href="/new" class="active">Newest</a>					
 			<a href="/kids">Most Child Memes</a>
 

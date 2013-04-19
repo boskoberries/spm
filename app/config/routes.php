@@ -36,10 +36,10 @@
 	Router::connect('/teams', array('controller' => 'teams', 'action' => 'index'));
 	Router::connect('/teams/*', array('controller' => 'teams', 'action' => 'display'));
 	Router::connect('/tags/*', array('controller' => 'tag', 'action' => 'index'));
-	Router::connect('/football/*', array('controller' => 'memes', 'action' => 'football'));
-	Router::connect('/basketball/*', array('controller' => 'memes', 'action' => 'basketball'));
-	Router::connect('/baseball/*', array('controller' => 'memes', 'action' => 'baseball'));
-	Router::connect('/hockey/*', array('controller' => 'memes', 'action' => 'hockey'));
-	Router::connect('/soccer/*', array('controller' => 'memes', 'action' => 'soccer'));
+	//Router::connect('/football/*', array('controller' => 'memes', 'action' => 'sport'));
+	//Router::connect('/basketball/*', array('controller' => 'memes', 'action' => 'sport','prefix'=>'213'));
+	//Router::connect('/baseball/*', array('controller' => 'memes', 'action' => 'baseball'));
+	//Router::connect('/hockey/*', array('controller' => 'memes', 'action' => 'hockey'));
+	//Router::connect('/soccer/*', array('controller' => 'memes', 'action' => 'soccer'));
 	
 ;
