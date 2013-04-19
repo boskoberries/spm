@@ -20,7 +20,6 @@ $(document).ready(function(){
 	});
 
 	$("#delete-meme").click(function(event){
-alert('hi');
 		event.preventDefault();
 		var answer = confirm('Are you sure you want to delete this?  There\'s no going back...');
 		if(answer){

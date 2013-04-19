@@ -264,7 +264,7 @@ class MemesController extends AppController {
   				'user_id' => ($this->data['meme']['creator']=='anon')?0:$this->Auth->user('id'),
   				'parent_id' => (isset($this->data['meme']['parent']))?$this->data['meme']['parent']:$data['meme_id'],
   				'ip_address'=>$_SERVER['REMOTE_ADDR'],
-  				'league_id' => $this->data['meme']['league_id'],
+  				'league_id' => (isset($new_meme))?$new_meme['league_id']:$this->data['meme']['league_id'],
   				'created'=>date('Y-m-d H:i:s',strtotime("now")),
   				'active'=>1);
 
@@ -346,7 +346,7 @@ class MemesController extends AppController {
 					}
 					
 					$lines=explode("\n",$this->data['caption']['body'][$i]);
-					//pr($lines);
+					pr($lines);
 					//exit;
 					for($z=0; $z< count($lines); $z++){
 						$newY = $y_coord + ($z * $font_size * 1);
