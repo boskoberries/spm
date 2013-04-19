@@ -27,7 +27,9 @@ class MemesController extends AppController {
   	}
 
   	function football(){
-  		$data['sport'] = 'NFL';
+  		$data['sport'] = 'Football';
+//  		$data['leagues'] = $this->League->getAllForSport($data['sport']);
+		$data['leagues'] = array('NFL','NCAAF');
   		$data['memes'] = $this->Meme->fetchForSport($data['sport']);
   		$this->set('data',$data);
   		$this->render('popular');

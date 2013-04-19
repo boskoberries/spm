@@ -41,6 +41,11 @@ $(document).ready(function(){
 		</div>
 	<? } elseif(isset($data['sport'])){ ?>
 		<h2><?=$data['sport']?> Memes</h2>
+		<? if(isset($data['leagues']) && count($data['leagues'])>1){
+			foreach($data['leagues'] as $league){ ?>
+			<a href="/memes/<?=$league?>"><?=$league?></a> | 
+			<? }
+	 	} ?>
 	<? } else { ?>
 		<h2>Popular Memes</h2>
 	<? } ?>

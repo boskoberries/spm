@@ -229,9 +229,10 @@ class Meme extends AppModel {
 	}
 
    	function fetchForSport($sport){
-  		$league_id = $this->League->getLeagueId($sport);
+   		$League = ClassRegistry::init('League');
+  		$league_id = $League->getLeagueId($sport);
 		$sort = (isset($_GET['sort']))?$_GET['sort']:'viewcount';
-  		$memes = $this->Meme->grabMemesBySport($league_id);
+  		$memes = $this->grabMemesBySport($league_id);
   		return $memes;
   	}
 

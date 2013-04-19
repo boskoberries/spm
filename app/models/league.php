@@ -12,5 +12,7 @@ class League extends AppModel{
 		return $rows;
 	}
 
+
+
 }
 ?>
