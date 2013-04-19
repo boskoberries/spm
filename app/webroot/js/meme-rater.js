@@ -18,4 +18,13 @@ $(document).ready(function(){
 	   starOff:   'star-off-big.png',
 	  starOn:    'star-on-big.png'
 	});
+
+	$("#delete-meme").click(function(event){
+alert('hi');
+		event.preventDefault();
+		var answer = confirm('Are you sure you want to delete this?  There\'s no going back...');
+		if(answer){
+			window.location = '/memes/delete/'+constants.meme_id;
+		}
+	});
 });

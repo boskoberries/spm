@@ -1,8 +1,9 @@
 <?=$javascript->link('/js/jquery.raty.js')?>
+<?=$javascript->link('/js/meme-rater.js')?>
 <script type="text/javascript">
 	var constants = { meme_id: <?=$data['Meme']['id']?> };
-	<?=$javascript->link('/js/meme-rater.js')?>
 </script>
+
 <div class="row row-top">
 	<div class="eight columns">
 		<h2>
@@ -23,7 +24,7 @@
 		</div>
 		<div class="stats-sidebar">
 			<? if(isset($data['admin']) || $data['owner']){ ?>
-				<a href="/memes/delete/<?=$data['Meme']['id']?>" class="right delete">Delete</a>
+				<a href="#" id="delete-meme" class="right delete">Delete</a>
 			<? }?>
 			<? if(isset($data['creator'])){ ?>
 				<div class="stat">

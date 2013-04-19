@@ -545,9 +545,9 @@ class MemesController extends AppController {
 
 	function delete($meme_id){
 		$data['user'] = $this->Auth->user();
-		//if($this->Meme->checkMemeOwner($meme_id,$data['user'])){
+		if($this->Meme->checkMemeOwner($meme_id,$data['user'])){
 			$this->Meme->deleteMeme($meme_id);
-		//}
+		}
 		$this->Session->setFlash('Your meme has been wiped out.');
 		$this->redirect('/memes/browse');
 
