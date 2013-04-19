@@ -38,6 +38,14 @@ class MemesController extends AppController {
   		$this->render('popular');
   	}
 
+  	function league($league_name){
+  		$data['parent'] = $this->League->getLeagueParent($league_name);
+  		$data['sport'] = $league_name;
+  		$data['memes'] = $this->Meme->fetchForSport($league_name);
+  		$this->set('data',$data);
+  		$this->render('popular');
+  	}
+
   	function football(){
   		$data['sport'] = 'Football';
 //  		$data['leagues'] = $this->League->getAllForSport($data['sport']);

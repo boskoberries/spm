@@ -40,11 +40,17 @@ $(document).ready(function(){
 			</a>
 		</div>
 	<? } elseif(isset($data['sport'])){ ?>
+		<? if(isset($data['parent']) && !empty($data['parent']['Sport'])){ ?>
+		<h2><a href="/memes/sport/<?=$data['parent']['Sport']['name']?>"><?=ucwords($data['parent']['Sport']['name'])?></a> </h2> &raquo;
+		<? } ?>
 		<h2><?=ucwords($data['sport'])?> Memes</h2>
 		<? if(isset($data['leagues']) && count($data['leagues'])>1){
+			$i = 0;
 			foreach($data['leagues'] as $k=>$league){ ?>
-			<a href="/leagues/<?=$league?>"><?=$league?></a> <?=($k<(count($data['leagues'])))?'|':''?> 
-			<? }
+				<a href="/memes/league/<?=$league?>"><?=$league?></a>
+		 		<?=($i<(count($data['leagues'])-1))?'|':''?> 
+				<? $i++;
+			 }
 	 	} ?>
 	<? } else { ?>
 		<h2>Popular Memes</h2>

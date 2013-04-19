@@ -41,10 +41,10 @@
 	                    <nav class="global">
 							
 								<ul class="nav-links">
-									<li><a href="/football" class="nav-link ">Football</a></li>
-         							<li><a href="/basketball" class="nav-link ">Basketball</a></li>
-         							<li><a href="/baseball" class="nav-link ">Baseball</a></li>
-         							<li><a href="/hockey" class="nav-link ">Hockey</a></li>
+									<li><a href="/memes/sport/football" class="nav-link ">Football</a></li>
+         							<li><a href="/memes/sport/basketball" class="nav-link ">Basketball</a></li>
+         							<li><a href="/memes/sport/baseball" class="nav-link ">Baseball</a></li>
+         							<li><a href="/memes/sport/hockey" class="nav-link ">Hockey</a></li>
          							<li class="has-children">
      									<a href="/memes/nhl" class="nav-link ">Other Sports</a>
      									<ul class="hide">

@@ -1,9 +1,16 @@
 <?php
 class League extends AppModel{
 	var $name = 'League';
+	var $belongsTo = array(
+		'Sport' => array(
+			'className' => 'Sport',
+			'foreignKey' => 'sport_id',
+			'dependent' => false
+		)
+	);
 
-	function getLeagueId($League_name){
-		$data = $this->find('first',array('fields'=>'id','conditions'=>array('name'=>'NFL')));
+	function getLeagueId($league_name){
+		$data = $this->find('first',array('fields'=>'id','conditions'=>array('League.name'=>$league_name)));
 		return $data['League']['id'];
 	}	
 
@@ -14,6 +21,11 @@ class League extends AppModel{
 	function getAll(){
 		$rows = $this->find('all',array('order'=>'sort ASC'));
 		return $rows;
+	}
+
+	function getLeagueParent($league_name){
+		$row = $this->find('first',array("conditions"=>array('League.name'=>$league_name)));
+		return $row;
 	}
 
 
