@@ -332,7 +332,6 @@ class MemesController extends AppController {
 				//	print_r($this->data);exit;
 					// $x_coord = $this->data['caption_coords']['left'][$i];
 					// $y_coord = $this->data['caption_coords']['top'][$i];
-					
 					//$y_coord = $this->data['caption_coords']['top'][$i]+12+10;//for the padding top of the div.caption
 
 					//$font_Size

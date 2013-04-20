@@ -1,7 +1,7 @@
 <?php
-class RegistrationController extends AppController {
+class UsersController extends AppController {
 
-	var $name = 'Registration';
+	var $name = 'Users';
 	var $uses = array('Meme','MemeType','MemeCaption','User');
 	var $helpers = array('Form','Time','Session');
 
@@ -12,8 +12,11 @@ class RegistrationController extends AppController {
 		parent::beforeFilter();
 	}
 
-	
-  	function index(){
+	function index(){
+		$this->redirect('/users/login');
+	}
+
+  	function login(){
 
 		if(!empty($this->data)){	
 
@@ -89,26 +92,5 @@ class RegistrationController extends AppController {
 		}						
   	}
 
-
-
-
-
-
-
-  	function create(){
-
-  		if (function_exists("NewMagickWand")){
-  			print "hi";
-  		}
-	  		
-  		/*try{
-	        $image = '/file/does/not/exists.jpg';
-			$im = new Imagick($image);
-        	echo 'Imagick';
-		}
-		catch(Exception $e){
-	       echo $e->getMessage();
-		}*/
-	}	
 }
 ?>	
