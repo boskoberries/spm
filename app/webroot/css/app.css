@@ -400,7 +400,7 @@
 	}
 
     :focus {
-        box-shadow:0 0 4px #32b665;
+        box-shadow:0 0 4px #FFB32C;
     }
     
     input,textarea {
@@ -417,14 +417,14 @@
     div.form-contact input.input-text:focus,
     input:focus {
         background:#fff;
-        box-shadow:0 0 4px #32b665;
-        border:1px solid #32b665;
+        box-shadow:0 0 4px #FFB32C;
+        border:1px solid #FFB32C;
         outline:none;
     }
     
  
     select:focus {
-        box-shadow:0 0 4px #32b665;
+        box-shadow:0 0 4px #FFB32C;
        /* border:1px solid #32b665;
         outline:none*/
     }
@@ -654,8 +654,9 @@
         }
 
             .blue:hover {
-                background: yellow;
-                color: black;
+/*                background: yellow;*/
+/*                color: black;*/
+background: #FFB32C;
             }
         
         .orange {
