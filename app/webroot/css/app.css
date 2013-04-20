@@ -62,6 +62,225 @@
         60 ul.event-nav li.active a
         
 */
+    @font-face {
+        font-family: 'ApexSansBold';
+        src: url('/fonts/apexsans-bold-webfont.eot');
+        src: url('/fonts/apexsans-bold-webfont.eot?#iefix') format('embedded-opentype'),
+             url('/fonts/apexsans-bold-webfont.woff') format('woff'),
+             url('/fonts/apexsans-bold-webfont.ttf') format('truetype'),
+             url('/fonts/apexsans-bold-webfont.svg#ApexSansBold') format('svg');
+        font-weight: normal;
+        font-style: normal;
+    }
+    @font-face {
+        font-family: "MarvelBold";
+        font-style: normal;
+        font-weight: normal;
+        src: url("/fonts/marvel-bold-webfont.eot?#iefix") format("embedded-opentype"), url("/fonts/marvel-bold-webfont.woff") format("woff"), url("/fonts/marvel-bold-webfont.ttf") format("truetype"), url("/fonts/marvel-bold-webfont.svg#MarvelBold") format("svg");
+    }
+    @font-face {
+        font-family: "MarvelRegular";
+        font-style: normal;
+        font-weight: normal;
+        src: url("/fonts/marvel-regular-webfont.eot?#iefix") format("embedded-opentype"), url("/fonts/marvel-regular-webfont.woff") format("woff"), url("/fonts/marvel-regular-webfont.ttf") format("truetype"), url("/fonts/marvel-regular-webfont.svg#MarvelRegular") format("svg");
+    }
+
+    @font-face {
+      font-family: "Shifticons";
+      src: url("/fonts/shifticons.eot"); /* IE9 Compat Modes */
+      src: url("/fonts/shifticons.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+           url("/fonts/shifticons.woff") format("woff"), /* Modern Browsers */
+           url("/fonts/shifticons.ttf")  format("truetype"), /* Safari, Android, iOS */
+           url("/fonts/shifticons.svg#Shifticons") format("svg"); /* Legacy iOS */
+    }
+
+    ::-webkit-input-placeholder {
+       font-family: 'gibsonLight';
+    }
+
+    :-moz-placeholder {
+       font-family: 'gibsonLight';
+    }
+
+    ::-moz-placeholder { 
+       font-family: 'gibsonLight';
+    }
+
+    :-ms-input-placeholder {  
+       font-family: 'gibsonLight';
+    }
+
+/* Shifticon styles */
+[class^="icon-"]:before, [class*=" icon-"]:before {
+  font-family: Shifticons;
+  font-style: normal;
+  font-weight: normal;
+  display: inline-block;
+  vertical-align: baseline;
+  text-decoration: inherit;
+  padding-right: .25em;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Order-specific styles */
+.icon-book:before { content: ""; }
+.icon-pin:before { content: ""; }
+.icon-picture:before { content: ""; }
+.icon-write:before { content: ""; }
+.icon-calendar:before { content: ""; }
+.icon-clock:before { content: ""; }
+.icon-heart:before { content: ""; }
+.icon-email:before { content: ""; }
+.icon-layout:before { content: ""; }
+.icon-list:before { content: ""; }
+.icon-bookmark:before { content: ""; }
+.icon-chart:before { content: ""; }
+.icon-key:before { content: ""; }
+.icon-link:before { content: ""; }
+.icon-trash:before { content: ""; }
+.icon-back:before { content: ""; }
+.icon-upload:before { content: ""; }
+.icon-download:before { content: ""; }
+.icon-sync:before { content: ""; }
+.icon-arrow-right:before { content: ""; }
+.icon-cog:before { content: ""; }
+.icon-folder:before { content: ""; }
+.icon-lock:before { content: ""; }
+.icon-bullhorn:before { content: ""; }
+.icon-paper-plane:before { content: ""; }
+.icon-twitter:before { content: ""; }
+.icon-facebook:before { content: ""; }
+.icon-paintbrush:before { content: ""; }
+.icon-delete:before { content: ""; }
+.icon-eye:before { content: ""; }
+.icon-camera:before { content: ""; }
+.icon-video:before { content: ""; }
+.icon-sixteenth-notes:before { content: ""; }
+.icon-comments:before { content: ""; }
+.icon-close-2:before { content: ""; }
+.icon-down:before { content: ""; }
+.icon-left:before { content: ""; }
+.icon-right:before { content: ""; }
+.icon-up:before { content: ""; }
+.icon-view-by-column:before { content: ""; }
+.icon-grid-solid:before { content: ""; }
+.icon-notify:before { content: ""; }
+.icon-newspaper:before { content: ""; }
+.icon-view-by-row:before { content: ""; }
+
+
+/* IE8 hack */
+@media \0screen\,screen\9 { body:hover{} }
+
+/*
+ * Shifticons (shifticons.com)
+ * Order #1650
+*/
+
+@font-face {
+  font-family: "Shifticons2";
+  src: url("/fonts/shifticons2.eot"); /* IE9 Compat Modes */
+  src: url("/fonts/shifticons2.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+       url("/fonts/shifticons2.woff") format("woff"), /* Modern Browsers */
+       url("/fonts/shifticons2.ttf")  format("truetype"), /* Safari, Android, iOS */
+       url("/fonts/shifticons2.svg#Shifticons") format("svg"); /* Legacy iOS */
+}
+
+/* Shifticon styles */
+[class^="icon-"]:before, [class*=" icon-"]:before {
+  font-family: Shifticons;
+  font-style: normal;
+  font-weight: normal;
+  display: inline-block;
+  vertical-align: baseline;
+  text-decoration: inherit;
+  padding-right: .25em;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Order-specific styles */
+.icon-lightning:before { font-family:"Shifticons2"; content: ""; }
+.icon-house:before { font-family:"Shifticons2"; content: ""; }
+
+
+/* IE8 hack */
+@media \0screen\,screen\9 { body:hover{} }
+
+/* Shifticon styles */
+[class^="icons3-"]:before, [class*=" icons3-"]:before {
+  font-family: Shifticons1719;
+  font-style: normal;
+  font-weight: normal;
+  display: inline-block;
+  vertical-align: baseline;
+  text-decoration: inherit;
+  padding-right: .25em;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Order-specific styles */
+.icons3-unlock:before { content: ""; }
+.icons3-vimeo:before { content: ""; }
+.icons3-wrench:before { content: ""; }
+.icons3-lock:before { content: ""; }
+.icons3-twitter-bird:before { content: ""; }
+.icons3-gear1:before { content: ""; }
+.icons3-journal:before { content: ""; }
+.icons3-ipod-gen4:before { content: ""; }
+.icons3-fries:before { content: ""; }
+.icons3-rss:before { content: ""; }
+.icons3-mail:before { content: ""; }
+.icons3-avatar:before { content: ""; }
+.icons3-cloud-upload:before { content: ""; }
+.icons3-paper-clip:before { content: ""; }
+.icons3-pie-chart:before { content: ""; }
+.icons3-group-avatar:before { content: ""; }
+.icons3-crate:before { content: ""; }
+.icons3-scale:before { content: ""; }
+.icons3-speech-bubble:before { content: ""; }
+.icons3-magic-wand:before { content: ""; }
+.icons3-shopping-cart:before { content: ""; }
+.icons3-code-brackets:before { content: ""; }
+.icons3-photo:before { content: ""; }
+.icons3-refresh:before { content: ""; }
+.icons3-ipod-gen3:before { content: ""; }
+.icons3-address-book:before { content: ""; }
+.icons3-printer:before { content: ""; }
+.icons3-home:before { content: ""; }
+.icons3-pencil:before { content: ""; }
+.icons3-notes:before { content: ""; }
+.icons3-gear2:before { content: ""; }
+.icons3-check-mark:before { content: ""; }
+.icons3-doc-complete:before { content: ""; }
+.icons3-sunshine:before { content: ""; }
+.icons3-ipod-gen2:before { content: ""; }
+.icons3-docs:before { content: ""; }
+.icons3-glasses:before { content: ""; }
+.icons3-cheeseburger:before { content: ""; }
+.icons3-ipod-shuffle:before { content: ""; }
+.icons3-paper:before { content: ""; }
+.icons3-music-note:before { content: ""; }
+.icons3-camera1:before { content: ""; }
+.icons3-minus:before { content: ""; }
+.icons3-clipboard:before { content: ""; }
+.icons3-cloud-download:before { content: ""; }
+.icons3-coffee-mug:before { content: ""; }
+.icons3-soda-pop:before { content: ""; }
+.icons3-add:before { content: ""; }
+.icons3-x:before { content: ""; }
+.icons3-magnifying-glass:before { content: ""; }
+.icons3-ligtning-bolt:before { content: ""; }
+.icons3-shirt:before { content: ""; }
+.icons3-task-complete:before { content: ""; }
+.icons3-hammer:before { content: ""; }
+.icons3-phone:before { content: ""; }
+.icons3-tag:before { content: ""; }
+.icons3-info:before { content: ""; }
+.icons3-dribbble:before { content: ""; }
+.icons3-caution:before { content: ""; }
+.icons3-ipod-gen1:before { content: ""; }
+.icons3-bar-chart:before { content: ""; }
+.icons3-skull-and-crossbones:before { content: ""; }
 
 /* -----------------------------------------
    Shared Styles
@@ -257,24 +476,130 @@
         }
         
     /* some button styles */
-    
     .btn {
         border-radius: 4px 4px 4px 4px;
-        color: white;
         cursor: pointer;
-        padding:7px 10px;
-        text-shadow: -1px -1px 0 #EB9B21;
+        padding:7px 10px 7px 7px;
         white-space: nowrap;
-        
     }
-        
+
+    .tight {
+        padding:2px 8px 1px 7px;
+    }
+
+    .big.btn {
+        font-size: 16px;
+        padding: 10px 20px;
+        font-size: 24px;
+        padding: 10px 20px;
+        font-family: 'GibsonSemiBoldItalic' !important;
+        text-transform: uppercase;
+        box-shadow: 0 0 0 1px #fff, 2px 2px 0 black;
+        border:none;
+        border-radius: 0;
+        transition:all .1s linear;
+        -webkit-transition:all .1s linear;
+        -moz-transition:all .1s linear;
+        -ms-transition:all .1s linear;
+        -o-transition:all .1s linear;
+    }
+
         .btn:hover {
-            box-shadow:0 4px 2px -4px #aaa;
+            color:#ffffff;
         }
-        
+
+            a.btn:hover {
+                text-decoration:none;
+            }
+
         .btn:active {
             box-shadow:0 4px 8px -5px #777 inset;
         }
+
+        .orange {
+            color: #ffffff;
+            cursor: pointer;
+            padding:7px 10px 7px 7px;
+            text-shadow: -1px -1px 0 #EB9B21;
+            border: 1px solid #D88F1F;
+            background: #FF7C11;
+            /*filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FCB040', endColorstr='#F3AB3C'); /* for IE */
+            background: -webkit-gradient(linear, left top, left bottom, from(#FE9139), to(#FF7C11)); /* for webkit browsers */
+            background: -moz-linear-gradient(top,  #FE9139,  #FF7C11); /* for firefox 3.6+ */*/
+        }
+
+            .orange:hover {
+                border: 1px solid #CE881D;
+                background: #EBA53A;
+                filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FCB040', endColorstr='#EBA53A'); /* for IE */
+                background: -webkit-gradient(linear, left top, left bottom, from(#FF7C11), to(#FE9139)); /* for webkit browsers */
+                background: -moz-linear-gradient(top,  #FF7C11,  #FE9139); /* for firefox 3.6+ */
+            }
+
+        .gray {
+            color:#777;
+            text-shadow:1px 1px 0 #ffffff;
+            float:left;
+            border:1px solid #bbb;
+            background:#F0EFEC;
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#F0EFEC', endColorstr='#D0D0D0'); /* for IE */
+            background: -webkit-gradient(linear, left top, left bottom, from(#F0EFEC), to(#D0D0D0)); /* for webkit browsers */                    background: -moz-linear-gradient(top,  #EDEDED,  #D0D0D0); /* for firefox 3.6+ */
+            background: -moz-linear-gradient(top,  #F0EFEC,  #D0D0D0); /* for firefox 3.6+ */
+            transition:all .15s linear;
+            -webkit-transition:all .15s linear;
+            -moz-transition:all .15s linear;
+        }
+
+            .gray.active,
+            .gray.active:hover {
+                background:#F0EFEC;
+                filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#D0D0D0', endColorstr='#F0EFEC'); /* for IE */
+                background: -webkit-gradient(linear, left top, left bottom, from(#D0D0D0), to(#F0EFEC)); /* for webkit browsers */                    background: -moz-linear-gradient(top,  #EDEDED,  #F0EFEC); /* for firefox 3.6+ */
+                background: -moz-linear-gradient(top,  #D0D0D0,  #F0EFEC); /* for firefox 3.6+ */
+                box-shadow:0 0 6px rgba(0,0,0,.2) inset;
+            }
+
+            .gray:hover {
+                color:#777;
+                text-shadow:1px 1px 0 #ffffff;
+                filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fefefe', endColorstr='#D0D0D0'); /* for IE */
+                background: -webkit-gradient(linear, left top, left bottom, from(#fefefe), to(#D0D0D0)); /* for webkit browsers */                    background: -moz-linear-gradient(top,  #EDEDED,  #D0D0D0); /* for firefox 3.6+ */
+                background: -moz-linear-gradient(top,  #fefefe,  #D0D0D0); /* for firefox 3.6+ */
+            }
+
+        .green {
+            color:#ffffff;
+            text-shadow:1px 1px 0 #32b665;
+            float:left;
+            border:1px solid #32b665;
+            background:#32b665;
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#32b665', endColorstr='#289953'); /* for IE */
+            background: -webkit-gradient(linear, left top, left bottom, from(#32b665), to(#289953)); /* for webkit browsers */                    background: -moz-linear-gradient(top,  #EDEDED,  #D0D0D0); /* for firefox 3.6+ */
+            background: -moz-linear-gradient(top,  #32b665,  #289953); /* for firefox 3.6+ */
+        }
+
+            .green:hover {
+                background:#32b665;
+                filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#75d098', endColorstr='#289953'); /* for IE */
+                background: -webkit-gradient(linear, left top, left bottom, from(#75d098), to(#289953)); /* for webkit browsers */                    background: -moz-linear-gradient(top,  #EDEDED,  #D0D0D0); /* for firefox 3.6+ */
+                background: -moz-linear-gradient(top,  #75d098,  #289953); /* for firefox 3.6+ */
+
+            }
+
+        .pressed-button,
+        .pressed-button:hover {
+            box-shadow:1px 1px 5px #888 inset;
+        }
+
+        .blue {
+            background:#03e1ff;
+            color:#fff;
+        }
+
+            .blue:hover {
+                background: yellow;
+                color: black;
+            }
         
         .orange {
             border: 1px solid #D88F1F;
