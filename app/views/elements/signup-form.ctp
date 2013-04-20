@@ -61,16 +61,16 @@
 
 		<form action="/registration" method="POST">
 			<label>Username:</label>
-			<input type="text" name="data[User][username]" value="" title="What do you want to go by?" />
+			<input type="text" name="data[NewUser][username]" value="" title="What do you want to go by?" />
 			<div class="clear"></div>
 			<label>Email:</label>
-			<input type="text" name="data[User][email]" value="" title="Your email address will be used for logging in" />
+			<input type="text" name="data[NewUser][email]" value="" title="Your email address will be used for logging in" />
 			<div class="clear"></div>
 			<label>Password:</label>
-			<input type="password" name="data[User][password]" value="" title="Enter your password" />
+			<input type="password" name="data[NewUser][password]" value="" title="Enter your password" />
 			<div class="clear"></div>
 			<label>Confirm Password:</label>
-			<input type="password" name="data[User][password_2]" value="" title="Enter your password" />
+			<input type="password" name="data[NewUser][password_2]" value="" title="Enter your password" />
 			<div class="clear"></div>
 			<br>
 			<input type="submit" class="big blue btn" value="Register" />
@@ -85,7 +85,7 @@
 			<input type="text" name="data[User][email]" value="" />
 			<div class="clear"></div>
 			<label>Password:</label>
-			<input type="password" name="data[User][password]" value="" />
+			<input type="password" name="data[User][password]" />
 			<br/><br>
 			<input type="submit" class="blue tight  big btn" value="Login" />
 		</form>

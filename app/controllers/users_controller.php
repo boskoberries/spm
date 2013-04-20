@@ -19,9 +19,11 @@ class UsersController extends AppController {
   	function login(){
 
 		if(!empty($this->data)){	
-
+			pr($this->data);
 			$data['username']=trim($this->data['User']['username']);
-			
+			// if(empty($this->data['User']['password'])){
+			// 	print "yep";
+			// }
 			if(!empty($this->data['User']['email'])){
 				$data['email']=trim($this->data['User']['email']);
 			}
