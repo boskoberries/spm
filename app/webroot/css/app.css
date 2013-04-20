@@ -62,6 +62,62 @@
         60 ul.event-nav li.active a
         
 */
+
+@font-face {
+    font-family: GibsonBold;
+    src: url(/fonts/gibson/Gibson-Bold-webfont.eot);
+    src: url(/fonts/gibson/Gibson-Bold-webfont.svg);
+    src: url(/fonts/gibson/Gibson-Bold-webfont.ttf);
+    src: url(/fonts/gibson/Gibson-Bold-webfont.woff);
+}
+
+@font-face {
+    font-family: GibsonBoldItalic;
+    src: url(/fonts/gibson/Gibson-BoldItalic-webfont.eot);
+    src: url(/fonts/gibson/Gibson-BoldItalic-webfont.svg);
+    src: url(/fonts/gibson/Gibson-BoldItalic-webfont.ttf);
+    src: url(/fonts/gibson/Gibson-BoldItalic-webfont.woff);
+}
+
+@font-face {
+    font-family: GibsonSemiBold;
+    src: url(/fonts/gibson/Gibson-SemiBold-webfont.eot);
+    src: url(/fonts/gibson/Gibson-SemiBold-webfont.svg);
+    src: url(/fonts/gibson/Gibson-SemiBold-webfont.ttf);
+    src: url(/fonts/gibson/Gibson-SemiBold-webfont.woff);
+}
+
+@font-face {
+    font-family: GibsonSemiBoldItalic;
+    src: url(/fonts/gibson/Gibson-SemiBoldItalic-webfont.eot);
+    src: url(/fonts/gibson/Gibson-SemiBoldItalic-webfont.svg);
+    src: url(/fonts/gibson/Gibson-SemiBoldItalic-webfont.ttf);
+    src: url(/fonts/gibson/Gibson-SemiBoldItalic-webfont.woff);
+}
+
+@font-face {
+    font-family: GibsonRegular;
+    src: url(/fonts/gibson/Gibson-Regular-webfont.eot);
+    src: url(/fonts/gibson/Gibson-Regular-webfont.svg);
+    src: url(/fonts/gibson/Gibson-Regular-webfont.ttf);
+    src: url(/fonts/gibson/Gibson-Regular-webfont.woff);
+}
+
+@font-face {
+    font-family: GibsonBoldItalic;
+    src: url(/fonts/gibson/Gibson-BoldItalic-webfont.eot);
+    src: url(/fonts/gibson/Gibson-BoldItalic-webfont.svg);
+    src: url(/fonts/gibson/Gibson-BoldItalic-webfont.ttf);
+    src: url(/fonts/gibson/Gibson-BoldItalic-webfont.woff);
+}
+
+@font-face {
+    font-family: GibsonLight;
+    src: url(/fonts/gibson/Gibson-Light-webfont.eot);
+    src: url(/fonts/gibson/Gibson-Light-webfont.svg);
+    src: url(/fonts/gibson/Gibson-Light-webfont.ttf);
+    src: url(/fonts/gibson/Gibson-Light-webfont.woff);
+}
     @font-face {
         font-family: 'ApexSansBold';
         src: url('/fonts/apexsans-bold-webfont.eot');
@@ -287,7 +343,7 @@
 ----------------------------------------- */    
 
     body {
-        background:#e8e5dc url(../images/body-gradient-white.png) center /*59px*/ 0 no-repeat;
+        background:#e8e5dc url(/images/body-gradient-white.png) center /*59px*/ 0 no-repeat;
         color:#647c6c;
     }
 
@@ -489,12 +545,13 @@
 
     .big.btn {
         font-size: 16px;
+        padding: 8px 16px;
+        font-size: 20px;
         padding: 10px 20px;
-        font-size: 24px;
-        padding: 10px 20px;
-        font-family: 'GibsonSemiBoldItalic' !important;
-        text-transform: uppercase;
-        box-shadow: 0 0 0 1px #fff, 2px 2px 0 black;
+/*        font-family: 'GibsonSemiBoldItalic' !important;
+        text-transform: uppercase;*/
+        font-family: 'GibsonSemiBold' !important;
+        box-shadow: 0 0 0 1px #fff, 2px 2px 0 rgba(0,0,0,.8);
         border:none;
         border-radius: 0;
         transition:all .1s linear;
@@ -523,7 +580,7 @@
             text-shadow: -1px -1px 0 #EB9B21;
             border: 1px solid #D88F1F;
             background: #FF7C11;
-            /*filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FCB040', endColorstr='#F3AB3C'); /* for IE */
+            /*filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FCB040', endColorstr='#F3AB3C'); /* for IE 
             background: -webkit-gradient(linear, left top, left bottom, from(#FE9139), to(#FF7C11)); /* for webkit browsers */
             background: -moz-linear-gradient(top,  #FE9139,  #FF7C11); /* for firefox 3.6+ */*/
         }
@@ -592,7 +649,7 @@
         }
 
         .blue {
-            background:#03e1ff;
+            background:#00A6FC;
             color:#fff;
         }
 
