@@ -33,7 +33,8 @@ class UsersController extends AppController {
 			$this->set('data',$this->data['NewUser']);
 			$this->Session->setFlash(implode('<br>',$data['errors']));
 			$this->render('login');
-		} else {
+		} else { //success!
+			$this->Auth->login($data['success']);
 			print "DONE!";
 			pr($this->Auth->user());
 			exit;

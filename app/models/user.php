@@ -57,7 +57,6 @@ class User extends AppModel {
 			if($this->save($user)){
 				$user_row = $this->find('first',array('conditions'=>array('User.id'=>$this->id)));
 				// log them in as them
-				$this->Auth->login($user_row['User']);
 				$response['success'] = $user_row;
 			} else{
 				$errors[] = 'There was an error saving your data.  Please try again.';
