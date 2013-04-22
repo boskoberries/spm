@@ -19,7 +19,7 @@ class League extends AppModel{
 		return $data;
 	}
 	function getAll(){
-		$rows = $this->find('all',array('order'=>'sort ASC'));
+		$rows = $this->find('all',array('order'=>'League.sort ASC'));
 		return $rows;
 	}
 

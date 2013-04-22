@@ -358,10 +358,11 @@ class MemesController extends AppController {
 					}
 					
 					$lines=explode("\n",$this->data['caption']['body'][$i]);
-					pr($lines);
-					exit;
+					//pr($lines);
+					//exit;
 					for($z=0; $z< count($lines); $z++){
-						$newY = $y_coord + ($z * $font_size * 1);
+						$newY = $y_coord + ($z * $font_size * 1)-10;//adding 10 for bottom padding considerations.
+
 						//imagettftext($image, $font_size, 0, ($x_coord+2), ($newY+2), $black, $font_file, $lines[$z]);//adding same text shadow.
 						//imagettftext($image, $font_size, 0, $x_coord, $newY, $black, $font_file,  $lines[$z]);
 						$this->imagettfstroketext($image, $font_size, 0, $x_coord, $newY, $font_color, $stroke_color, $font_file, $lines[$z], 3);

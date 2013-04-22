@@ -242,6 +242,15 @@
        url("/fonts/shifticons2.svg#Shifticons") format("svg"); /* Legacy iOS */
 }
 
+@font-face {
+  font-family: "Shifticons1719";
+  src: url("/fonts/icons/shifticons-1719.eot"); /* IE9 Compat Modes */
+  src: url("/fonts/icons/shifticons-1719.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+       url("/fonts/icons/shifticons-1719.woff") format("woff"), /* Modern Browsers */
+       url("/fonts/icons/shifticons-1719.ttf")  format("truetype"), /* Safari, Android, iOS */
+       url("/fonts/icons/shifticons-1719.svg#Shifticons") format("svg"); /* Legacy iOS */
+}
+
 /* Shifticon styles */
 [class^="icon-"]:before, [class*=" icon-"]:before {
   font-family: Shifticons;
