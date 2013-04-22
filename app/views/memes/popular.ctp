@@ -26,6 +26,20 @@ $(document).ready(function(){
 	$("#addYourOwn").click(function(){
 	
 	});
+	$("a.delete-meme").click(function(event){
+		event.preventDefault();
+		var answer = confirm('Are you sure you want to delete this meme?');
+		var meme_id = $(this).attr("meme-id");
+		$(this).parents(".meme-entry").fadeOut('fast',function(){
+			$(this).remove();
+		});
+		
+		if(answer){
+			$.post("/memes/delete",{ data: { meme_id: meme_id } }, function(response){
+
+			});
+		}
+	});
 });
 </script>
 

@@ -27,15 +27,19 @@
  * to use (in this case, /app/views/pages/home.ctp)...
  */
 //print_r($this->args);
-	Router::connect('/', array('controller' => 'pages', 'action' => 'display', 'home'));
+	Router::connect('/', array('controller' => 'pages', 'action' => 'display'));
 /**
  * ...and connect the rest of 'Pages' controller's urls.
  */
-	Router::connect('/pages/*', array('controller' => 'pages', 'action' => 'display'));
+//	Router::connect('/pages/*', array('controller' => 'pages', 'action' => 'display'));
 	
 	Router::connect('/teams', array('controller' => 'teams', 'action' => 'index'));
 	Router::connect('/teams/*', array('controller' => 'teams', 'action' => 'display'));
 	Router::connect('/tags/*', array('controller' => 'tag', 'action' => 'index'));
+	$sport_list = array('football','basketball','baseball','hockey','soccer');
+	foreach($sport_list as $sport){	
+		Router::connect('/'.$sport.'/*', array('controller' => 'memes', 'action' => 'sport','option'=>$sport));	
+	}
 	//Router::connect('/football/*', array('controller' => 'memes', 'action' => 'sport'));
 	//Router::connect('/basketball/*', array('controller' => 'memes', 'action' => 'sport','prefix'=>'213'));
 	//Router::connect('/baseball/*', array('controller' => 'memes', 'action' => 'baseball'));

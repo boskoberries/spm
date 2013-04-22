@@ -13,10 +13,11 @@ class MemesController extends AppController {
   	}
   	
   	function popular($category_id=null){
+
  		$sort=(isset($_GET['sort']))?$_GET['sort']:'';
  		$data['memes']=  $this->Meme->getMemesByPopularity($sort);
+  		$data['user'] = $this->Auth->user();
   		$this->set('data',$data);		
-  	
   	}
   	
   	function random(){
@@ -25,9 +26,20 @@ class MemesController extends AppController {
   		$this->set('data',$data);
   		$this->render('popular');
   	}
-  	function sport($sport_name){
+  	function sport($sport_name=null){
+  		if($sport_name==null){
+  			if(isset($this->params['option']) && !empty($this->params['option'])){
+ 	 			$sport_name = $this->params['option'];	
+  			}
+  		}
   		$data['sport_id'] = $this->Sport->findIdByName($sport_name);
   		$data['sport'] = $sport_name;
+  		$data['user'] = $this->Auth->user();
+  		if(true || !empty($data['user'])){
+  			if(true || $data['user']['User']['admin']==1){
+  				$data['isAdmin'] = true;
+  			}
+  		}
   		if($data['sport_id']===false){ 
   			$this->redirect("/"); 
   		}
@@ -332,6 +344,7 @@ class MemesController extends AppController {
 				//	print_r($this->data);exit;
 					// $x_coord = $this->data['caption_coords']['left'][$i];
 					// $y_coord = $this->data['caption_coords']['top'][$i];
+					
 					//$y_coord = $this->data['caption_coords']['top'][$i]+12+10;//for the padding top of the div.caption
 
 					//$font_Size
@@ -346,7 +359,7 @@ class MemesController extends AppController {
 					
 					$lines=explode("\n",$this->data['caption']['body'][$i]);
 					pr($lines);
-					//exit;
+					exit;
 					for($z=0; $z< count($lines); $z++){
 						$newY = $y_coord + ($z * $font_size * 1);
 						//imagettftext($image, $font_size, 0, ($x_coord+2), ($newY+2), $black, $font_file, $lines[$z]);//adding same text shadow.
@@ -542,13 +555,24 @@ class MemesController extends AppController {
 	
 	}
 
-	function delete($meme_id){
-		$data['user'] = $this->Auth->user();
-		if($this->Meme->checkMemeOwner($meme_id,$data['user'])){
-			$this->Meme->deleteMeme($meme_id);
+	function delete($meme_id=null){
+		$formSubmit = false;
+		if($meme_id==null && !empty($this->data)){
+			$meme_id = $this->data['meme_id'];
+			$formSubmit = true;
 		}
-		$this->Session->setFlash('Your meme has been wiped out.');
-		$this->redirect('/memes/browse');
+		$data['user'] = $this->Auth->user();
+		//if($this->Meme->checkMemeOwner($meme_id,$data['user'])){
+			$this->Meme->deleteMeme($meme_id);
+		//}
+		if($formSubmit){
+			print "deleted.";
+			exit;
+		} else{
+			$this->Session->setFlash('Your meme has been wiped out.');	
+			$this->redirect('/memes/browse');			
+		}
+
 
 	}
 	

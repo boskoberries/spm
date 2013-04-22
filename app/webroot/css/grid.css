@@ -129,7 +129,7 @@
 	.right      { float: right; }
 	.hide     	{ display: none; }
 	.highlight 	{ background: #ff0; }
-	
+	.relative { position: relative; }
 /* Arfully Masterminded by ZURB */
 
 /*	--------------------------------------------------

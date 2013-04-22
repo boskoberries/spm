@@ -1,4 +1,7 @@
 <div class="meme-entry <?=(isset($small))?$small:''?>">
+	<? if(isset($data['isAdmin'])){?>
+		<a href="#" class="delete-meme hide icon-delete" meme-id="<?=$m['Meme']['id']?>"></a>
+	<? } ?>
 	<div class="title"><?=$m['Meme']['title']?><span class="child-count hide">(<?=$m['Meme']['view_count']?>)</span></div>
 	<a href="/memes/view/<?=$m['Meme']['url']?>">
 		<img class="meme" src="/img/user_memes/<?=$m['Meme']['image_url_medium']?>" />
