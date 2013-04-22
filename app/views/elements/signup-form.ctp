@@ -59,12 +59,12 @@
 		<?=implode("<br />",$errors)?>
 		<? } ?>
 
-		<form action="/registration" method="POST">
+		<form action="/users/signup" method="POST">
 			<label>Username:</label>
-			<input type="text" name="data[NewUser][username]" value="" title="What do you want to go by?" />
+			<input type="text" name="data[NewUser][username]" value="<?=(isset($data['username']))?$data['username']:''?>" title="What do you want to go by?" />
 			<div class="clear"></div>
 			<label>Email:</label>
-			<input type="text" name="data[NewUser][email]" value="" title="Your email address will be used for logging in" />
+			<input type="text" name="data[NewUser][email]" value="<?=(isset($data['email']))?$data['email']:''?>" title="Your email address will be used for logging in" />
 			<div class="clear"></div>
 			<label>Password:</label>
 			<input type="password" name="data[NewUser][password]" value="" title="Enter your password" />
@@ -85,7 +85,7 @@
 			<input type="text" name="data[User][email]" value="" />
 			<div class="clear"></div>
 			<label>Password:</label>
-			<input type="password" name="data[User][password]" />
+			<input type="password" name="data[User][password]" value="" title="Enter Passwrd"/>
 			<br/><br>
 			<input type="submit" class="blue tight  big btn" value="Login" />
 		</form>

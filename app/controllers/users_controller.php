@@ -1,19 +1,44 @@
+
 <?php
 class UsersController extends AppController {
 
 	var $name = 'Users';
 	var $uses = array('Meme','MemeType','MemeCaption','User');
-	var $helpers = array('Form','Time','Session');
+	var $helpers = array('Form','Time');
+	var $components = array('Session');
 
     function beforeFilter(){
 		//$this->Session->write('Auth.redirect', null);
-		$this->Auth->allow('index');
+		$this->Auth->allow('login','signup');
+		$this->Auth->autoRedirect = false;
 		
 		parent::beforeFilter();
 	}
 
 	function index(){
-		$this->redirect('/users/login');
+
+
+
+	}
+
+	function signup(){
+		if ($this->Auth->user()) { //if logged in, redirect.
+			$this->redirect('/memes');
+		} 
+		//pr($this->data);exit;
+		
+		$data = $this->User->validateSignUpForm($this->data['NewUser']);
+		if(isset($data['errors']) && !empty($data['errors'])){
+			pr($data['errors']);
+			$this->set('data',$this->data['NewUser']);
+			$this->Session->setFlash(implode('<br>',$data['errors']));
+			$this->render('login');
+		} else {
+			print "DONE!";
+			pr($this->Auth->user());
+			exit;
+
+		}
 	}
 
   	function login(){
