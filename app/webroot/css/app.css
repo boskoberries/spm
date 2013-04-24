@@ -370,6 +370,9 @@
         a.active{
             color: #333333;
         }
+        .bold{
+            font-weight: bold;
+        }
     small {
         font-size:80%;
     }
@@ -746,7 +749,6 @@ background: #FFB32C;
     div.global-header {
         width:100%;
         color:#ffffff;
-        margin-bottom:40px;
         padding:15px 70px;
         background: #00A6FC;
         filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#0192DD', endColorstr='#00A6FC'); /* for IE */
@@ -847,6 +849,27 @@ background: #FFB32C;
                 nav.global li.has-children ul li a:last-child{
                     border-bottom:none;
                 }
+                #subnav{
+                    background: #333333 url(/images/black-linen.png);
+                    border-top: 1px solid #000000;
+                    border-bottom: 1px solid #000000;
+                    margin-bottom: 40px;
+                    height: 35px;
+/*                    width: 100%;*/
+                    padding-right: 40px;
+                }
+                #subnav a{
+                    color: #ffffff;
+                }
+                #subnav #searchBar{
+                    width: 200px;
+                    margin-top: 3px;
+                    border-radius: 2px;
+                }
+                #subnav .logged-in{
+                    color: #ffffff;
+                }
+
         a#accountName {
             float:right;
             margin-top:12px;

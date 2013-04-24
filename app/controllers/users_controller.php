@@ -1,4 +1,3 @@
-
 <?php
 class UsersController extends AppController {
 
@@ -9,16 +8,23 @@ class UsersController extends AppController {
 
     function beforeFilter(){
 		//$this->Session->write('Auth.redirect', null);
-		$this->Auth->allow('login','signup');
-		$this->Auth->autoRedirect = false;
+		$this->Auth->allow('login','signup','logout');
+		//$this->Auth->autoRedirect = false;
 		
 		parent::beforeFilter();
 	}
 
 	function index(){
 
+	}
 
-
+	function logout(){
+		$this->Session->delete('Auth');
+//		$this->redirect($this->Auth->logout());
+//		exit;
+//		print "wt";exit;
+		$this->redirect('/users/login');
+		exit;
 	}
 
 	function signup(){

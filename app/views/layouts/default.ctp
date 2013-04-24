@@ -34,8 +34,6 @@
         	    <div class="row">
                 	<div class="three columns">
                 	   <a href="/" class="logo" >SPORTS MEMES</a>
-                	 <!--   <img src="/images/logo-global-white.png" alt="SPORTS MEMES" /></a>
-                --> 
                 	</div>
                 	<div class="nine columns">
 	                    <nav class="global">
@@ -59,45 +57,58 @@
          						</ul>	
          					
 						</nav>
-					</div>
-					<?php if(isset($info)): ?>
-   	         		<div class="three columns">
-                		<a id="accountName" class="logout" >
-						<img src="/img/<?php echo $info['User']['image_url'];?>" class="user-avatar" />
-						<?php echo $info['User']['account_name'];?>&nbsp;&#9660;</a>
-				
-						<div id="accountDropDown" class="hide_me">
-							<div class="dropDownPointer">
-								<div class="dropDownArrow"></div>
-								<div class="dropDownArrowBorder"></div>
-							</div>
-							<div class="dropDownContent">
-							<ul>
-								<li><a href="/account">Account Settings</a></li>
-								<li><a href="/users/profile">View My Profile</a></li>
-				                <li><a href="/help">Help</a></li>
-								<li><a href="/about">About Us</a></li>
-								<li><a href="http://www.oneclipboard.com/blog" target="_blank">Blog</a></li>
-    	    	        		<?php if($info['User']['admin']=='1'):;?>
-						    		<li><?php echo  $html->link('Admin Stuff','/admin');?></li>	
-								<?php endif;?>			       
-				                <li class="last" style="border-bottom:0;"><a href="/users/logout">Logout</a></li>
-							</ul>
-							</div>
-						</div>
-					</div>
-					<?php endif;?>
+					</div>	
+	            </div>
+	    </div>  
+	    <div id="subnav">
+	    	<div class="right">
+		    	<a href="#">Your favorites (3)</a>&nbsp;|&nbsp;
+		    	<? if(true || isset($info)){ ?>
+		    	<span class="logged-in bold">Logged in as: butangphp</span>
+		    	<a href="/users/logout">(sign out)</a>
 
-            </div>
-        </div>     
+		    	<? } else { ?>
+		    	<a href="/users/login">Log-in</a>&nbsp;|&nbsp;<a href="/users/signup">Sign Up</a>
+
+		    	<? } ?>
+		    	<input id="searchBar" type="text" placeholder="Search..." />
+		    </div>
+			<?php if(isset($info)){ ?>
+         		<div class="three columns">
+        		<a id="accountName" class="logout" >
+				<img src="/img/<?php echo $info['User']['image_url'];?>" class="user-avatar" />
+				<?php echo $info['User']['account_name'];?>&nbsp;&#9660;</a>
+		
+				<div id="accountDropDown" class="hide_me">
+					<div class="dropDownPointer">
+						<div class="dropDownArrow"></div>
+						<div class="dropDownArrowBorder"></div>
+					</div>
+					<div class="dropDownContent">
+					<ul>
+						<li><a href="/account">Account Settings</a></li>
+						<li><a href="/users/profile">View My Profile</a></li>
+		                <li><a href="/help">Help</a></li>
+						<li><a href="/about">About Us</a></li>
+						<li><a href="http://www.oneclipboard.com/blog" target="_blank">Blog</a></li>
+    	        		<?php if($info['User']['admin']=='1'){ ?>
+				    		<li><?php echo  $html->link('Admin Stuff','/admin');?></li>	
+						<?php } ?>			       
+		                <li class="last" style="border-bottom:0;"><a href="/users/logout">Logout</a></li>
+					</ul>
+					</div>
+				</div>
+			</div>
+			<?php } ?> 
+	    </div>   
 							
 
 		<div id="authMessage"></div>
-		<?php if(isset($_SESSION['Message']['flash']['message']) && !empty($_SESSION['Message']['flash']['message'])):;?>
+		<?php if(isset($_SESSION['Message']['flash']['message']) && !empty($_SESSION['Message']['flash']['message'])){ ?>
 			<?php $flash_class=(isset($_SESSION['Message']['flash']['params']['class']))?$_SESSION['Message']['flash']['params']['class']:'error_area';?>
 			<div id="flashMessage" class="<?php echo $flash_class;?>"><?php echo $_SESSION['Message']['flash']['message'];?></div>
 			<?php unset($_SESSION['Message']['flash']['message']);?>
-		<?php endif;?>
+		<?php } ?>
 
 		<!-- body container -->
 		<div id="container" class="container page-content">
