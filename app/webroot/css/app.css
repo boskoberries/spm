@@ -366,7 +366,10 @@
         a:hover {
             color:#647c6c;
         }
-    
+        
+        a.active{
+            color: #333333;
+        }
     small {
         font-size:80%;
     }

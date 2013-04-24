@@ -7,17 +7,18 @@ class MemesController extends AppController {
 	var $components = array('Image','Session');
 
   	function index(){
-
-  		$data['memes']=$this->Meme->find('all');
-		$this->set('data',$data);  		
+  		$data['sort']=(isset($_GET['sort']))?$_GET['sort']:'';
+  		$data['memes']=  $this->Meme->getMemesByPopularity($data['sort']);
+		//$data['memes']=$this->Meme->find('all');
+  		$this->set('data',$data);  		
   	}
   	
   	function popular($category_id=null){
-
- 		$sort=(isset($_GET['sort']))?$_GET['sort']:'';
- 		$data['memes']=  $this->Meme->getMemesByPopularity($sort);
+ 		$data['sort']=(isset($_GET['sort']))?$_GET['sort']:'';
+ 		$data['memes']=  $this->Meme->getMemesByPopularity($data['sort']);
   		$data['user'] = $this->Auth->user();
   		$this->set('data',$data);		
+  	
   	}
   	
   	function random(){
@@ -32,6 +33,7 @@ class MemesController extends AppController {
  	 			$sport_name = $this->params['option'];	
   			}
   		}
+  		$data['sort']=(isset($_GET['sort']))?$_GET['sort']:'';
   		$data['sport_id'] = $this->Sport->findIdByName($sport_name);
   		$data['sport'] = $sport_name;
   		$data['user'] = $this->Auth->user();
@@ -51,6 +53,8 @@ class MemesController extends AppController {
   	}
 
   	function league($league_name){
+  		$data['sort']=(isset($_GET['sort']))?$_GET['sort']:'';
+  		
   		$data['parent'] = $this->League->getLeagueParent($league_name);
   		$data['sport'] = $league_name;
   		$data['memes'] = $this->Meme->fetchForSport($league_name);
