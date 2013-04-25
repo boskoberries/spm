@@ -12,12 +12,12 @@
 		<link href='https://fonts.googleapis.com/css?family=Shadows+Into+Light+Two' rel='stylesheet' type='text/css'>
 
 			<!--    	<link rel="stylesheet" type="text/css" href="/sports_memes/css/ocbstyle928.css" media="all" />-->
-
 		<?=$html->css('/css/grid.css')?>
 		<?=$html->css('/css/app.css')?>
-
+		<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+		<script src="http://code.jquery.com/jquery-migrate-1.1.1.min.js"></script>
 		<?=$html->css('/js/jquery-ui-1.8.14.custom.css')?>
-    	<?=$javascript->link('/js/jquery-1.6.1.min.js')?>
+    	<?//=$javascript->link('/js/jquery-1.9.1.min.js')?>
     	<?=$javascript->link('/js/jquery-ui-1.8.14.custom.min.js')?>
 		<?=$javascript->link('/js/jquery.raty.js')?>
 		<!--[if lt IE 9]>
@@ -62,7 +62,7 @@
 	    </div>  
 	    <div id="subnav">
 	    	<div class="right">
-		    	<a href="#">Your favorites (3)</a>&nbsp;|&nbsp;
+		    	<a href="/users/favorites">Your favorites (3)</a>&nbsp;|&nbsp;
 		    	<? if(isset($user)){ ?>
 		    	<span class="logged-in bold">Logged in as: butangphp</span>
 		    	<a href="/users/logout">(sign out)</a>

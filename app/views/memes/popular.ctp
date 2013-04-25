@@ -1,7 +1,6 @@
-<?=$javascript->link('/js/jquery.raty.js')?>
+<?//=$javascript->link('/js/jquery.raty.js')?>
 <?=$javascript->link('memes-index.js')?>
-<script type="text/javascript">
-</script>
+<?=$html->css('memes-index.css')?>
 
 <div class="row">
 	<? if(isset($data['meme_data'])){ ?>
@@ -64,8 +63,10 @@
 					
 		<? endif;?>
 	</div>
-	<? foreach($data['memes'] as $m):?>		
-		<?=$this->element('meme-entry',array('m'=>$m))?>
-	<? endforeach;?>
-
+	<div id="all-entries">
+		<? foreach($data['memes'] as $m){ ?>		
+			<?=$this->element('meme-entry',array('m'=>$m))?>
+		<? } ?>
+		<div id="loadMoreContain" class="clear center"><a href="#" id="loadMore">More</a></div>
+	</div>
 </div>

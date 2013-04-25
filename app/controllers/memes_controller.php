@@ -28,6 +28,11 @@ class MemesController extends AppController {
   		$this->render('popular');
   	}
   	function sport($sport_name=null){
+		//	$this->Session->write('UserInfo.breadth','asdoijsa');
+		//$_SESSION['UserInfo'] = 'asdsa';
+		//	pr($_SESSION);
+
+  		//pr($_COOKIE);//->Session->read());
   		if($sport_name==null){
   			if(isset($this->params['option']) && !empty($this->params['option'])){
  	 			$sport_name = $this->params['option'];	
@@ -530,6 +535,18 @@ class MemesController extends AppController {
 		$data['memes'] = $this->Meme->findAllByUserId($user_id);
 		$this->set('data',$data);
 		$this->render('popular');
+	}
+
+	function saveFavorite(){
+		if(!empty($this->params['form'])){
+			$this->loadModel('UserFavorite');
+			$data = array('meme_id'=>$this->params['form']['meme_id'],'ip_address' => $_SERVER['REMOTE_ADDR'],	
+				'favorite' => $this->params['form']['favorite']);
+			$user = $this->Auth->user();
+			$new_count = $this->UserFavorite->saveFavorite($data,$user);
+			$this->Session->write('favorite_count',$new_count);
+		}
+		exit;
 	}
 	function addRating(){
 		if(isset($_POST['id']) && isset($_POST['value'])){
