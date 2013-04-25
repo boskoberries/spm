@@ -373,6 +373,9 @@
         .bold{
             font-weight: bold;
         }
+        .center{
+            text-align: center;
+        }
     small {
         font-size:80%;
     }
@@ -865,6 +868,7 @@ background: #FFB32C;
                     width: 200px;
                     margin-top: 3px;
                     border-radius: 2px;
+                    margin-left: 30px;
                 }
                 #subnav .logged-in{
                     color: #ffffff;

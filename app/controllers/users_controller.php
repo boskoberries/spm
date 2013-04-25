@@ -4,15 +4,27 @@ class UsersController extends AppController {
 	var $name = 'Users';
 	var $uses = array('Meme','MemeType','MemeCaption','User');
 	var $helpers = array('Form','Time');
-	var $components = array('Session');
+	var $components = array('Session','Auth');
 
     function beforeFilter(){
 		//$this->Session->write('Auth.redirect', null);
-		$this->Auth->allow('login','signup','logout');
-		//$this->Auth->autoRedirect = false;
+		$this->Auth->allow('login','signup');
+		$this->Auth->autoRedirect = false;
 		
 		parent::beforeFilter();
 	}
+
+
+
+    function isAuthorized(){
+		if (isset($this->params[Configure::read('Routing.admin')])){
+ 	   		if ($this->Auth->user('admin') == 0) {
+        		return false;
+    	    }
+        }
+        return true;
+	}
+
 
 	function index(){
 
@@ -20,6 +32,7 @@ class UsersController extends AppController {
 
 	function logout(){
 		$this->Session->delete('Auth');
+		$this->Auth->logout();
 //		$this->redirect($this->Auth->logout());
 //		exit;
 //		print "wt";exit;
@@ -31,7 +44,7 @@ class UsersController extends AppController {
 		if ($this->Auth->user()) { //if logged in, redirect.
 			$this->redirect('/memes');
 		} 
-		//pr($this->data);exit;
+		pr($this->data);exit;
 		
 		$data = $this->User->validateSignUpForm($this->data['NewUser']);
 		if(isset($data['errors']) && !empty($data['errors'])){
@@ -48,11 +61,38 @@ class UsersController extends AppController {
 		}
 	}
 
-  	function login(){
+	function login(){
+		if (empty($this->data)) {
+
+			$cookie = $this->Cookie->read('Auth.User');
+
+			if (!is_null($cookie)) {
+				if ($this->Auth->login($cookie)) {
+
+					//  Clear auth message, just in case we use it.
+					$this->Session->delete('Message.auth');
+					$this->redirect($this->Auth->redirect());
+				} else { // Delete invalid Cookie
+					$this->Cookie->delete('Auth.User');
+				}
+			}
+		}else {
+
+
+			//$_POST['email']=$this->data['User']['email'];
+			$this->Session->setFlash('Whoops, we didn\'t recognize that e-mail/password combination.&nbsp;&nbsp;Forgot your password?&nbsp;&nbsp;<a href="/users/reset">Click here to retrieve it.</a>', 'default');
+			//$this->data['flash'] = 'Whoops, we didn\'t recognize that e-mail/password combination.&nbsp;&nbsp;Forgot your password?&nbsp;&nbsp;<a href="/users/reset">Click here to retrieve it.</a>';
+			//if(isset($this->data['Event']['domain'])){
+			//	$this->redirect('/registration?site=true');
+			//}
+		}
+	}
+  	function login2(){
 
 		if(!empty($this->data)){	
-			pr($this->data);
-			$data['username']=trim($this->data['User']['username']);
+			//print_r($this->data);
+			//exit;
+			//$data['username']=trim($this->data['User']['email']);
 			// if(empty($this->data['User']['password'])){
 			// 	print "yep";
 			// }
@@ -92,7 +132,7 @@ class UsersController extends AppController {
 				$data['password'] = trim($this->data['User']['password']);
 	
 				/////START/////
-			    if(@$this->User->save($data)){   
+			    if($this->User->save($data)){   
 					//send email to new user post-registration (and ben and I too)
 	                /*
 	                //$recipients = $this->data['User']['email'];
@@ -125,6 +165,5 @@ class UsersController extends AppController {
 			}	
 		}						
   	}
-
 }
-?>	
+?>

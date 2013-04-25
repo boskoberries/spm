@@ -63,12 +63,12 @@
 	    <div id="subnav">
 	    	<div class="right">
 		    	<a href="#">Your favorites (3)</a>&nbsp;|&nbsp;
-		    	<? if(true || isset($info)){ ?>
+		    	<? if(isset($user)){ ?>
 		    	<span class="logged-in bold">Logged in as: butangphp</span>
 		    	<a href="/users/logout">(sign out)</a>
 
 		    	<? } else { ?>
-		    	<a href="/users/login">Log-in</a>&nbsp;|&nbsp;<a href="/users/signup">Sign Up</a>
+		    	<a href="/users/login">Log-in</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="/users/signup">Sign Up</a>
 
 		    	<? } ?>
 		    	<input id="searchBar" type="text" placeholder="Search..." />

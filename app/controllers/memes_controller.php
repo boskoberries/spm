@@ -92,17 +92,19 @@ class MemesController extends AppController {
 	function browse($sort=null){
 	
 		$this->redirect('/memes/popular');
-		$data['memes']=$this->Meme->grabMemesByParent(0,$sort);
-		$data['browse']=true;
+		// $data['memes']=$this->Meme->grabMemesByParent(0,$sort);
+		// $data['browse']=true;
 
-		$this->set('data',$data);
-  		$this->render('popular');
+		// $this->set('data',$data);
+  // 		$this->render('popular');
 	}
 
   	function all($meme_id){
 		$meme_id = $this->checkId($meme_id);
 		$data['meme_data'] = $this->Meme->read(null,$meme_id);
 		$sort = (isset($_GET['sort']))?$_GET['sort']:'viewcount';
+		$data['sort']=(isset($_GET['sort']))?$_GET['sort']:'';
+		
 		$data['memes'] = $this->Meme->grabMemesByParent($data['meme_data']['Meme']['parent_id'],$sort);		
 
 		$this->set('data',$data);

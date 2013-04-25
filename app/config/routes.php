@@ -40,6 +40,7 @@
 	foreach($sport_list as $sport){	
 		Router::connect('/'.$sport.'/*', array('controller' => 'memes', 'action' => 'sport','option'=>$sport));	
 	}
+
 	//Router::connect('/football/*', array('controller' => 'memes', 'action' => 'sport'));
 	//Router::connect('/basketball/*', array('controller' => 'memes', 'action' => 'sport','prefix'=>'213'));
 	//Router::connect('/baseball/*', array('controller' => 'memes', 'action' => 'baseball'));

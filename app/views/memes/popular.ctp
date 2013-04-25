@@ -18,7 +18,7 @@
 		<h2>
 			<? if(isset($data['parent']) && !empty($data['parent']['Sport'])){ ?>
 			<span>
-				<a href="/memes/sport/<?=$data['parent']['Sport']['name']?>">
+				<a href="/<?=$data['parent']['Sport']['name']?>">
 					<?=ucwords($data['parent']['Sport']['name'])?>
 				</a> 
 			</span> 
