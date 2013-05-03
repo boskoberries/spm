@@ -59,7 +59,7 @@
 		<?=implode("<br />",$errors)?>
 		<? } ?>
 
-		<form action="/users/signup" method="POST">
+		<!-- <form action="/users/register" method="POST">
 			<label>Username:</label>
 			<input type="text" name="data[NewUser][username]" value="<?=(isset($data['username']))?$data['username']:''?>" title="What do you want to go by?" />
 			<div class="clear"></div>
@@ -74,13 +74,34 @@
 			<div class="clear"></div>
 			<br>
 			<input type="submit" class="big blue btn" value="Register" />
-		</form>
+		</form> -->
+		<? 		    echo $this->Form->create('User');
+		    echo $this->Form->input('username');
+		    echo $this->Form->input('password');
+		    echo $this->Form->end('Signup');?>
+
 	</div>
 	<div class="login-form left">
 		<div class="header">
 			<h3>Log In</h3>
 		</div>
-		<form action="/users/login" method="POST">
+		<?/*
+		<?php echo $this->Form->create('User',array('action'=>'login')); ?>
+			<label>Username or email:</label>
+	        <?php echo $this->Form->input('email');
+		        echo $this->Form->input('password');
+		    ?>
+			<?php echo $this->Form->end(__('Submit')); ?>
+	*/?>
+		<?php
+		    echo $this->Session->flash('auth');
+		    echo $this->Form->create('Register');
+		    echo $this->Form->input('email');
+		    echo $this->Form->input('password');
+		    echo $this->Form->end('Login');
+		?>
+
+		<!-- <form action="/users/login" method="POST">
 			<label>Username or Email:</label>
 			<input type="text" name="data[User][email]" value="" />
 			<div class="clear"></div>
@@ -88,6 +109,6 @@
 			<input type="password" name="data[User][password]" value="" title="Enter Passwrd"/>
 			<br/><br>
 			<input type="submit" class="blue tight  big btn" value="Login" />
-		</form>
+		</form> -->
 	</div>
 </div>

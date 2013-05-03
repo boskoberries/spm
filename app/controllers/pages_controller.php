@@ -12,7 +12,6 @@ class PagesController extends AppController {
 		$this->loadModel('Meme');
 		$sort=(isset($_GET['sort']))?$_GET['sort']:'';
 		$data['sort']=$sort;
-		
 		$data['memes']=  $this->Meme->getMemesByPopularity($sort);
  		$this->set('data',$data);		
  		$this->render('/memes/popular');

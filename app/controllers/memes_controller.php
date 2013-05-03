@@ -4,9 +4,11 @@ class MemesController extends AppController {
 	var $name = 'Memes';
 	var $uses = array('Meme','MemeType','MemeCaption','MemeRating','User','League','Sport','Team');
 	var $helpers = array('Form','Time');
-	var $components = array('Image','Session');
+	var $components = array('Auth','Image','Session');
 
   	function index(){
+
+  		pr($this->Auth->user());
   		$data['sort']=(isset($_GET['sort']))?$_GET['sort']:'';
   		$data['memes']=  $this->Meme->getMemesByPopularity($data['sort']);
 		//$data['memes']=$this->Meme->find('all');
@@ -547,6 +549,13 @@ class MemesController extends AppController {
 			$this->Session->write('favorite_count',$new_count);
 		}
 		exit;
+	}
+
+	function saveRating(){
+		if(!empty($this->params['form'])){
+			$this->loadModel('MemeRating');
+			
+		}
 	}
 	function addRating(){
 		if(isset($_POST['id']) && isset($_POST['value'])){

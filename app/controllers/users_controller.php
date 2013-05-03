@@ -3,42 +3,90 @@ class UsersController extends AppController {
 
 	var $name = 'Users';
 	var $uses = array('Meme','MemeType','MemeCaption','User');
-	var $helpers = array('Form','Time');
+	var $helpers = array('Form','Time','Session');
 	var $components = array('Session','Auth');
 
-    function beforeFilter(){
-		//$this->Session->write('Auth.redirect', null);
-		$this->Auth->allow('login','signup');
-		$this->Auth->autoRedirect = false;
+
+	// public function beforeFilter() {
+	//     parent::beforeFilter();
+	//     $this->Auth->allow('login');
+	//     $this->Auth->allow('signup'); // Letting users register themselves
+	// }
+
+
+	function beforeFilter() {
+	    $this->Auth->fields = array(
+	        'username' => 'username',
+	        'password' => 'secretword'
+	        );
+	    $this->Auth->allow('register');
+	}
+	/**
+	     *  The AuthComponent provides the needed functionality
+	     *  for login, so you can leave this function blank.
+	     */
+    function login() {
+    }
+
+    function logout() {
+        $this->redirect($this->Auth->logout());
+    }
+
+    function register(){
+    	//pr($this->Auth->user());
+    	if ($this->data) {
+    		// print $this->data['NewUser']['password'];
+    		// print "<br>";
+    		// print $this->Auth->password($this->data['NewUser']['password']);
+    	    //if ($this->data['NewUser']['password'] == $this->Auth->password($this->data['NewUser']['password'])) {
+    	      	
+	      	 	 $this->User->create();
+    	        $this->User->save($this->data['User']);
+    	        if($this->Auth->login($this->data['User'])){
+
+	    	        $this->redirect('/memes');
+	    	    }
+	    	    else{
+	    	    	print "no go.";exit;
+	    	    }
+    	   //	 }
+    	}
+    }
+
+
+ //    function beforeFilter(){
+	// 	//$this->Session->write('Auth.redirect', null);
+	// 	$this->Auth->allow('login','signup');
+	// 	$this->Auth->autoRedirect = false;
 		
-		parent::beforeFilter();
-	}
+	// 	parent::beforeFilter();
+	// }
 
 
 
-    function isAuthorized(){
-		if (isset($this->params[Configure::read('Routing.admin')])){
- 	   		if ($this->Auth->user('admin') == 0) {
-        		return false;
-    	    }
-        }
-        return true;
-	}
+ //    function isAuthorized(){
+	// 	if (isset($this->params[Configure::read('Routing.admin')])){
+ // 	   		if ($this->Auth->user('admin') == 0) {
+ //        		return false;
+ //    	    }
+ //        }
+ //        return true;
+	// }
 
 
 	function index(){
 
 	}
 
-	function logout(){
-		$this->Session->delete('Auth');
-		$this->Auth->logout();
-//		$this->redirect($this->Auth->logout());
-//		exit;
-//		print "wt";exit;
-		$this->redirect('/users/login');
-		exit;
-	}
+// 	function logout(){
+// 		$this->Session->delete('Auth');
+// 		$this->Auth->logout();
+// //		$this->redirect($this->Auth->logout());
+// //		exit;
+// //		print "wt";exit;
+// 		$this->redirect('/users/login');
+// 		exit;
+// 	}
 
 	function signup(){
 		if ($this->Auth->user()) { //if logged in, redirect.
@@ -61,32 +109,44 @@ class UsersController extends AppController {
 		}
 	}
 
-	function login(){
-		if (empty($this->data)) {
+	// function login(){
+	// 	if ($this->request->is('post')) {
+	// 	    $this->User->create();
+	// 	    if ($this->User->save($this->request->data)) {
+	// 	        $this->Session->setFlash(__('The user has been saved'));
+	// 	        $this->redirect(array('action' => 'index'));
+	// 	    } else {
+	// 	        $this->Session->setFlash(__('The user could not be saved. Please, try again.'));
+	// 	    }
+	// 	}
 
-			$cookie = $this->Cookie->read('Auth.User');
+	// }
+	// function login(){
+	// 	if (!empty($_POST)) {
 
-			if (!is_null($cookie)) {
-				if ($this->Auth->login($cookie)) {
+	// 		$cookie = $this->Cookie->read('Auth.User');
 
-					//  Clear auth message, just in case we use it.
-					$this->Session->delete('Message.auth');
-					$this->redirect($this->Auth->redirect());
-				} else { // Delete invalid Cookie
-					$this->Cookie->delete('Auth.User');
-				}
-			}
-		}else {
+	// 		if (!is_null($cookie)) {
+	// 			if ($this->Auth->login($cookie)) {
+
+	// 				//  Clear auth message, just in case we use it.
+	// 				$this->Session->delete('Message.auth');
+	// 				$this->redirect($this->Auth->redirect());
+	// 			} else { // Delete invalid Cookie
+	// 				$this->Cookie->delete('Auth.User');
+	// 			}
+	// 		}
+	// 	}else {
 
 
-			//$_POST['email']=$this->data['User']['email'];
-			$this->Session->setFlash('Whoops, we didn\'t recognize that e-mail/password combination.&nbsp;&nbsp;Forgot your password?&nbsp;&nbsp;<a href="/users/reset">Click here to retrieve it.</a>', 'default');
-			//$this->data['flash'] = 'Whoops, we didn\'t recognize that e-mail/password combination.&nbsp;&nbsp;Forgot your password?&nbsp;&nbsp;<a href="/users/reset">Click here to retrieve it.</a>';
-			//if(isset($this->data['Event']['domain'])){
-			//	$this->redirect('/registration?site=true');
-			//}
-		}
-	}
+	// 		//$_POST['email']=$this->data['User']['email'];
+	// 		$this->Session->setFlash('Whoops, we didn\'t recognize that e-mail/password combination.&nbsp;&nbsp;Forgot your password?&nbsp;&nbsp;<a href="/users/reset">Click here to retrieve it.</a>', 'default');
+	// 		//$this->data['flash'] = 'Whoops, we didn\'t recognize that e-mail/password combination.&nbsp;&nbsp;Forgot your password?&nbsp;&nbsp;<a href="/users/reset">Click here to retrieve it.</a>';
+	// 		//if(isset($this->data['Event']['domain'])){
+	// 		//	$this->redirect('/registration?site=true');
+	// 		//}
+	// 	}
+	// }
   	function login2(){
 
 		if(!empty($this->data)){	
@@ -165,5 +225,4 @@ class UsersController extends AppController {
 			}	
 		}						
   	}
-}
-?>
+} ?>

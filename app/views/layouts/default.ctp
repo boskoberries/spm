@@ -45,8 +45,8 @@
          							<li><a href="/baseball" class="nav-link ">Baseball</a></li>
          							<li><a href="/hockey" class="nav-link ">Hockey</a></li>
          							<li class="has-children">
-     									<a href="#" class="nav-link ">Other Sports</a>
-     									<ul class="hide">
+     									<a href="#" class="nav-link ">Other Sports <span class="icon-down"></span></a>
+     									<ul class="">
      										<li><a href="/soccer">Soccer</a></li>
      										<li><a href="/tennis">Tennis</a></li>
      										<li><a href="/nascar">Nascar</a></li>
@@ -103,14 +103,18 @@
 			<?php } ?> 
 	    </div>   
 							
-
+	    <? 
+	    echo $this->Session->flash();
+    	echo $this->Session->flash('auth'); 
+    	?>
+    	<?/*
 		<div id="authMessage"></div>
 		<?php if(isset($_SESSION['Message']['flash']['message']) && !empty($_SESSION['Message']['flash']['message'])){ ?>
 			<?php $flash_class=(isset($_SESSION['Message']['flash']['params']['class']))?$_SESSION['Message']['flash']['params']['class']:'error_area';?>
 			<div id="flashMessage" class="<?php echo $flash_class;?>"><?php echo $_SESSION['Message']['flash']['message'];?></div>
 			<?php unset($_SESSION['Message']['flash']['message']);?>
 		<?php } ?>
-
+	*/?>
 		<!-- body container -->
 		<div id="container" class="container page-content">
 			<?php echo  $content_for_layout;?>

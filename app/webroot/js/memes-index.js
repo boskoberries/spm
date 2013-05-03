@@ -42,7 +42,7 @@ $(document).ready(function(){
 	});
 
 	$("#all-entries").on({
-		click:function(){
+		click(function(){
 			var $this = $(this);
 			var params = { meme_id: $this.parents(".meme-entry").attr("meme-id") };
 			if($this.hasClass('favorite')){
@@ -70,5 +70,29 @@ $(document).ready(function(){
 			return false;
 		}
 	},'img.star');
+
+	$("a.rating-btn").click(function(){
+		var $this = $(this);
+		var $parent = $this.parents("div.rating");
+		$this.addClass('active').siblings().removeClass('active');
+		var params = { meme_id: $this.parents(".meme-entry").attr("meme-id") };
+		if($this.hasClass('root')){
+			params.root = true;
+		} else{
+			params.boo = true;
+		}
+		$.ajax({
+			url:"/memes/saveRating",
+			type:'POST',
+			data:params,
+			success:function(r){
+			},
+			error:function(){
+
+			}		
+		});
+
+	});
+
 
 });
