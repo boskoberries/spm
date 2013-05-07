@@ -1,4 +1,3 @@
-<?//=$javascript->link('/js/jquery.raty.js')?>
 <?=$javascript->link('memes-index.js')?>
 <?=$html->css('memes-index.css')?>
 

@@ -21,6 +21,12 @@ $(document).ready(function(){
 	//   starOn:    'star-on-big.png'
 	// });
 	
+	//$(document).on('click',"a",function(event){
+	$("a").click(function(event){
+		if($(this).attr("href")=='#'){
+			event.preventDefault();
+		}
+	});
 	$("#addYourOwn").click(function(){
 	
 	});

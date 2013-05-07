@@ -83,7 +83,10 @@ class MemeRating extends AppModel {
 			//pr($data);
 			$this->set($data);
 			$this->save();
-			return $this->id;
+			//return $this->id;
+			return $data['rating'];
+		} else{
+			return false;
 		}
 	}
 

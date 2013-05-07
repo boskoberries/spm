@@ -30,7 +30,7 @@ $(document).ready(function(){
 <div class="eight columns">
 		<h2>Create Your Own</h2>
 
-	<? if(true || isset($data['meme_type'])):?>
+	<? if(true || isset($data['meme_type'])){ ?>
 <!--		<h2>Create A <?=$data['meme_type']['MemeType']['name']?> Meme</h2>-->
 		<form name="meme_form" action="" method="post" enctype="multipart/form-data">
 			<p class="image-msg">Click below to upload your image.  Only .png, .jpeg, .jpg and .gif files accepted</p>
@@ -62,7 +62,23 @@ $(document).ready(function(){
 				</ul>
 			</div>*/ ?>
 		</form>
-	<? else:?>
+
+		<div class="add-caption">
+			<h3>Add Your Own Caption</h3>
+			
+			<? foreach($data['memes'] as $meme){ ?>
+				<div class="meme-entry small">
+					<a class="left" href="/memes/add/<?=$meme['Meme']['url']?>" title="<?=$meme['Meme']['title']?>">
+						<img class="meme" src="/img/user_memes/<?=$meme['Meme']['image_url_medium']?>" />
+					</a>
+				</div>
+			<? } ?>
+			<div class="clear"></div>
+			<br />
+			<?=$html->link('Browse All Our Memes','/memes/browse',array('class'=>'action-link'))?>
+			<br />
+		</div>
+	<? } else{ ?>
 		<p class="file-msg">.png, .jpeg, .jpg and .gif files only</p>
 		<div class="add-caption">
 			<h3>Add Your Own Caption</h3>
@@ -91,7 +107,7 @@ $(document).ready(function(){
 			</div>
 
 		</div>
-	<? endif;?>	
+	<? } ?>	
 </div>
 
 </div>

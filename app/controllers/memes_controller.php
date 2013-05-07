@@ -213,8 +213,9 @@ class MemesController extends AppController {
   		}
   		else{
   	
-  	   		$data['memes']=  $this->Meme->grabMemesByParent(0,null,10);
-  			$data['meme_types']=$this->MemeType->grabTypes();
+  	   		$data['memes']=  $this->Meme->getMemes(null,10,'Meme.rating DESC');
+  	   		//pr($data['memes']);
+  	   		$data['meme_types']=$this->MemeType->grabTypes();
 			$data['teams'] = $this->Team->getTeamsBySport();
 			$data['leagues'] = $data['teams']['leagues'];
 			
@@ -557,8 +558,9 @@ class MemesController extends AppController {
 			$user_id = $this->Auth->user('id');
 			$meme_rating_id = $this->MemeRating->checkIfUserHasRated($_POST['meme_id'],$user_id);
 			//pr($meme_rating_id);
-			$this->MemeRating->saveScore($meme_rating_id,$user_id,$_POST);
-			$new_rating = $this->MemeRating->getRating($_POST['meme_id']);
+			$score = $this->MemeRating->saveScore($meme_rating_id,$user_id,$_POST);
+			$new_rating = $this->Meme->updateRating($_POST['meme_id'],$score);
+			//$new_rating = $this->MemeRating->getRating($_POST['meme_id']);
 			echo json_encode(array('value'=>$new_rating));
 		}
 		exit;		

@@ -79,7 +79,21 @@ class Meme extends AppModel {
 		$this->set($d);
 		$this->save();
 	}
-	
+
+	function updateRating($meme_id,$new_rating_value){
+		if($new_rating_value!==false && ($new_rating_value > 0 || $new_rating_value < 0)){//only update if we're changing the rating.
+			$current = $this->find('first',array(
+				'fields'=>array('Meme.id,Meme.rating'),
+				'conditions'=>array('Meme.id'=>$meme_id)
+			));
+			if(!empty($current)){
+				$updated_rating = $current['Meme']['rating']+$new_rating_value;//either +1 or -1.
+				$update = array('id'=>$current['Meme']['id'],'rating'=>$updated_rating);
+				$this->set($update);
+				$this->save();
+			}
+		}
+	}
 	function getRandomMemes($limit,$page){
 		$conditions[] = array('active'=>1);
 		 
@@ -98,7 +112,7 @@ class Meme extends AppModel {
 		return $data;
 	
 	}
-	function getMemesByPopularity($date_range){
+	function getMemesByPopularity($date_range=null){
 		//date range passed through in format of days.  ie 2, 7, 30, etc.
 		$conditions[]=array('active'=>1);
 		if(is_numeric($date_range) && in_array($date_range,array('2','7','30'))){
