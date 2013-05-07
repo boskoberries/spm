@@ -74,13 +74,17 @@ $(document).ready(function(){
 		event.preventDefault();
 
 		var $this = $(this);
+		if($this.hasClass('active')){ 
+			return false; //no need to fire if it's already set. 
+		}
 		var $parent = $this.parents("div.rating");
 		$this.addClass('active').siblings().removeClass('active');
 		var params = { meme_id: $this.parents(".meme-entry").attr("meme-id") };
+
 		if($this.hasClass('root')){
-			params.root = true;
+			params.value = 'root';
 		} else{
-			params.boo = true;
+			params.value = 'boo';
 		}
 		$.ajax({
 			url:"/memes/saveRating",

@@ -4,20 +4,18 @@ class MemeRating extends AppModel {
 	var $name = 'MemeRating';
 	
 	function getRating($meme_id){
-		$q = $this->query("SELECT SUM(rating) FROM meme_ratings WHERE meme_id = $meme_id");
-		return @(isset($q[0][0]))?$q[0][0]['SUM(rating)']:0;
+		$total = $this->find('all',array('fields'=>'SUM(rating) AS SUM','conditions'=>array('meme_id'=>$meme_id)));
+		return $total[0][0]['SUM'];
 	}
 	function translateRating($score){
-		if(!is_numeric($score)){
-			$value = 0;
-		} elseif($score < 1){
-			$value = -1;
-		} else{
+		$value = 0;
+		if($score=='root'){
 			$value = 1;
-		}
-		
-		return $value;
-	
+		} elseif($score=='boo'){
+			$value = -1;
+		} 
+
+		return $value;	
 	}
 	
 	function getUserRatingForMeme($meme_id,$user_id){
@@ -52,8 +50,8 @@ class MemeRating extends AppModel {
 		$conditions = array('meme_id'=>$meme_id);
 		if(!is_numeric($user_id)){
 			$user_id = 0;
-			$user_ip = $_SERVER['REMOTE_ADDR'];
-			$conditions[] = array('ip_address'=>$user_id);
+			$ip_address = $_SERVER['REMOTE_ADDR'];
+			$conditions[] = array('ip_address'=>$ip_address);
 		} else{
 			$conditions[] = array('user_id'=>$user_id);
 		}
@@ -69,7 +67,7 @@ class MemeRating extends AppModel {
 
 	function saveScore($meme_rating_id,$user_id,$postData){
 		if(isset($postData['value'])){
-			$data = array('rating'=>$this->translateRating($postData['value']));
+			$data = array('meme_id'=>$postData['meme_id'],'rating'=>$this->translateRating($postData['value']));
 			if($meme_rating_id!==false){
 				//existing row.
 				$data['id'] = $meme_rating_id;
@@ -82,7 +80,7 @@ class MemeRating extends AppModel {
 					$data['ip_address'] = $_SERVER['REMOTE_ADDR'];
 				}
 			}
-
+			//pr($data);
 			$this->set($data);
 			$this->save();
 			return $this->id;

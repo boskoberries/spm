@@ -496,6 +496,7 @@ class MemesController extends AppController {
 	
 
 	function view($meme_id){
+
 		$meme_id = $this->checkId($meme_id);
 		$data=$this->Meme->read(null,$meme_id);
 
@@ -552,17 +553,16 @@ class MemesController extends AppController {
 	}
 
 	function saveRating(){
-		if(isset($_POST['id']) && isset($_POST['value'])){
+		if(isset($_POST['meme_id'])){
 			$user_id = $this->Auth->user('id');
-
-			$meme_rating_id = $this->MemeRating->checkIfUserHasRated($_POST['id'],$user_id);
+			$meme_rating_id = $this->MemeRating->checkIfUserHasRated($_POST['meme_id'],$user_id);
+			//pr($meme_rating_id);
 			$this->MemeRating->saveScore($meme_rating_id,$user_id,$_POST);
-
-			$new_rating = $this->MemeRating->getRating($_POST['id']);
+			$new_rating = $this->MemeRating->getRating($_POST['meme_id']);
 			echo json_encode(array('value'=>$new_rating));
 		}
 		exit;		
-				
+
 	}
 	
 

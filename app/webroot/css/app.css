@@ -1393,9 +1393,6 @@ a.delete-meme{
 .meme-entry.small img.meme{
     width:100px;
 }
-.meme-entry .star img{
-    width:17px;
-}
 .meme-entry img.meme:hover{
 	border:1px solid #333;
 	opacity:1;

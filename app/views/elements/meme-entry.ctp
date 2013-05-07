@@ -1,8 +1,8 @@
-<div class="meme-entry <?=(isset($small))?$small:''?>" meme-id="<?=$m['Meme']['id']?>">
+<div class="meme-entry relative <?=(isset($small))?$small:''?>" meme-id="<?=$m['Meme']['id']?>">
 	<? if(isset($data['isAdmin'])){?>
 		<a href="#" class="delete-meme hide icon-delete" meme-id="<?=$m['Meme']['id']?>"></a>
 	<? } ?>
-	<div class="title"><?=$m['Meme']['title']?><span class="child-count hide">(<?=$m['Meme']['view_count']?>)</span></div>
+	<div class="title"><?=$m['Meme']['title']?></div>
 	<a href="/memes/view/<?=$m['Meme']['url']?>">
 		<img class="meme" src="/img/user_memes/<?=$m['Meme']['image_url_medium']?>" />
 	</a>
@@ -22,10 +22,9 @@
 			<? } ?>
 			<a href="#" class="icon2-arrow-up rating-btn <?=($selected=='root')?'active':''?> root"></a>
 			<a href="#" class="icon2-arrow-down rating-btn <?=($selected=='boo')?'active':''?> boo"></a>
-
 		</div>
 		<a href="/memes/add/<?=$m['Meme']['url']?>" class="blue btn right">Add Your Own</a>
-
+<!-- 		<span class="child-count hide">Views: (<?=$m['Meme']['view_count']?>)</span> -->
 <?/*		<div class="star" <? if(isset($m['Meme']['user_rating'])) echo "data-rating=\"{$m['Meme']['user_rating']}\"";?>></div>*/?>
 	</div>				
 

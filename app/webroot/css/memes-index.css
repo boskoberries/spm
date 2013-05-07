@@ -75,13 +75,18 @@ a.delete-meme{
     margin:auto;
 }
 .action-box .favorite a{
-    font-size: 22px;
+    font-size: 28px;
     transition:all .35s linear;
     -webkit-transition:all .35s linear;
     -moz-transition:all .35s linear;
     -ms-transition:all .35s linear;
     -o-transition:all .35s linear;
     color: #999999;
+    margin-top: 2px;
+    margin-right: 4px;
+    float: left;
+    line-height: 1;
+
 }
 
 .action-box .favorite a.star:hover, .action-box .favorite a.star.favorite{
