@@ -547,6 +547,9 @@
         
     }
     
+    h1,h2,h3,h4,h5{
+        font-family: 'GibsonSemiBold';
+    }
     @font-face {
     	font-family: 'ChunkFiveRegular';
     	src: url('../css/Chunkfive-webfont.eot');
@@ -1339,6 +1342,8 @@ textarea.caption-txt-input{
 .add-caption{
 	float:left;
 	margin-right:60px;
+    margin-top: 40px;
+    width:100%;
 }
 a:hover{
     text-decoration:underline;
@@ -1371,9 +1376,9 @@ a.delete-meme{
 .meme-entry:hover .child-count{
     display:block;
 }
-.meme-entry:nth-child(4n){
+/*.meme-entry:nth-child(4n){
     clear:left;
-}
+}*/
 .meme-entry img.meme{
 	/*width:150px;
 	height:150px;*/
@@ -1390,8 +1395,11 @@ a.delete-meme{
 .meme-entry .title{
     text-align:center;
 }
+.meme-entry.small{
+    min-height: 200px;
+}
 .meme-entry.small img.meme{
-    width:100px;
+    width:150px;
 }
 .meme-entry img.meme:hover{
 	border:1px solid #333;

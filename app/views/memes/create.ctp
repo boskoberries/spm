@@ -22,7 +22,12 @@ $(document).ready(function(){
 .file-msg{
 	color:#333;
 	font-size:11px;
-		
+}
+#carousel-paging{
+	font-size: 60px;
+	position: absolute;
+	top: -15px;
+	right: 20px;
 }
 </style>
 <div class="row">
@@ -62,9 +67,9 @@ $(document).ready(function(){
 				</ul>
 			</div>*/ ?>
 		</form>
-
-		<div class="add-caption">
-			<h3>Add Your Own Caption</h3>
+		<hr />
+		<div class="add-caption relative">
+			<h3>Or Add Your Own Caption</h3>
 			
 			<? foreach($data['memes'] as $meme){ ?>
 				<div class="meme-entry small">
@@ -74,8 +79,12 @@ $(document).ready(function(){
 				</div>
 			<? } ?>
 			<div class="clear"></div>
+			<div id="carousel-paging" class="right">
+				<a href="#" id="pageLeft" class="icon2-arrow-short-left"></a>
+				<a href="#" id="pageRight" class="icon2-arrow-short-right"></a>
+			</div>
 			<br />
-			<?=$html->link('Browse All Our Memes','/memes/browse',array('class'=>'action-link'))?>
+			<a href="/memes" class="blue btn">Browse All Memes</a>
 			<br />
 		</div>
 	<? } else{ ?>
