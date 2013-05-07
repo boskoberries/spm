@@ -7,23 +7,25 @@
 		<img class="meme" src="/img/user_memes/<?=$m['Meme']['image_url_medium']?>" />
 	</a>
 	<div class="action-box hide">
-		<?=$html->link('Add your own',"/memes/add/".$m['Meme']['url'],array('class'=>'add-your-own'))?>
-		<div class="favorite">
+		<div class="favorite left">
 			<? if(isset($data['favorites']) && in_array($m['Meme']['id'],$data['favorites'])){ ?>
-			<img class="star favorite" src="/img/star-on-big.png" />
+			<a href="#" class="star icon2-star-2 favorite"></a>
+<!-- 			<img class="star favorite" src="/img/star-on-big.png" /> -->
 			<? } else { ?>
-			<img class="star" src="/img/star-off-big.png" />
-			<? } ?>
-		</div>
-		<div class="rating">
+			<a href="#" class="star icon2-star"></a>
+	<!-- 		<img class="star icon2-star-2" src="/img/star-off-big.png" />
+ -->			<? } ?>
+
 			<? $selected = '';?>
 			<? if(isset($data['user_ratings']) && in_array($m['Meme']['id'],$data['user_ratings'])){ ?>
 				<? $selected = $data['user_ratings'][$m['Meme']['id']];?>
 			<? } ?>
-			<a href="#" class="rating-btn <?=($selected=='root')?'active':''?> root">:D</a>
-			<a href="#" class="rating-btn <?=($selected=='boo')?'active':''?> boo">:(</a>
+			<a href="#" class="icon2-arrow-up rating-btn <?=($selected=='root')?'active':''?> root"></a>
+			<a href="#" class="icon2-arrow-down rating-btn <?=($selected=='boo')?'active':''?> boo"></a>
 
 		</div>
+		<a href="/memes/add/<?=$m['Meme']['url']?>" class="blue btn right">Add Your Own</a>
+
 <?/*		<div class="star" <? if(isset($m['Meme']['user_rating'])) echo "data-rating=\"{$m['Meme']['user_rating']}\"";?>></div>*/?>
 	</div>				
 

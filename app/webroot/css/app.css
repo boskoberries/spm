@@ -224,6 +224,13 @@
 .icon-newspaper:before { content: ""; }
 .icon-view-by-row:before { content: ""; }
 
+.icon-star:before { content: ""; }
+.icon-arrow-short-up:before { content: ""; }
+.icon-arrow-down:before { content: ""; }
+
+
+
+
 
 /* IE8 hack */
 @media \0screen\,screen\9 { body:hover{} }
@@ -250,6 +257,141 @@
        url("/fonts/icons/shifticons-1719.ttf")  format("truetype"), /* Safari, Android, iOS */
        url("/fonts/icons/shifticons-1719.svg#Shifticons") format("svg"); /* Legacy iOS */
 }
+
+/*
+ * Shifticons (shifticons.com)
+ * Order #1783
+*/
+
+@font-face {
+  font-family: "Shifticons_1783";
+  src: url("/fonts/icons/shifticons_1783.eot"); /* IE9 Compat Modes */
+  src: url("/fonts/icons/shifticons_1783.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+       url("/fonts/icons/shifticons_1783.woff") format("woff"), /* Modern Browsers */
+       url("/fonts/icons/shifticons_1783.ttf")  format("truetype"), /* Safari, Android, iOS */
+       url("/fonts/icons/shifticons_1783.svg#Shifticons") format("svg"); /* Legacy iOS */
+}
+
+/* Shifticon styles */
+[class^="icon2-"]:before, [class*=" icon2-"]:before {
+  font-family: Shifticons_1783;
+  font-style: normal;
+  font-weight: normal;
+  display: inline-block;
+  vertical-align: baseline;
+  text-decoration: inherit;
+  padding-right: .25em;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Order-specific styles */
+.icon2-star:before { content: ""; }
+.icon2-arrow-short-up:before { content: ""; }
+.icon2-arrow-down:before { content: ""; }
+.icon2-flag-waving:before { content: ""; }
+.icon2-cloud-upload:before { content: ""; }
+.icon2-arrow-up:before { content: ""; }
+.icon2-tags:before { content: ""; }
+.icon2-lock-open:before { content: ""; }
+.icon2-heart:before { content: ""; }
+.icon2-move:before { content: ""; }
+.icon2-battery-one-third:before { content: ""; }
+.icon2-arrow-right:before { content: ""; }
+.icon2-flag:before { content: ""; }
+.icon2-location-pin:before { content: ""; }
+.icon2-lock:before { content: ""; }
+.icon2-comment-solid-left:before { content: ""; }
+.icon2-connection:before { content: ""; }
+.icon2-document:before { content: ""; }
+.icon2-bird:before { content: ""; }
+.icon2-eject:before { content: ""; }
+.icon2-list:before { content: ""; }
+.icon2-edit:before { content: ""; }
+.icon2-crosshairs:before { content: ""; }
+.icon2-arrow-left:before { content: ""; }
+.icon2-sound-no-volume:before { content: ""; }
+.icon2-setting:before { content: ""; }
+.icon2-rss:before { content: ""; }
+.icon2-equals:before { content: ""; }
+.icon2-growth:before { content: ""; }
+.icon2-arrow-short-right:before { content: ""; }
+.icon2-alert:before { content: ""; }
+.icon2-clock:before { content: ""; }
+.icon2-kindle:before { content: ""; }
+.icon2-user:before { content: ""; }
+.icon2-settings:before { content: ""; }
+.icon2-documents-solid:before { content: ""; }
+.icon2-bar-chart:before { content: ""; }
+.icon2-mobile-android:before { content: ""; }
+.icon2-camera-dslr:before { content: ""; }
+.icon2-map:before { content: ""; }
+.icon2-comment-solid-right:before { content: ""; }
+.icon2-battery-two-thirds:before { content: ""; }
+.icon2-refresh:before { content: ""; }
+.icon2-email-solid:before { content: ""; }
+.icon2-home:before { content: ""; }
+.icon2-pencil:before { content: ""; }
+.icon2-play:before { content: ""; }
+.icon2-checkmark:before { content: ""; }
+.icon2-battery-full:before { content: ""; }
+.icon2-comment-left:before { content: ""; }
+.icon2-location-compass:before { content: ""; }
+.icon2-list-bulleted:before { content: ""; }
+.icon2-email-outline:before { content: ""; }
+.icon2-star-2:before { content: ""; }
+.icon2-cloud-download:before { content: ""; }
+.icon2-search:before { content: ""; }
+.icon2-cart-add:before { content: ""; }
+.icon2-delete:before { content: ""; }
+.icon2-expand:before { content: ""; }
+.icon2-camera:before { content: ""; }
+.icon2-map-empty:before { content: ""; }
+.icon2-arrow-short-down:before { content: ""; }
+.icon2-document-solid:before { content: ""; }
+.icon2-download:before { content: ""; }
+.icon2-arrow-short-left:before { content: ""; }
+.icon2-users:before { content: ""; }
+.icon2-minus:before { content: ""; }
+.icon2-mobile-iphone:before { content: ""; }
+.icon2-picture-solid:before { content: ""; }
+.icon2-laptop:before { content: ""; }
+.icon2-documents-solid-blank:before { content: ""; }
+.icon2-documents-blank:before { content: ""; }
+.icon2-document-blank:before { content: ""; }
+.icon2-picture:before { content: ""; }
+.icon2-mobile-device:before { content: ""; }
+.icon2-eye:before { content: ""; }
+.icon2-documents:before { content: ""; }
+.icon2-sound:before { content: ""; }
+.icon2-divide:before { content: ""; }
+.icon2-home-alternate:before { content: ""; }
+.icon2-browser:before { content: ""; }
+.icon2-pause:before { content: ""; }
+.icon2-comments:before { content: ""; }
+.icon2-sync:before { content: ""; }
+.icon2-battery-empty:before { content: ""; }
+.icon2-cloud:before { content: ""; }
+.icon2-battery-charged:before { content: ""; }
+.icon2-cart-empty:before { content: ""; }
+.icon2-monitor:before { content: ""; }
+.icon2-link:before { content: ""; }
+.icon2-cart:before { content: ""; }
+.icon2-cloud-add:before { content: ""; }
+.icon2-tag:before { content: ""; }
+.icon2-fast-forward:before { content: ""; }
+.icon2-tablet:before { content: ""; }
+.icon2-calendar:before { content: ""; }
+.icon2-bookmark:before { content: ""; }
+.icon2-info:before { content: ""; }
+.icon2-pen:before { content: ""; }
+.icon2-comment-right:before { content: ""; }
+.icon2-plus:before { content: ""; }
+.icon2-reception:before { content: ""; }
+.icon2-clock-alarm:before { content: ""; }
+
+
+/* IE8 hack */
+@media \0screen\,screen\9 { body:hover{} }
 
 /* Shifticon styles */
 [class^="icon-"]:before, [class*=" icon-"]:before {

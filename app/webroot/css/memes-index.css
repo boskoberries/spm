@@ -61,22 +61,38 @@ a.delete-meme{
 } 
 .action-box{
     position: absolute;
-   /* width: 105px;*/
-   bottom:5px;
-   right:0px;
-    border-radius: 4px 0 0 0;
-    -moz-border-radius: 4px 0 0 0;
-    -webkit-border-radius: 4px 0 0 0;
+    bottom:5px;
+    right:0px;
     z-index: 2;
-    border: 1px solid #CCCCCC;
-    padding: 5px 0;
-  /*  box-shadow: 2px 2px 2px #999999;*/
-    width:45%;
+    border-top: 1px solid #999999;
+    width:100%;
     text-align:center;
-    background: -webkit-gradient(linear, left top, left bottom, from(#eeeeee), to(#cccccc)); /* for webkit browsers */
-    background: -moz-linear-gradient(top,  #eeeeee,  #cccccc); /* for firefox 3.6+ */*/
-
+    padding: 10px;
+    box-sizing:border-box;
+    background: rgba(255,255,255,0.9);
 }
 .action-box .star{
     margin:auto;
+}
+.action-box .favorite a{
+    font-size: 22px;
+    transition:all .35s linear;
+    -webkit-transition:all .35s linear;
+    -moz-transition:all .35s linear;
+    -ms-transition:all .35s linear;
+    -o-transition:all .35s linear;
+    color: #999999;
+}
+
+.action-box .favorite a.star:hover, .action-box .favorite a.star.favorite{
+    color: rgb(173,154,52);
+}
+.action-box .favorite a.boo:hover,.action-box .favorite a.boo.active{
+    color: tomato;
+}
+.action-box .favorite a.root.active,.action-box .favorite a.root:hover{
+    color: #00A6FC;
+}
+.action-box .favorite a:hover{
+    text-decoration: none;
 }

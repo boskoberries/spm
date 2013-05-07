@@ -41,15 +41,15 @@ $(document).ready(function(){
 		}	
 	});
 
-	$("#all-entries").on({
-		click(function(){
+
+	$("#all-entries a.star").click(function(){
 			var $this = $(this);
 			var params = { meme_id: $this.parents(".meme-entry").attr("meme-id") };
 			if($this.hasClass('favorite')){
-				$this.removeClass('favorite').prop("src",'/img/star-off-big.png');
+				$this.removeClass('favorite icon2-star-2').addClass('icon2-star');
 				params.favorite = 0;
 			} else{
-				$this.addClass('favorite').prop("src",'/img/star-on-big.png');
+				$this.addClass('favorite icon2-star-2').removeClass('icon2-star');
 				params.favorite = 1;
 			}
 			$.ajax({
@@ -64,14 +64,15 @@ $(document).ready(function(){
 				}
 			});
 
-		},
-		dblclick:function(event){
+		}).dblclick(function(event){
 			event.preventDefault();
 			return false;
-		}
-	},'img.star');
+		});	
+	//},'img.star');
 
-	$("a.rating-btn").click(function(){
+	$("a.rating-btn").click(function(event){
+		event.preventDefault();
+
 		var $this = $(this);
 		var $parent = $this.parents("div.rating");
 		$this.addClass('active').siblings().removeClass('active');
