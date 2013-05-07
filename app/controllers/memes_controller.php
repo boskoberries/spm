@@ -552,41 +552,19 @@ class MemesController extends AppController {
 	}
 
 	function saveRating(){
-		if(!empty($this->params['form'])){
-			$this->loadModel('MemeRating');
-			
-		}
-	}
-	function addRating(){
 		if(isset($_POST['id']) && isset($_POST['value'])){
 			$user_id = $this->Auth->user('id');
-			if(!is_numeric($user_id)){
-				$user_id = 0;
-			}
-			if($user_id < 1){
-			
-				//grab user by IP Address
-			}
-			$data = array('meme_id'=>$_POST['id'],'rating'=>$this->MemeRating->translateScore($_POST['value']));
-			$exists = $this->MemeRating->find('first',array('conditions'=>array('meme_id'=>$_POST['id'],'user_id'=>$user_id)));
-		
-			if(!empty($exists)){
-				$data['id'] = $exists['MemeRating']['id'];
-				$this->MemeRating->set($data);
-				$this->MemeRating->save();
-			}
-			else{
-				$this->MemeRating->create();
-				$this->MemeRating->save($data);			
-			}
+
+			$meme_rating_id = $this->MemeRating->checkIfUserHasRated($_POST['id'],$user_id);
+			$this->MemeRating->saveScore($meme_rating_id,$user_id,$_POST);
 
 			$new_rating = $this->MemeRating->getRating($_POST['id']);
 			echo json_encode(array('value'=>$new_rating));
-			exit;		
-		
 		}
-	
+		exit;		
+				
 	}
+	
 
 	function delete($meme_id=null){
 		$formSubmit = false;

@@ -4,7 +4,7 @@ $(document).ready(function(){
     	return $(this).attr('data-rating');
   	},
   	 click: function(score, evt) {
-  	 	$.post("/memes/addRating", { id: constants.meme_id, value: score }, function(response){
+  	 	$.post("/memes/saveRating", { id: constants.meme_id, value: score }, function(response){
 			if(response){
 				var jq = $.parseJSON(response);
 				if(jq.value){
