@@ -213,7 +213,7 @@ class MemesController extends AppController {
   		}
   		else{
   	
-  	   		$data['memes']=  $this->Meme->getMemes(null,10,'Meme.rating DESC');
+  	   		$data['memes']=  $this->Meme->getMemes(null,50,'Meme.rating DESC');
   	   		//pr($data['memes']);
   	   		$data['meme_types']=$this->MemeType->grabTypes();
 			$data['teams'] = $this->Team->getTeamsBySport();
@@ -225,6 +225,11 @@ class MemesController extends AppController {
 			
   			$this->set('data',$data);
   		}
+  	}
+
+  	function carouselPaging($category_id=null,$page=1){
+  		$data['memes']=  $this->Meme->getMemes(null,10,'Meme.rating DESC',$page);
+  	//	$this->set('data',$)
   	}
   	
   	function step2($meme_id){
