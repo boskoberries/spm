@@ -251,6 +251,11 @@ class Meme extends AppModel {
   		return $memes;
   	}
 
+	function findPrevAndNext($meme_id){ 
+  		$info['prev'] = $this->find('first',array('conditions'=>array('Meme.id <'=>$meme_id,'active'=>1,'deleted'=>0),'order'=>'Meme.id DESC','limit'=>1));
+	 	$info['next'] = $this->find('first',array('conditions'=>array('Meme.id >'=>$meme_id,'active'=>1,'deleted'=>0),'order'=>'Meme.id ASC','limit'=>1));
+	 	return $info;
+  	}
 
 
 

@@ -59,8 +59,14 @@
 	
 
 	<div class="stats-sidebar">
-		<a href="#" class="paging-link btn">&laquo; Previous</a>
-		<a href="#" class="paging-link btn">Next &raquo;</a>
+		<? if(isset($data['jumpToLinks']['prev']) && !empty($data['jumpToLinks']['prev'])){ ?>
+		<a href="/memes/view/<?=$data['jumpToLinks']['prev']['Meme']['url']?>" class="paging-link btn">&laquo; Previous</a>
+
+		<? } ?>
+		<? if(isset($data['jumpToLinks']['next']) && !empty($data['jumpToLinks']['next'])){ ?>
+		<a href="/memes/view/<?=$data['jumpToLinks']['next']['Meme']['url']?>" class="paging-link btn">Next &raquo;</a>
+
+		<? } ?>
 	</div>
 
 

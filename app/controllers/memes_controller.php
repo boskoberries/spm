@@ -512,7 +512,7 @@ class MemesController extends AppController {
 		$data['user_id'] = $this->Auth->user('id');
 		$data['owner']=true;
 		$this->Meme->updateViewCount($meme_id,$data['Meme']['view_count']);
-		
+		$data['jumpToLinks'] = $this->Meme->findPrevAndNext($meme_id);
 		if($data['Meme']['user_id'] > 0){
 			$data['creator']=$this->User->getUserName($data['Meme']['user_id']);
 			$data['creator_slug'] = $this->User->getUrlPart($data['creator'].'-'.$data['Meme']['user_id']);
