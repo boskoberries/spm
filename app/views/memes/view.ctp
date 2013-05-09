@@ -57,6 +57,13 @@
 			</div>	
 		</div>
 	
+
+	<div class="stats-sidebar">
+		<a href="#" class="paging-link btn">&laquo; Previous</a>
+		<a href="#" class="paging-link btn">Next &raquo;</a>
+	</div>
+
+
 		<div class="stats-sidebar">
 			<?=$html->link('Show all results for '.$data['Meme']['title'],'/memes/all/'.$data['Meme']['url'])?>			
 		</div>
