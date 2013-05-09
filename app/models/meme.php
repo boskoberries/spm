@@ -257,6 +257,11 @@ class Meme extends AppModel {
 	 	return $info;
   	}
 
+  	function findSearchResults($term){
+  		$rows = $this->find('all',array('conditions'=>array('Meme.title LIKE'=>'%'.$term.'%','active'=>1,'deleted'=>0),'order'=>'Meme.rating DESC','limit'=>20));
+  		return $rows;
+  	}
+
 
 
 }
