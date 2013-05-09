@@ -8,9 +8,6 @@
 .meme-entry:hover div.action-box{
     display:block;
 }
-.meme-entry .favorite img.star{
-    cursor: pointer;
-}
 a.delete-meme{
     position: absolute;
     top:0;
@@ -86,7 +83,6 @@ a.delete-meme{
     margin-right: 4px;
     float: left;
     line-height: 1;
-
 }
 
 .action-box .favorite a.star:hover, .action-box .favorite a.star.favorite{

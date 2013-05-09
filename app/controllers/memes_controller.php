@@ -522,7 +522,7 @@ class MemesController extends AppController {
 			$data['creator_slug'] = 'bartsimpy-0';
 		}
 
-		$data['meme_rating'] = $this->MemeRating->getRating($data['Meme']['id']);
+		$data['meme_rating'] = $data['Meme']['rating'];//$this->Meme->getRating($data['Meme']['id']);
 		$data['user_rating'] = $this->MemeRating->getUserRatingForMeme($data['Meme']['id'],$data['user_id']);
 	
 		if($data['Meme']['parent_id'] > 0){ //this is a child
@@ -580,9 +580,9 @@ class MemesController extends AppController {
 			$formSubmit = true;
 		}
 		$data['user'] = $this->Auth->user();
-		//if($this->Meme->checkMemeOwner($meme_id,$data['user'])){
+		if($this->Meme->checkMemeOwner($meme_id,$data['user'])){
 			$this->Meme->deleteMeme($meme_id);
-		//}
+		}
 		if($formSubmit){
 			print "deleted.";
 			exit;
