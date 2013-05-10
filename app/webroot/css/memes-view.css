@@ -1,0 +1,42 @@
+#memes-sidebar .star{
+    margin:auto;
+    font-size: 28px;
+}
+
+#memes-sidebar .favorite a{
+    font-size: 28px;
+    transition:all .35s linear;
+    -webkit-transition:all .35s linear;
+    -moz-transition:all .35s linear;
+    -ms-transition:all .35s linear;
+    -o-transition:all .35s linear;
+    color: #999999;
+    margin-top: 2px;
+    margin-right: 4px;
+    float: left;
+    line-height: 1;
+}
+
+#memes-sidebar .favorite a.star:hover, #memes-sidebar .favorite a.star.favorite{
+    color: rgb(173,154,52);
+}
+#memes-sidebar .favorite a.boo:hover,#memes-sidebar .favorite a.boo.active{
+    color: tomato;
+}
+#memes-sidebar .favorite a.root.active,#memes-sidebar .favorite a.root:hover{
+    color: #00A6FC;
+}
+#memes-sidebar .favorite a:hover{
+    text-decoration: none;
+}
+.paging-link{
+    background: #333333;
+    color: #ffffff;
+    margin-right: 12px;
+    padding: 7px 30px;
+    font-size: 14px;
+}
+.paging-link:hover{
+    background: #000000;
+}
+

@@ -14,9 +14,10 @@
 <!--		<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 		<script src="http://code.jquery.com/jquery-migrate-1.1.1.min.js"></script>-->
 		<?=$html->css('/js/jquery-ui-1.8.14.custom.css')?>
-    	<?//=$javascript->link('/js/jquery-1.9.1.min.js')?>
-    	<?=$javascript->link('/js/jquery-1.6.1.min.js')?>
-    	<?=$javascript->link('/js/jquery-ui-1.8.14.custom.min.js')?>
+    	<?=$javascript->link('/js/jquery-1.9.1.min.js')?>
+    	<?//=$javascript->link('/js/jquery-1.6.1.min.js')?>
+    	<?//=$javascript->link('/js/jquery-ui-1.8.14.custom.min.js')?>
+    	<script type="text/javascript" src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
     	<?=$javascript->link('/js/site-ui.js')?>
 		<!--[if lt IE 9]>
 			<?php echo $html->css('/js/ie.css',"stylesheet",array('media'=>'all'));?>

@@ -143,7 +143,7 @@ $(document).ready(function(){
 	$("div.caption").each(function(){
 		$(this).makeDraggable();
 	});
-	$("div.caption").live('click',function(){
+	$(document).on('click','div.caption',function(){
 		var num = $(this).attr("capt-num");
 		var $parent = $("#controlPanel").find("div.panel-ct[capt-num="+num+"]");
 		if($parent.length>0){
@@ -188,7 +188,7 @@ $.fn.toUnit = function (unit, settings) {
     return (that / scopeVal).toFixed(8);
 };	
 
-	$(".caption-txt-input").live('keyup focusout',function(){
+	$(document).on('keyup focusout',".caption-txt-input",function(){
 		var $obj=$(this);
 		var caption_number=$obj.parents("div.panel-ct").attr("capt-num");
 		var $div = $("div.caption[capt-num="+caption_number+"]");
@@ -208,7 +208,7 @@ $.fn.toUnit = function (unit, settings) {
 
 	});
 
-	$("select.caption-size-input").live('change',function(){
+	$(document).on('change',"select.caption-size-input", function(){
 		console.log("here ?");
 		var $obj=$(this);
 		var caption_number=$obj.parents("div.panel-ct").attr("capt-num");
@@ -221,7 +221,7 @@ $.fn.toUnit = function (unit, settings) {
 		}
 	});
 
-	$("select.color-select").live('change',function(){
+	$(document).on('change',"select.color-select",function(){
 		var $obj=$(this);
 		var caption_number=$obj.parents("div.panel-ct").attr("capt-num");
 		if($.trim($obj.val())==''){
@@ -309,7 +309,7 @@ $.fn.toUnit = function (unit, settings) {
 		$new_caption_block.fadeIn();
 	});
 
-	$("a.delete-button").live('click',function(){
+	$(document).on('click',"a.delete-button",function(){
 		var capt_num=$(this).parents("div.panel-ct").attr("capt-num");
 		if($(this).parents("div.panel-ct").attr("capt-num")=='1' && $(this).parents("div.caption-block").find("div.panel-ct").length == 1){
 			//only hide caption #1 if it's the ONLY caption.  otherwise just remove it and update the caption numbers.
@@ -329,7 +329,7 @@ $.fn.toUnit = function (unit, settings) {
 		$("#add-another-caption").show();
 	});
 
-	$("select.alignment-select").live('change',function(){
+	$(document).on('change',"select.alignment-select",function(){
 		var value = $(this).val();
 		var caption_number = $(this).parents("div.panel-ct").attr("capt-num");
 		console.log("value "+value+" - number "+caption_number);
