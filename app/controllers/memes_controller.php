@@ -6,21 +6,15 @@ class MemesController extends AppController {
 	var $helpers = array('Form','Time');
 	var $components = array('Auth','Image','Session');
 
-  	function index(){
-
-  		pr($this->Auth->user());
-  		$data['sort']=(isset($_GET['sort']))?$_GET['sort']:'';
-  		$data['memes']=  $this->Meme->getMemesByPopularity($data['sort']);
-		//$data['memes']=$this->Meme->find('all');
-  		$this->set('data',$data);  		
+  	function index($cat_id=null){
+		$data['sort']=(isset($_GET['sort']))?$_GET['sort']:'';
+		$data['memes']=  $this->Meme->getMemesByPopularity($data['sort']);
+ 		$data['user'] = $this->Auth->user();
+ 		$this->set('data',$data);		 		
   	}
   	
   	function popular($category_id=null){
- 		$data['sort']=(isset($_GET['sort']))?$_GET['sort']:'';
- 		$data['memes']=  $this->Meme->getMemesByPopularity($data['sort']);
-  		$data['user'] = $this->Auth->user();
-  		$this->set('data',$data);		
-  	
+
   	}
   	
   	function random(){
@@ -40,7 +34,8 @@ class MemesController extends AppController {
  	 			$sport_name = $this->params['option'];	
   			}
   		}
-  		$data['sort']=(isset($_GET['sort']))?$_GET['sort']:'';
+
+  		$data['sort']=(isset($_GET['sort']))?$_GET['sort']:'new';
   		$data['sport_id'] = $this->Sport->findIdByName($sport_name);
   		$data['sport'] = $sport_name;
   		$data['user'] = $this->Auth->user();
@@ -53,7 +48,7 @@ class MemesController extends AppController {
   			$this->redirect("/"); 
   		}
   		$data['leagues'] = $this->League->getSportLeagues($data['sport_id']);
-  		$data['memes'] = $this->Meme->grabMemesByLeague($data['leagues']);
+  		$data['memes'] = $this->Meme->grabMemesByLeague($data['leagues'],$data['sort']);
 
   		$this->set('data',$data);
   		$this->render('popular');
@@ -61,7 +56,6 @@ class MemesController extends AppController {
 
   	function league($league_name){
   		$data['sort']=(isset($_GET['sort']))?$_GET['sort']:'';
-  		
   		$data['parent'] = $this->League->getLeagueParent($league_name);
   		$data['sport'] = $league_name;
   		$data['memes'] = $this->Meme->fetchForSport($league_name);
@@ -69,43 +63,11 @@ class MemesController extends AppController {
   		$this->render('popular');
   	}
 
-  	function football(){
-  		$data['sport'] = 'Football';
-//  		$data['leagues'] = $this->League->getAllForSport($data['sport']);
-		$data['leagues'] = array('NFL','NCAAF');
-  		$data['memes'] = $this->Meme->fetchForSport($data['sport']);
-  		$this->set('data',$data);
-  		$this->render('popular');
-  	}
-  	function mlb(){
-		$data['sport'] = 'MLB';
-  		$data['memes'] = $this->Meme->fetchForSport($data['sport']);
-  		$this->set('data',$data);
-  		$this->render('popular');
-  	}
-  	function nhl(){
-		$data['sport'] = 'NHL';
-  		$data['memes'] = $this->Meme->fetchForSport($data['sport']);
-  		$this->set('data',$data);
-  		$this->render('popular');
-  	}
-  	function nba(){
-		$data['sport'] = 'NBA';
-  		$data['memes'] = $this->Meme->fetchForSport($data['sport']);
-  		$this->set('data',$data);
-  		$this->render('popular');
-  	}
-
 	function browse($sort=null){
-	
-		$this->redirect('/memes/popular');
-		// $data['memes']=$this->Meme->grabMemesByParent(0,$sort);
-		// $data['browse']=true;
-
-		// $this->set('data',$data);
-  // 		$this->render('popular');
+		$this->redirect('/memes');
 	}
 
+  	//browsing all memes related to a given meme.
   	function all($meme_id){
 		$meme_id = $this->checkId($meme_id);
 		$data['meme_data'] = $this->Meme->read(null,$meme_id);
@@ -120,8 +82,6 @@ class MemesController extends AppController {
   	
   	function create(){
   		$this->loadModel('MemeTag');
-  		
-  		// is a valid solution... Apparently it wasn't installed properly and halfway through, the program failed. So it works now.
   		if(!empty($this->data)){ //it's on.  uploading time.
 
 			$user_id = $this->Auth->user('id');
@@ -579,6 +539,7 @@ class MemesController extends AppController {
 			$meme_id = $this->data['meme_id'];
 			$formSubmit = true;
 		}
+	
 		$data['user'] = $this->Auth->user();
 		if($this->Meme->checkMemeOwner($meme_id,$data['user'])){
 			$this->Meme->deleteMeme($meme_id);

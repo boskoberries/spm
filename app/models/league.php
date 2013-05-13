@@ -28,6 +28,12 @@ class League extends AppModel{
 		return $row;
 	}
 
+	function getLeaguesForHeader(){
+		//this function is used to grab the most relevant leagues for the top level naviation on the site.
+		$rows = $this->find('all',array('conditions'=>array(),'order'=>'sort ASC','recursive'=>-1));
+		return $rows;
+	}
+
 
 
 }

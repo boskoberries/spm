@@ -1,7 +1,6 @@
 <?php 
 	class AppController extends Controller {
 		var $helpers=array('Html','Javascript','Session');
-		
 		// AppController's components are NOT merged with defaults,
 		// so session component is lost if it's not included here!
 		var $components = array('Auth', 'Session');
@@ -9,8 +8,11 @@
 
 	    public function beforeFilter() {
 	        $this->Auth->allow('*');//index', 'view');
-	    }
-		
+			$leagues = $this->League->getLeaguesForHeader();
+			$this->set('leagues',$leagues);
+		}
+
+
 		/*function beforeFilter(){
 			$this->Auth->allow('*');
 //			$this->render();

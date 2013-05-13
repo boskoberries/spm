@@ -17,7 +17,11 @@ class Meme extends AppModel {
 
 	var $paginate_limit = '30';
 	var $paginate ="";
-
+	var $sportsIndex = array(
+		'NFL','NBA','NHL','Soccer','Hockey','Basketball',
+		'NCAAB','Basketball','Football','College Football','NCAAF',
+		'Golf'
+	);
 	function findDefaults(){
 		return array();
 	}
@@ -182,6 +186,11 @@ class Meme extends AppModel {
 	}
 
 	function grabMemesByLeague($league_id,$sort=null){
+		if(is_array($league_id)){
+			$league_id = array_keys($league_id);
+		}
+//		pr($league_id);
+
 		//league_id can be a single value OR an array.
 		$cond[] = array('league_id'=>$league_id,'active'=>1);
 		$order = $this->setOrder($sort);
@@ -243,11 +252,11 @@ class Meme extends AppModel {
 	    return $rgb ;
 	}
 
-   	function fetchForSport($sport){
+   	function fetchForSport($sport,$page=1,$limit=30){
    		$League = ClassRegistry::init('League');
   		$league_id = $League->getLeagueId($sport);
-		$sort = (isset($_GET['sort']))?$_GET['sort']:'viewcount';
-  		$memes = $this->grabMemesByLeague($league_id);
+		$sort = (isset($_GET['sort']))?$_GET['sort']:'new';
+  		$memes = $this->grabMemesByLeague($league_id,$sort);
   		return $memes;
   	}
 
@@ -259,7 +268,17 @@ class Meme extends AppModel {
 
   	function findSearchResults($term){
   		$rows = $this->find('all',array('conditions'=>array('Meme.title LIKE'=>'%'.$term.'%','active'=>1,'deleted'=>0),'order'=>'Meme.rating DESC','limit'=>20));
-  		return $rows;
+  		$return_array = array();
+		foreach($rows as $row){
+			$row_arr['label'] = $row['Meme']['title'];
+			$row_arr['value'] = $row['Meme']['title'];//id
+			$row_arr['url'] = $row['Meme']['url'];
+			array_push($return_array,$row_arr);
+			//$data['results'][] = array('id'=>$row['Meme']['id'],'label'=>$row['Meme']['title'],'value'=>$row['Meme']['title']);
+		}
+
+
+  		return $return_array;
   	}
 
 

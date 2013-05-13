@@ -29,7 +29,7 @@
 	</head>
 	<body>
    		<div class="global-header">
-        	    <div class="row">
+        	    <div id="mainNavRow" class="row">
                 	<div class="three columns">
                 	   <a href="/" class="logo" >SPORTS MEMES</a>
                 	</div>
@@ -37,20 +37,29 @@
 	                    <nav class="global">
 							
 								<ul class="nav-links">
-									<li><a href="/football" class="nav-link ">Football</a></li>
-         							<li><a href="/basketball" class="nav-link ">Basketball</a></li>
-         							<li><a href="/baseball" class="nav-link ">Baseball</a></li>
-         							<li><a href="/hockey" class="nav-link ">Hockey</a></li>
+									<? $i = 1;?>
+									<? foreach($leagues as $league){
+									if($i<=7){ //only show first 5 sports. for now. ?>
+										<li class="nav-link"> 
+											<a href="/<?=$league['League']['name']?>"><?=$league['League']['name']?></a>
+										</li>
+									<? }
+										$i++;
+									 } ?> 
+									<!-- <li><a href="/football" class="nav-link ">NFL</a></li>
+         							<li><a href="/basketball" class="nav-link ">NBA</a></li>
+         							<li><a href="/baseball" class="nav-link ">MLB</a></li>
+         							<li><a href="/hockey" class="nav-link ">NHL</a></li>
          							<li class="has-children">
      									<a href="#" class="nav-link ">Other Sports <span class="icon-down"></span></a>
      									<ul class="">
      										<li><a href="/soccer">Soccer</a></li>
      										<li><a href="/tennis">Tennis</a></li>
-     										<li><a href="/nascar">Nascar</a></li>
+     										<li><a href="/nascar">NASCAR</a></li>
      										<li><a href="/wrestling">Wrestling</a></li>
      									</ul>
-     								</li>
-         							<li><a href="/memes/popular" class="nav-link ">Most Popular</a></li>
+     								</li> -->
+         							<li><a href="/memes/popular" class="nav-link ">All Sports</a></li>
          							<li><a id="createYourOwn" href="/memes/create" class="nav-link button">Create Your Own!</a></li>
          						</ul>	
          					

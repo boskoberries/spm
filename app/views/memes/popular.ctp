@@ -57,8 +57,9 @@
 			<a href="?sort=2" class="<?=(!isset($data['sort']) || $data['sort']=='' || $data['sort']=='2')?'active':''?>" title="most popular last 2 days">Right Now</a>&nbsp;|&nbsp;
 			<a href="?sort=7" class="<?=($data['sort']=='7')?'active':''?>" title="most popular last 7 days">Past Week</a>&nbsp;|&nbsp;
 			<a href="?sort=30" class="<?=($data['sort']=='30')?'active':''?>" title="most popular last 30 days">This Month</a>&nbsp;|&nbsp;
-			<a href="?sort=all" class="<?=($data['sort']=='all')?'active':''?>" title="most popular all time">All-Time</a>
-
+			<a href="?sort=all" class="<?=($data['sort']=='all')?'active':''?>" title="most popular all time">All-Time</a>&nbsp;|&nbsp;
+			<a href="?sort=new" class="<?=($data['sort']=='new')?'active':''?>">Newest</a>
+			
 					
 		<? endif;?>
 	</div>

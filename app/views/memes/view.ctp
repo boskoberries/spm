@@ -24,9 +24,6 @@
 			<a href="/memes/add/<?=$data['Meme']['id']?>" class="button">Add Your Own Caption</a>
 		</div>
 		<div id="memes-sidebar" class="stats-sidebar">
-			<? if(isset($data['admin']) || $data['owner']){ ?>
-				<a href="#" id="delete-meme" class="right delete">Delete</a>
-			<? }?>
 			<? if(isset($data['creator'])){ ?>
 				<div class="stat">
 					By: <?=$html->link($data['creator'],'/memes/users/'.$data['creator_slug'])?>
@@ -100,6 +97,12 @@
 			<a href="#">http://spts.me/el192l</a>
 
 		
+		</div>
+		<div class="stats-sidebar">
+			<? if(isset($data['admin']) || $data['owner']){ ?>
+				<a href="#" id="delete-meme" class="right delete">Delete</a>
+			<? }?>
+			
 		</div>
 
 	</div>

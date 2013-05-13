@@ -906,7 +906,11 @@ background: #FFB32C;
         border-bottom:1px solid #333333;
     }
 
-    div.global-header .row .three.columns{
+    div.global-header #mainNavRow{
+        margin-left: 0;
+    }
+
+    div.global-header #mainNavRow .three.columns{
         margin-top:10px;
     }    
     div.global-header a.logo img {
@@ -1532,11 +1536,8 @@ ul.tag-list li a:hover{
 /** End Tag Display **/
 
 #createYourOwn{
-/*    background: rgb(245, 245, 59);*/
-/*    background: #fff94a;*/
-/*    background: #fcec05;*/
-/*    background: rgb(255, 179, 44);*/
     padding: 7px 10px;
+    margin-left: 0;
     margin-top: 3px;
     text-shadow: none;
     box-shadow: 1px 1px 10px rgba(0,0,0,.3);
