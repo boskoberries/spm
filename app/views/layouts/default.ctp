@@ -41,7 +41,7 @@
 									<? foreach($leagues as $league){
 									if($i<=7){ //only show first 5 sports. for now. ?>
 										<li class="nav-link"> 
-											<a href="/<?=$league['League']['name']?>"><?=$league['League']['name']?></a>
+											<a href="/<?=strtolower($league['League']['name'])?>"><?=$league['League']['name']?></a>
 										</li>
 									<? }
 										$i++;

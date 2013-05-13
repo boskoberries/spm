@@ -36,16 +36,9 @@
 	Router::connect('/teams', array('controller' => 'teams', 'action' => 'index'));
 	Router::connect('/teams/*', array('controller' => 'teams', 'action' => 'display'));
 	Router::connect('/tags/*', array('controller' => 'tag', 'action' => 'index'));
-	$sport_list = array('football','basketball','baseball','hockey','soccer');
-	$sport_list[] = array('nfl','nba','mlb','nhl','ncaaf','ncaab','nascar','golf');
+//	$sport_list = array('football','basketball','baseball','hockey','soccer');
+	$sport_list = array('nfl','NFL','nba','NBA','mlb','MLB','nhl','NHL','ncaaf','ncaab','nascar','golf');
 	foreach($sport_list as $sport){	
-		Router::connect('/'.$sport.'/*', array('controller' => 'memes', 'action' => 'league','option'=>$sport));	
+		Router::connect('/'.$sport.'/*', array('controller' => 'memes', 'action' => 'sport','option'=>$sport));	
 	}
-
-	//Router::connect('/football/*', array('controller' => 'memes', 'action' => 'sport'));
-	//Router::connect('/basketball/*', array('controller' => 'memes', 'action' => 'sport','prefix'=>'213'));
-	//Router::connect('/baseball/*', array('controller' => 'memes', 'action' => 'baseball'));
-	//Router::connect('/hockey/*', array('controller' => 'memes', 'action' => 'hockey'));
-	//Router::connect('/soccer/*', array('controller' => 'memes', 'action' => 'soccer'));
 	
-;

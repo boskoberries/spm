@@ -23,45 +23,36 @@ class MemesController extends AppController {
   		$this->set('data',$data);
   		$this->render('popular');
   	}
+
   	function sport($sport_name=null){
-		//	$this->Session->write('UserInfo.breadth','asdoijsa');
-		//$_SESSION['UserInfo'] = 'asdsa';
-		//	pr($_SESSION);
-
-  		//pr($_COOKIE);//->Session->read());
-  		if($sport_name==null){
-  			if(isset($this->params['option']) && !empty($this->params['option'])){
- 	 			$sport_name = $this->params['option'];	
-  			}
-  		}
-
+  		$data['sport'] = $this->Sport->checkForSport($sport_name,$this->params);  	
   		$data['sort']=(isset($_GET['sort']))?$_GET['sort']:'new';
-  		$data['sport_id'] = $this->Sport->findIdByName($sport_name);
-  		$data['sport'] = $sport_name;
-  		$data['user'] = $this->Auth->user();
-  		if(true || !empty($data['user'])){
-  			if(true || $data['user']['User']['admin']==1){
-  				$data['isAdmin'] = true;
-  			}
-  		}
-  		if($data['sport_id']===false){ 
-  			$this->redirect("/"); 
-  		}
+  		$data['sport_id'] = $this->Sport->findIdByName($data['sport']);
+  		
+  		if($data['sport_id']===false){ $this->redirect("/"); }
+
   		$data['leagues'] = $this->League->getSportLeagues($data['sport_id']);
+  		$data['teams'] = $this->Team->getAllForSport($data['sport_id']);
   		$data['memes'] = $this->Meme->grabMemesByLeague($data['leagues'],$data['sort']);
 
   		$this->set('data',$data);
-  		$this->render('popular');
   	}
 
-  	function league($league_name){
-  		$data['sort']=(isset($_GET['sort']))?$_GET['sort']:'';
-  		$data['parent'] = $this->League->getLeagueParent($league_name);
-  		$data['sport'] = $league_name;
-  		$data['memes'] = $this->Meme->fetchForSport($league_name);
-  		$this->set('data',$data);
-  		$this->render('popular');
-  	}
+  	//this function is called for LEAGUE browsing, ie MLB, NBA, NHL, NCAAF
+  	// function league($league_name=null){
+ 		// if($league_name==null){
+ 		// 	if(isset($this->params['option']) && !empty($this->params['option'])){
+	 	// 		$league_name = $this->params['option'];	
+ 		// 	}
+ 		// }
+
+  	// 	$data['sort']=(isset($_GET['sort']))?$_GET['sort']:'';
+  	// 	$data['parent'] = $this->League->getLeagueParent($league_name);
+  	// 	$data['teams'] = $this->Team->getAllForLeague($league_name);
+  	// 	$data['sport'] = $league_name;
+  	// 	$data['memes'] = $this->Meme->fetchForSport($league_name);
+  	// 	$this->set('data',$data);
+  	// }
 
 	function browse($sort=null){
 		$this->redirect('/memes');
@@ -75,9 +66,7 @@ class MemesController extends AppController {
 		$data['sort']=(isset($_GET['sort']))?$_GET['sort']:'';
 		
 		$data['memes'] = $this->Meme->grabMemesByParent($data['meme_data']['Meme']['parent_id'],$sort);		
-
 		$this->set('data',$data);
-		$this->render('popular');
 	}
   	
   	function create(){
