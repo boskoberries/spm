@@ -156,10 +156,20 @@ function loadMore(){
 	var params = getPageParams();
 	var page = $link.attr("page")*1;
 	params.page = page+1;
+	var $block = $("#all-entries");
 	$.ajax({
 		url: "",
 		type: "POST",
-		data: params
+		data: params,
+		success:function(response){
+			$block.append(response);
+		},
+		error: function(){
+			alert('Whoops.  There was an error processing your request.  Please try again. #1293.');
+		},
+		complete: function(){
+			$link.attr("page",page).removeClass('loading').text('Load More');			
+		}
 	});
 }
 

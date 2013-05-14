@@ -9,7 +9,7 @@ class MemesController extends AppController {
 
   	function index($cat_id=null){
   		$data['sort'] = $this->Meme->getSortParam($_GET,$this->params);
-		$data['memes']=  $this->Meme->getMemesByPopularity($data['sort']);
+		$data['memes']=  $this->Meme->getMemesByPopularity($data);
  		$data['user'] = $this->Auth->user();
 
  		$this->set('data',$data);		 		
@@ -17,8 +17,14 @@ class MemesController extends AppController {
   	
   	function popular($category_id=null){
   		$data['sort'] = $this->Meme->getSortParam($_GET,$this->params);
-  		$data['memes']=  $this->Meme->getMemesByPopularity($data['sort']);
-  		$this->set('data',$data);
+  		$data['memes']=  $this->Meme->getMemesByPopularity($data,$this->params);
+  		if(!empty($this->params['form'])){
+  			$this->layout = 'ajax';
+  			$this->set('data',$data);
+  			$this->render('ajax-results');
+  		} else{
+	  		$this->set('data',$data);
+  		}
   	}
   	
   	function random(){
