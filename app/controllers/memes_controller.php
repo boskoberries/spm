@@ -5,6 +5,7 @@ class MemesController extends AppController {
 	var $uses = array('Meme','MemeType','MemeCaption','MemeRating','User','League','Sport','Team');
 	var $helpers = array('Form','Time');
 	var $components = array('Auth','Image','Session');
+	var $paginate_limit = 30;
 
   	function index($cat_id=null){
 		$data['sort']=(isset($_GET['sort']))?$_GET['sort']:'';
@@ -20,6 +21,8 @@ class MemesController extends AppController {
   	function random(){
   		$data['memes'] = $this->Meme->getRandomMemes(5,1);
   		$data['random'] = true;
+  		$data['paging_limit'] = $this->paginate_limit;
+
   		$this->set('data',$data);
   		$this->render('popular');
   	}
@@ -34,7 +37,7 @@ class MemesController extends AppController {
   		$data['leagues'] = $this->League->getSportLeagues($data['sport_id']);
   		//$data['teams'] = $this->Team->getAllForSport($data['sport_id']);
   		$data['memes'] = $this->Meme->grabMemesByLeague($data['leagues'],$data);
-
+  		$data['paging_limit'] = $this->paginate_limit;
   		$this->set('data',$data);
   	}
 
@@ -43,6 +46,8 @@ class MemesController extends AppController {
  		$data['league'] = $this->League->checkForLeague($league_name,$this->params);
  		$data['league_id'] = (isset($this->params['form']['league_id']))?$this->params['form']['league_id']:$this->League->getLeagueId($data['league']);
  		$data['sort'] = $this->Meme->getSortParam($_GET,$this->params);
+ 		$data['paging_limit'] = $this->paginate_limit;
+
  		if(!empty($this->params['form'])){ //ajax request.
  			$this->layout = 'ajax';
  			$data['team_id'] = $this->params['form']['team_id'];
@@ -69,7 +74,8 @@ class MemesController extends AppController {
 		$data['meme_data'] = $this->Meme->read(null,$meme_id);
 		$sort = (isset($_GET['sort']))?$_GET['sort']:'viewcount';
 		$data['sort']=(isset($_GET['sort']))?$_GET['sort']:'';
-		
+		$data['paging_limit'] = $this->paginate_limit;
+
 		$data['memes'] = $this->Meme->grabMemesByParent($data['meme_data']['Meme']['parent_id'],$sort);		
 		$this->set('data',$data);
 	}
