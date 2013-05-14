@@ -35,6 +35,10 @@ class Team extends AppModel {
 		$rows = $this->find('all',array('conditions'=>array('Team.sport_id'=>$sport_id)));
 		return $rows;
 	}
+	function getAllForLeague($league_id){
+		$rows = $this->find('all',array('conditions'=>array('Team.league_id'=>$league_id)));
+		return $rows;
+	}
 	
 	
 

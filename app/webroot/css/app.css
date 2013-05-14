@@ -975,11 +975,11 @@ background: #FFB32C;
                     -webkit-transition: all .25s linear;
                     -moz-transition: all .25s linear;       
                     position: absolute;
-                    top:30px;
+                    top:28px;
                     left: -30px;
                     padding: 2px 4px;
                     background: #333333;
-                    border-radius: 0 0 3px 3px;
+                    border-radius: 0 3px 3px 3px;
                     box-shadow: 0px 2px 10px rgba(0,0,0,.5);
                  }
 
@@ -1002,6 +1002,8 @@ background: #FFB32C;
                 nav.global li.has-children ul li a{
                     padding: 7px 5px;
                     font-size: 14px;
+                    width: 100%;
+                    margin-left: 0;
                 }
                 nav.global li.has-children ul li a:last-child{
                     border-bottom:none;

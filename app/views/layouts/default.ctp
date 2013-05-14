@@ -38,18 +38,18 @@
 							
 								<ul class="nav-links">
 									<? $i = 1;?>
-									<? foreach($leagues as $league){
+									<?/*<? foreach($leagues as $league){
 									if($i<=7){ //only show first 5 sports. for now. ?>
 										<li class="nav-link"> 
 											<a href="/<?=strtolower($league['League']['name'])?>"><?=$league['League']['name']?></a>
 										</li>
 									<? }
 										$i++;
-									 } ?> 
-									<!-- <li><a href="/football" class="nav-link ">NFL</a></li>
-         							<li><a href="/basketball" class="nav-link ">NBA</a></li>
-         							<li><a href="/baseball" class="nav-link ">MLB</a></li>
-         							<li><a href="/hockey" class="nav-link ">NHL</a></li>
+									 } ?> */?>
+									<li><a href="/football" class="nav-link ">Football</a></li>
+         							<li><a href="/basketball" class="nav-link ">Basketball</a></li>
+         							<li><a href="/baseball" class="nav-link ">Baseball</a></li>
+         							<li><a href="/hockey" class="nav-link ">Hockey</a></li>
          							<li class="has-children">
      									<a href="#" class="nav-link ">Other Sports <span class="icon-down"></span></a>
      									<ul class="">
@@ -58,7 +58,7 @@
      										<li><a href="/nascar">NASCAR</a></li>
      										<li><a href="/wrestling">Wrestling</a></li>
      									</ul>
-     								</li> -->
+     								</li>
          							<li><a href="/memes/popular" class="nav-link ">All Sports</a></li>
          							<li><a id="createYourOwn" href="/memes/create" class="nav-link button">Create Your Own!</a></li>
          						</ul>	

@@ -9,6 +9,14 @@ class League extends AppModel{
 		)
 	);
 
+	function checkForLeague($league_name=null,$params){
+ 		if($league_name==null){
+ 			if(isset($params['option']) && !empty($params['option'])){
+	 			$league_name = $params['option'];	
+ 			}
+ 		}
+ 		return $league_name;
+	}
 	function getLeagueId($league_name){
 		$data = $this->find('first',array('fields'=>'id','conditions'=>array('League.name'=>$league_name)));
 		return $data['League']['id'];
@@ -23,8 +31,8 @@ class League extends AppModel{
 		return $rows;
 	}
 
-	function getLeagueParent($league_name){
-		$row = $this->find('first',array("conditions"=>array('League.name'=>$league_name)));
+	function getLeagueParent($league_id){
+		$row = $this->find('first',array("conditions"=>array('League.id'=>$league_id)));
 		return $row;
 	}
 

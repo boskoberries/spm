@@ -180,7 +180,7 @@ class Meme extends AppModel {
 			$order = 'Meme.id ASC';
 		}
 		elseif($sort == 'random'){
-			$order  = 'RANDOM(Meme.id)';
+			$order  = 'RAND(Meme.id)';
 		}
 		return $order;
 	}
@@ -252,14 +252,7 @@ class Meme extends AppModel {
 	    return $rgb ;
 	}
 
-   	function fetchForSport($sport,$page=1,$limit=30){
-   		$League = ClassRegistry::init('League');
-  		$league_id = $League->getLeagueId($sport);
-		$sort = (isset($_GET['sort']))?$_GET['sort']:'new';
-  		$memes = $this->grabMemesByLeague($league_id,$sort);
-  		return $memes;
-  	}
-
+ 
 	function findPrevAndNext($meme_id){ 
   		$info['prev'] = $this->find('first',array('conditions'=>array('Meme.id <'=>$meme_id,'active'=>1,'deleted'=>0),'order'=>'Meme.id DESC','limit'=>1));
 	 	$info['next'] = $this->find('first',array('conditions'=>array('Meme.id >'=>$meme_id,'active'=>1,'deleted'=>0),'order'=>'Meme.id ASC','limit'=>1));
