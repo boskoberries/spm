@@ -16,7 +16,7 @@
 			<?=ucwords($data['sport'])?> Memes
 		</span>
 	</h2>	
-	<div class="sorting-links">
+	<div id="sorting-links" class="sorting-links">
 		<input type="hidden" id="current-league-id" value="<?=$data['league_id']?>" />
 		<input type="hidden" id="current-league-name" value="<?=$data['league']?>" />
 		<? if(!empty($data['teams'])){ ?>
@@ -28,10 +28,10 @@
 		</select>
 		<? } ?>
 		<b>Sort By:</b>
-		<a href="?s=rating" class="<?=($data['sort']=='' || $data['sort']=='rating')?'active':''?>" title="rating">Rating</a>&nbsp;|&nbsp;
-		<a href="?s=viewcount" class="<?=($data['sort']=='viewcount')?'active':''?>" title="most views">View Count</a>&nbsp;|&nbsp;
-		<a href="?s=newest" class="<?=($data['sort']=='newest')?'active':''?>"  title="newest">Newest</a>&nbsp;|&nbsp;
-		<a href="?s=random" class="<?=($data['sort']=='random')?'active':''?>"  title="Random">Random</a>				
+		<a href="?s=rating" type="rating" class="<?=($data['sort']=='' || $data['sort']=='rating')?'active':''?>" title="rating">Rating</a>&nbsp;|&nbsp;
+		<a href="?s=viewcount" type="viewcount" class="<?=($data['sort']=='viewcount')?'active':''?>" title="most views">View Count</a>&nbsp;|&nbsp;
+		<a href="?s=newest" type="newest" class="<?=($data['sort']=='newest')?'active':''?>"  title="newest">Newest</a>&nbsp;|&nbsp;
+		<a href="?s=random" type="random" class="<?=($data['sort']=='random')?'active':''?>"  title="Random">Random</a>				
 	</div>
 	<div id="all-entries">
 		<? foreach($data['memes'] as $m){ ?>		

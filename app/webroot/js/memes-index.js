@@ -22,14 +22,28 @@ $(document).ready(function(){
 	// });
 	
 	//$(document).on('click',"a",function(event){
-	$("a").click(function(event){
+	$(window).scroll(function(){
+		var $loadMoreDiv = $("#loadMoreContain");
+		if($loadMoreDiv.length){
+			if($(window).scrollTop() > ($loadMoreDiv.position().top - 500)){
+				console.log("innn");
+				loadMore();
+			}
+		}	
+		// console.log("scrolltop "+$(window).scrollTop()+" - pos "+$("#container").position().top+" offset "+$("#container").offset().top);
+		// console.log("this guy = "+$("#loadMoreContain").position().top+" scrolltop = "+$("#loadMoreContain").offset().top);
+	});
+	
+	$("a").click(function(event){ //prevent empty clicks from jumping up the page.
 		if($(this).attr("href")=='#'){
 			event.preventDefault();
 		}
 	});
+	
 	$("#addYourOwn").click(function(){
 	
 	});
+	
 	$("a.delete-meme").click(function(event){
 		event.preventDefault();
 		var answer = confirm('Are you sure you want to delete this meme?');
@@ -106,11 +120,7 @@ $(document).ready(function(){
 	});
 
 	$("#teamSelect").change(function(){
-		var params = { 
-			league_id: $("#current-league-id").val(),
-			team_id: $(this).val(),
-			sort: $("div.sorting-links").find("a.active:first").attr("type")
-		}
+		var params = getPageParams();
 		var $block = $("#all-entries");
 		$block.addClass('loading');
 		$.ajax({
@@ -128,6 +138,41 @@ $(document).ready(function(){
 			}
 		});
 	});
+	$("#sportSelect").change(function(){
+		window.location = "/memes/league/"+$(this).val();
+	});	
 
-
+	$("#loadMore").click(function(){
+		loadMore();
+	});
 });
+
+function loadMore(){
+	var $link = $("#loadMore");
+	if($link.hasClass('loading')){
+		return false;	
+	}
+	$link.addClass('loading').text("Loading More..");
+	var params = getPageParams();
+	var page = $link.attr("page")*1;
+	params.page = page+1;
+	$.ajax({
+		url: "",
+		type: "POST",
+		data: params
+	});
+}
+
+function getPageParams(){
+	var params = {};
+	if($("#current-league-id").length){
+		params.league_id = $("#current-league-id").val();
+	} 
+	if($("#teamSelect").length){
+		params.team_id = $("#teamSelect").val();
+	}
+	if($("#sorting-links").length){
+		params.sort = $("#sorting-links").find("a.active:first").attr("type");
+	}
+	return params;
+}

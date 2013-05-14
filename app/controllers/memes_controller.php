@@ -8,36 +8,35 @@ class MemesController extends AppController {
 	var $paginate_limit = 30;
 
   	function index($cat_id=null){
-		$data['sort']=(isset($_GET['sort']))?$_GET['sort']:'';
+  		$data['sort'] = $this->Meme->getSortParam($_GET,$this->params);
 		$data['memes']=  $this->Meme->getMemesByPopularity($data['sort']);
  		$data['user'] = $this->Auth->user();
+
  		$this->set('data',$data);		 		
   	}
   	
   	function popular($category_id=null){
-
+  		$data['sort'] = $this->Meme->getSortParam($_GET,$this->params);
+  		$data['memes']=  $this->Meme->getMemesByPopularity($data['sort']);
+  		$this->set('data',$data);
   	}
   	
   	function random(){
   		$data['memes'] = $this->Meme->getRandomMemes(5,1);
   		$data['random'] = true;
-  		$data['paging_limit'] = $this->paginate_limit;
-
   		$this->set('data',$data);
   		$this->render('popular');
   	}
 
   	function sport($sport_name=null){
   		$data['sport'] = $this->Sport->checkForSport($sport_name,$this->params);  	
-  		$data['sort']=(isset($_GET['sort']))?$_GET['sort']:'new';
+  		$data['sort'] = $this->Meme->getSortParam($_GET,$this->params);
   		$data['sport_id'] = $this->Sport->findIdByName($data['sport']);
-  		
   		if($data['sport_id']===false){ $this->redirect("/"); }
 
   		$data['leagues'] = $this->League->getSportLeagues($data['sport_id']);
   		//$data['teams'] = $this->Team->getAllForSport($data['sport_id']);
   		$data['memes'] = $this->Meme->grabMemesByLeague($data['leagues'],$data);
-  		$data['paging_limit'] = $this->paginate_limit;
   		$this->set('data',$data);
   	}
 
@@ -46,7 +45,6 @@ class MemesController extends AppController {
  		$data['league'] = $this->League->checkForLeague($league_name,$this->params);
  		$data['league_id'] = (isset($this->params['form']['league_id']))?$this->params['form']['league_id']:$this->League->getLeagueId($data['league']);
  		$data['sort'] = $this->Meme->getSortParam($_GET,$this->params);
- 		$data['paging_limit'] = $this->paginate_limit;
 
  		if(!empty($this->params['form'])){ //ajax request.
  			$this->layout = 'ajax';
