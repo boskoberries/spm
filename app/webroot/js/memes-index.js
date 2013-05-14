@@ -105,5 +105,29 @@ $(document).ready(function(){
 
 	});
 
+	$("#teamSelect").change(function(){
+		var params = { 
+			league_id: $("#current-league-id").val(),
+			team_id: $(this).val(),
+			sort: $("div.sorting-links").find("a.active:first").attr("type")
+		}
+		var $block = $("#all-entries");
+		$block.addClass('loading');
+		$.ajax({
+			url:"/memes/league/"+$("#current-league-name").val(),
+			type: 'POST',
+			data: params,
+			success:function(response){
+				$block.html(response);
+			},
+			error: function(){
+				alert('Whoops.  There was an error processing your request.  Please try again. #1293.');
+			},
+			complete: function(){
+				$block.removeClass('loading');				
+			}
+		});
+	});
+
 
 });

@@ -33,7 +33,7 @@ class MemesController extends AppController {
 
   		$data['leagues'] = $this->League->getSportLeagues($data['sport_id']);
   		//$data['teams'] = $this->Team->getAllForSport($data['sport_id']);
-  		$data['memes'] = $this->Meme->grabMemesByLeague($data['leagues'],$data['sort']);
+  		$data['memes'] = $this->Meme->grabMemesByLeague($data['leagues'],$data);
 
   		$this->set('data',$data);
   	}
@@ -41,13 +41,22 @@ class MemesController extends AppController {
   	//this function is called for LEAGUE browsing, ie MLB, NBA, NHL, NCAAF
   	function league($league_name=null){
  		$data['league'] = $this->League->checkForLeague($league_name,$this->params);
- 		$data['league_id'] = $this->League->getLeagueId($data['league']);
- 		$data['sort']=(isset($_GET['s']))?$_GET['s']:'';
-  		$data['parent'] = $this->League->getLeagueParent($league_name);
-  		$data['teams'] = $this->Team->getAllForLeague($data['league_id']);
-  		$data['sport'] = $league_name;
-  		$data['memes'] = $this->Meme->grabMemesByLeague($data['league_id'],$data['sort']);
-  		$this->set('data',$data);
+ 		$data['league_id'] = (isset($this->params['form']['league_id']))?$this->params['form']['league_id']:$this->League->getLeagueId($data['league']);
+ 		$data['sort'] = $this->Meme->getSortParam($_GET,$this->params);
+ 		if(!empty($this->params['form'])){ //ajax request.
+ 			$this->layout = 'ajax';
+ 			$data['team_id'] = $this->params['form']['team_id'];
+ 			$data['memes'] = $this->Meme->grabMemesByLeague($data['league_id'],$data);
+ 			$this->set('data',$data);
+ 			$this->render('ajax-results');
+ 		} else{
+
+	 		$data['parent'] = $this->League->getLeagueParent($league_name);
+	  		$data['teams'] = $this->Team->getAllForLeague($data['league_id']);
+	  		$data['sport'] = $league_name;
+	  		$data['memes'] = $this->Meme->grabMemesByLeague($data['league_id'],$data);
+	  		$this->set('data',$data);
+  		}
   	}
 
 	function browse($sort=null){

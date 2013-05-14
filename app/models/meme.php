@@ -185,14 +185,17 @@ class Meme extends AppModel {
 		return $order;
 	}
 
-	function grabMemesByLeague($league_id,$sort=null){
+	function grabMemesByLeague($league_id,$params=null){
 		if(is_array($league_id)){
 			$league_id = array_keys($league_id);
 		}
-//		pr($league_id);
+		$sort = (isset($params['sort']))?$params['sort']:'';
 
 		//league_id can be a single value OR an array.
 		$cond[] = array('league_id'=>$league_id,'active'=>1);
+		if(isset($params['team_id']) && $params['team_id']>0){
+			$cond[] = array('team_id'=>$params['team_id']);
+		}
 		$order = $this->setOrder($sort);
 		$data = $this->find('all',array(
 			'conditions'=>$cond,
@@ -275,6 +278,18 @@ class Meme extends AppModel {
   	}
 
 
+  	function getSortParam($getParams,$postParams){
+		$sort = '';
+  		if(isset($getParams['s'])){
+  			$sort = $getParams['s'];
+  		} elseif(isset($getParams['sort'])){
+  			$sort = $getParams['sort'];
+  		} elseif(isset($postParams['form']['sort'])){
+  			$sort = $postParams['form']['sort'];
+  		}
+  		return $sort;
+
+  	}
 
 }
 ?>
