@@ -20,7 +20,7 @@
 		<input type="hidden" id="current-sport-id" value="<?=$data['sport_id']?>" />
 		<input type="hidden" id="current-sport-name" value="<?=$data['sport']?>" />
 		<? if(isset($data['leagues']) && count($data['leagues'])>1){ ?>
-			<select id="sportSelect">
+			<select id="leagueSelect">
 				<option value="">All <?=ucwords($data['sport'])?></option>
 				<? foreach($data['leagues'] as $k=>$league){ ?>
 				<option value="<?=$league?>"><?=$league?></option>

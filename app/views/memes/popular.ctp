@@ -16,6 +16,7 @@
 		<? foreach($data['memes'] as $m){ ?>		
 			<?=$this->element('meme-entry',array('m'=>$m))?>
 		<? } ?>
-		<?=$this->element('paging')?>
 	</div>
+	<?=$this->element('paging')?>
+	
 </div>

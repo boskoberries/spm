@@ -26,7 +26,6 @@ $(document).ready(function(){
 		var $loadMoreDiv = $("#loadMoreContain");
 		if($loadMoreDiv.length){
 			if($(window).scrollTop() > ($loadMoreDiv.position().top - 500)){
-				console.log("innn");
 				loadMore();
 			}
 		}	
@@ -138,9 +137,12 @@ $(document).ready(function(){
 			}
 		});
 	});
-	$("#sportSelect").change(function(){
+	$("#leagueSelect").change(function(){
 		window.location = "/memes/league/"+$(this).val();
 	});	
+	$("#sportSelect").change(function(){
+		window.location = "/"+$(this).val();
+	});
 
 	$("#loadMore").click(function(){
 		loadMore();
@@ -151,6 +153,9 @@ function loadMore(){
 	var $link = $("#loadMore");
 	if($link.hasClass('loading')){
 		return false;	
+	} else if($("#reachedBottom").length){//check to see if we're at the bottom.
+		$link.hide();//done.
+		return false;
 	}
 	$link.addClass('loading').text("Loading More..");
 	var params = getPageParams();
@@ -168,7 +173,7 @@ function loadMore(){
 			alert('Whoops.  There was an error processing your request.  Please try again. #1293.');
 		},
 		complete: function(){
-			$link.attr("page",page).removeClass('loading').text('Load More');			
+			$link.attr("page",params.page).removeClass('loading').text('Load More');			
 		}
 	});
 }

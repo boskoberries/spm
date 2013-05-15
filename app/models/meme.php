@@ -154,18 +154,23 @@ class Meme extends AppModel {
 		$data=$this->find('all',array('conditions'=>array('is_original'=>1,'active'=>1),'order'=>$order,'limit'=>$limit));
 		return $data;
 	}
-	function grabMemesByParent($parent_id,$sort =null,$limit=null){
+	function grabMemesByParent($parent_id,$params=null){
 		//$cond[] = array('OR'=>array('parent_id'=>$parent_id,'Meme.id'=>$parent_id),'active'=>1);
 		//print 'parent '.$parent_id;
 
 		$cond[] = array('parent_id'=>$parent_id,'active'=>1);	
+		$sort = (isset($params['sort']))?$params['sort']:'';
 		$order = $this->setOrder($sort);
-
+		$page = 1;
+		if(isset($params['form']['page'])){
+			$page = $params['form']['page'];
+		}
 
 		$data = $this->find('all',array(
 			'conditions'=>$cond,
 			 'order'=>$order,
-			 'limit'=>$limit));
+			 'page'=>$page)
+		);
 
 		//print_r($data);
 		return $data;
@@ -183,7 +188,7 @@ class Meme extends AppModel {
 			$order = 'Meme.id ASC';
 		}
 		elseif($sort == 'random'){
-			$order  = 'RAND(Meme.id)';
+			$order  = 'RAND()';
 		}
 		return $order;
 	}

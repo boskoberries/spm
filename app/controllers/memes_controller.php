@@ -9,22 +9,29 @@ class MemesController extends AppController {
 
   	function index($cat_id=null){
   		$data['sort'] = $this->Meme->getSortParam($_GET,$this->params);
-		$data['memes']=  $this->Meme->getMemesByPopularity($data);
- 		$data['user'] = $this->Auth->user();
-
- 		$this->set('data',$data);		 		
-  	}
-  	
-  	function popular($category_id=null){
-  		$data['sort'] = $this->Meme->getSortParam($_GET,$this->params);
-  		$data['memes']=  $this->Meme->getMemesByPopularity($data,$this->params);
+		$data['memes']=  $this->Meme->getMemesByPopularity($data,$this->params);
   		if(!empty($this->params['form'])){
-  			$this->layout = 'ajax';
+  			$this->layout = '';
   			$this->set('data',$data);
   			$this->render('ajax-results');
   		} else{
+  			$data['user'] = $this->Auth->user();
+  			$data['sports'] = $this->Sport->grabAll();
 	  		$this->set('data',$data);
   		}
+  	}
+  	
+  	function popular($category_id=null){
+  		$this->redirect('/');
+  		// $data['sort'] = $this->Meme->getSortParam($_GET,$this->params);
+  		// $data['memes']=  $this->Meme->getMemesByPopularity($data,$this->params);
+  		// if(!empty($this->params['form'])){
+  		// 	$this->layout = '';
+  		// 	$this->set('data',$data);
+  		// 	$this->render('ajax-results');
+  		// } else{
+	  	// 	$this->set('data',$data);
+  		// }
   	}
   	
   	function random(){
@@ -72,16 +79,20 @@ class MemesController extends AppController {
 		$this->redirect('/memes');
 	}
 
-  	//browsing all memes related to a given meme.
+  	//browsing all memes related to a given meme parent.
   	function all($meme_id){
 		$meme_id = $this->checkId($meme_id);
 		$data['meme_data'] = $this->Meme->read(null,$meme_id);
-		$sort = (isset($_GET['sort']))?$_GET['sort']:'viewcount';
-		$data['sort']=(isset($_GET['sort']))?$_GET['sort']:'';
-		$data['paging_limit'] = $this->paginate_limit;
+		$data['sort'] = $this->Meme->getSortParam($_GET,$this->params);
+		$data['memes'] = $this->Meme->grabMemesByParent($data['meme_data']['Meme']['parent_id'],$data);		
 
-		$data['memes'] = $this->Meme->grabMemesByParent($data['meme_data']['Meme']['parent_id'],$sort);		
-		$this->set('data',$data);
+  		if(!empty($this->params['form'])){
+  			$this->layout = '';
+  			$this->set('data',$data);
+  			$this->render('ajax-results');
+  		} else{
+	  		$this->set('data',$data);
+  		}
 	}
   	
   	function create(){
@@ -344,7 +355,7 @@ class MemesController extends AppController {
 					//pr($lines);
 					//exit;
 					for($z=0; $z< count($lines); $z++){
-						$newY = $y_coord + ($z * $font_size * 1)-10;//adding 10 for bottom padding considerations.
+						$newY = $y_coord + ($z * $font_size * 1);//-10;//adding 10 for bottom padding considerations.
 
 						//imagettftext($image, $font_size, 0, ($x_coord+2), ($newY+2), $black, $font_file, $lines[$z]);//adding same text shadow.
 						//imagettftext($image, $font_size, 0, $x_coord, $newY, $black, $font_file,  $lines[$z]);

@@ -24,5 +24,11 @@ class Sport extends AppModel{
  		return $sport_name;
 	}
 
+	function grabAll(){
+		$sports = $this->find('all',array('conditions'=>array('active'=>1,'parent_sport_id'=>0),'order'=>array('sort'=>'ASC')));
+		return $sports;
+		//CASE WHEN sort = 0 thensort ASC'));
+	}
+
 }
 ?>

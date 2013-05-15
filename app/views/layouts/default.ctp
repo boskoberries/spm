@@ -50,16 +50,17 @@
          							<li><a href="/basketball" class="nav-link ">Basketball</a></li>
          							<li><a href="/baseball" class="nav-link ">Baseball</a></li>
          							<li><a href="/hockey" class="nav-link ">Hockey</a></li>
-         							<li class="has-children">
+         							<li><a href="/soccer">Soccer</a></li>
+
+         							<!-- <li class="has-children">
      									<a href="#" class="nav-link ">Other Sports <span class="icon-down"></span></a>
      									<ul class="">
      										<li><a href="/soccer">Soccer</a></li>
      										<li><a href="/tennis">Tennis</a></li>
      										<li><a href="/nascar">NASCAR</a></li>
-     										<li><a href="/wrestling">Wrestling</a></li>
      									</ul>
-     								</li>
-         							<li><a href="/memes/popular" class="nav-link ">All Sports</a></li>
+     								</li> -->
+         							<li><a href="/" class="nav-link ">All Sports</a></li>
          							<li><a id="createYourOwn" href="/memes/create" class="nav-link button">Create Your Own!</a></li>
          						</ul>	
          					
