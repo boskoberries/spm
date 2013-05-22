@@ -414,14 +414,25 @@ $.fn.toUnit = function (unit, settings) {
 			return false;			
 		}
 
-		if($("select.league-select").val()==''){
+		if($("select.sport-select").val()==''){
 			alert('You must pick a sport in order to continue!');
-			$("select.league-select").focus();
+			$("select.sport-select").focus();
 			return false;			
 		}
 
 
 		return true;	
+	});
+	$("#addAnotherTeam").click(function(event){
+		event.preventDefault();
+		var $parent = $("#subSelectTeam");
+		var $select = $parent.find("select.team-select");
+		if($select.length==1){//only allow 2 teams.
+			var $newSelect = $select.clone();
+			$newSelect.addClass('indented');
+			$parent.append($newSelect);
+			$(this).hide();
+		}
 	});
 });
 
@@ -466,7 +477,7 @@ $.fn.toUnit = function (unit, settings) {
 
 			//$("#containable").find("div.caption").find("span").quickfit({ max: 80, min: 22 });
 		}
-	},100);
+	},200);
 	$.fn.makeDraggable = function (){
 		var $obj = $(this);		
 		$obj.draggable({

@@ -278,12 +278,7 @@ class MemesController extends AppController {
 			$meme['image_url_medium'] = "medium-".time()."-".$meme_img['Meme']['image_url_original'];	
 			
 			$text = $this->data['caption']['body'][0];
-			//$font_file      = WWW_ROOT.'css/Chunkfive-webfont.ttf';
-			//$font_file      = WWW_ROOT.'phptxtonimage/Impact_Label.ttf';
-//			$font_file = 'impact.ttf';
 			$font_file = WWW_ROOT.'phptxtonimage/Impact/Impact';
-			//$font_file = WWW_ROOT.'phptxtonimage/INNER.ttf';
-			//$font_file2 = WWW_ROOT.'phptxtonimage/OUTER.ttf';
 			$font_color     = '#ffffff' ;
 		
 			$mime_type 	= $meme_img['Meme']['mime_type']; //image/png, image/jpeg, etc
@@ -419,10 +414,11 @@ class MemesController extends AppController {
   		
   		}
   		
-  		$teams = $this->Team->getTeamsBySport();
+  	//	$teams = $this->Team->getTeamsBySport();
 		//$data['leagues'] = $teams['leagues'];
-		$data['teams'] =  $teams['teams'];
-		$data['leagues'] = $this->League->getAll();
+	//	$data['teams'] =  $teams['teams'];
+	//	$data['leagues'] = $this->League->getAll();
+		$data['sports'] = $this->Sport->getAllWithChildren();
 		$data['meme']=$this->Meme->read(null,$meme_id);
 		if($data['meme']['Meme']['active'] == 1){
 			$this->redirect('/memes/view/'.$meme_id);

@@ -6,7 +6,10 @@ $(document).ready(function(){
    		minLength: 2,
    		select: function(event,ui){
    			window.location = '/memes/view/'+ui.item.url;
-   		}
+   		},
+      complete: function(results){
+        console.log("results "+results.length);
+      }
    	});
     
 });

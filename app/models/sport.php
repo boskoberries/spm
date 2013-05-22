@@ -29,6 +29,34 @@ class Sport extends AppModel{
 		return $sports;
 		//CASE WHEN sort = 0 thensort ASC'));
 	}
+	function getAllWithChildren(){
+		$this->bindModel(
+			array('hasMany' => array(
+					'League' => array(
+						'className' => 'League',
+						'foreignKey' => 'sport_id',
+						//'conditions' => array( 'EventRsvp.deleted !='=>1 ),
+						//'order' => 'EventRsvp.id asc'
+					)
+				)
+			)
+		);
+		$this->bindModel(
+			array('hasMany' => array(
+					'Team' => array(
+						'className' => 'Team',
+						'foreignKey' => 'league_id',
+						// 'conditions' => array( 'Team.league_id'=>'League.id')
+						'order' => 'Team.league_id asc,Team.name ASC'
+					)
+				)
+			)
+		);
 
+		$sports = $this->find('all',array('conditions'=>array('active'=>1,'parent_sport_id'=>0),'order'=>array('sort'=>'ASC')));
+		// pr($sports);
+		return $sports;
+
+	}
 }
 ?>

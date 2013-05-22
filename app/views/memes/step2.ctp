@@ -8,15 +8,7 @@
 </style>
 <?=$javascript->link('/js/jquery.quickfit.js')?>
 <?=$javascript->link('/js/meme-creator.js')?>
-<script type="text/javascript">
-$(document).ready(function(){
-	$("#click-me").click(function(){
-		// var ala = $("#containable"); // var img    = ala.toDataURL("image/png"); // alert(img);
-	})
-
-
-});
-</script>
+<?=$html->css('create.css')?>
 
 <div class="row">
 
@@ -69,25 +61,39 @@ $(document).ready(function(){
 				</div>	
 				<div class="panel-ct">
 					<label>Sport: <span class="required no-float">*</span></label>
-					<select name="data[meme][league_id]" class="league-select" >
+					<select name="data[meme][sport_id]" class="sport-select" >
 						<option value="">Select A Sport</option>
-						<? foreach($data['leagues'] as $league){ ?>
-						<option value="<?=$league['Sport']['id']?>"><?=$league['Sport']['name']?></option>
+						<? foreach($data['sports'] as $sport){ ?>
+						<option value="<?=$sport['Sport']['id']?>"><?=$sport['Sport']['name']?></option>
 						<? } ?>
-					</select>				
-
-					<!-- <select name="data[meme][team_id]" class="team-select" style="float:left;">
+					</select>	
+				</div>
+				<div id="subSelectLeague" class="panel-ct">
+					<label>League: </label>
+					<select name="data[meme][league_id]" class="league-select">			
+					<? foreach($data['sports'] as $sport){
+						foreach($sport['League'] as $league){ ?>
+							<option sport-id="<?=$sport['Sport']['id']?>" value="<?=$league['id']?>">
+								<?=$league['name']?>
+							</option>
+						<? }
+					} ?>
+					</select>
+				</div>
+				<div id="subSelectTeam" class="panel-ct">
+					<label>Team: </label>
+					<select name="data[meme][team_id][]" class="team-select">
 						<option value="">Select A Team</option>
-						<? foreach($data['leagues'] as $league_id=>$league):?>
-							<optgroup label="<?=$league['name']?>">
-							<? if(isset($data['teams'][$league_id])):?>
-								<? foreach($data['teams'][$league_id] as $team):?>
-									<option value="<?=$team['id']?>"><?=$team['name']?></option>
-								<? endforeach;?>
-							<? endif;?>
-							</optgroup>
-						<? endforeach;?>
-					</select> -->
+						<? foreach($data['sports'] as $sport) { 
+							foreach($sport['Team'] as $team) { ?>
+								<option league-id="<?=$team['league_id']?>" value="<?=$team['id']?>">
+									<?=$team['name']?>
+								</option>
+							<? }
+						} ?>
+					</select>
+					<br>
+					<a id="addAnotherTeam" class=" tight blue btn" href="#">Add another team</a>
 				</div>
 			<? } else {?>
 				<input id="parent-meme" type="hidden" name="data[meme][parent]" value="<?=$data['parent_id']?>" />
