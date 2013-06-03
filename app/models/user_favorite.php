@@ -2,6 +2,13 @@
 class UserFavorite extends AppModel {
 
 	var $name = 'UserFavorite';
+	var $belongsTo = array(
+		'Meme' => array(
+			'className' => 'Meme',
+			'foreignKey' => 'meme_id',
+			'dependent' => false
+		)
+	);
 
 	function saveFavorite($data,$user){
 		$cond = array('UserFavorite.meme_id'=>$data['meme_id']);
@@ -44,5 +51,19 @@ class UserFavorite extends AppModel {
 		return $new_count;
 
 	}	
+
+	function getFavorites($user_id){
+		$data = array();
+		if($user_id > 0){
+			$conditions = array('UserFavorite.user_id'=>$user_id);
+		} elseif(!empty($_SERVER['REMOTE_ADDR'])){
+			$conditions = array('UserFavorite.ip_address'=>$_SERVER['REMOTE_ADDR']);
+		}
+		$data = $this->find('all',array(
+			'conditions'=>$conditions,
+			'order'=>'UserFavorite.id DESC')
+		);
+		return $data;
+	}
 }
 ?>	

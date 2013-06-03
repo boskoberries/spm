@@ -52,6 +52,12 @@ class UsersController extends AppController {
     	}
     }
 
+    function favorites(){
+    	$data['user_id'] = $this->Auth->user('id');
+  		$this->loadModel('UserFavorite');
+    	$data['favorites'] = $this->UserFavorite->getFavorites($data['user_id']);
+    	$this->set('data',$data);
+    }
 
  //    function beforeFilter(){
 	// 	//$this->Session->write('Auth.redirect', null);
