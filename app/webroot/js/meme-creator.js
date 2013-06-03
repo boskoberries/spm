@@ -434,6 +434,14 @@ $.fn.toUnit = function (unit, settings) {
 			$(this).hide();
 		}
 	});
+	$(".sport-select").change(function(){
+		current_val = $(this).val();
+		console.log('cur '+current_val);
+		if(current_val != '' ){
+			console.log("mm");
+			$(".league-select").find("option").hide().end().find("option[sport-id="+current_val+"]").show();
+		}
+	});
 });
 
 	function reorderCaptionNumbers(){

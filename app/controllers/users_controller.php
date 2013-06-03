@@ -7,25 +7,24 @@ class UsersController extends AppController {
 	var $components = array('Session','Auth');
 
 
-	// public function beforeFilter() {
-	//     parent::beforeFilter();
-	//     $this->Auth->allow('login');
-	//     $this->Auth->allow('signup'); // Letting users register themselves
-	// }
-
-
-	function beforeFilter() {
-	    $this->Auth->fields = array(
-	        'username' => 'username',
-	        'password' => 'secretword'
-	        );
-	    $this->Auth->allow('register');
+	public function beforeFilter() {
+	    parent::beforeFilter();
+	    //$this->Auth->allow('login');
+	    //$this->Auth->allow('signup'); // Letting users register themselves
+		$this->Auth->allow('*');
 	}
-	/**
-	     *  The AuthComponent provides the needed functionality
-	     *  for login, so you can leave this function blank.
-	     */
+
+
+	
+
     function login() {
+//    	pr($this->data);exit;
+    	if (!empty($this->data) && $this->Auth->user()) {
+    	    print "Asdas";exit;
+    	    $this->User->id = $this->Auth->user('id');
+    	    $this->User->saveField('last_login', date('Y-m-d H:i:s'));
+    	    $this->redirect($this->Auth->redirect());
+    	}
     }
 
     function logout() {

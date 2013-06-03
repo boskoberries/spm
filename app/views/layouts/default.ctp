@@ -8,15 +8,14 @@
 		<meta charset="utf-8" />	
 		<!-- Set the viewport width to device width for mobile -->
 		<meta name="viewport" content="width=device-width" />
-			<!--    	<link rel="stylesheet" type="text/css" href="/sports_memes/css/ocbstyle928.css" media="all" />-->
 		<?=$html->css('/css/grid.css')?>
 		<?=$html->css('/css/app.css')?>
 <!--		<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 		<script src="http://code.jquery.com/jquery-migrate-1.1.1.min.js"></script>-->
-		<?=$html->css('/js/jquery-ui-1.8.14.custom.css')?>
+		<?//=$html->css('/js/jquery-ui-1.8.14.custom.css')?>
     	<?=$javascript->link('/js/jquery-1.9.1.min.js')?>
     	<?//=$javascript->link('/js/jquery-1.6.1.min.js')?>
-    	<?=$javascript->link('/js/jquery-ui-1.8.14.custom.min.js')?>
+    	<?//=$javascript->link('/js/jquery-ui-1.8.14.custom.min.js')?>
     	<script type="text/javascript" src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
     	<?=$javascript->link('/js/site-ui.js')?>
 		<!--[if lt IE 9]>

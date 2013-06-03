@@ -71,7 +71,8 @@
 				<div id="subSelectLeague" class="panel-ct">
 					<label>League: </label>
 					<select name="data[meme][league_id]" class="league-select">			
-					<? foreach($data['sports'] as $sport){
+						<option value="">Select A League</option>
+						<? foreach($data['sports'] as $sport){
 						foreach($sport['League'] as $league){ ?>
 							<option sport-id="<?=$sport['Sport']['id']?>" value="<?=$league['id']?>">
 								<?=$league['name']?>
