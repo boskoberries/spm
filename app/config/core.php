@@ -173,9 +173,52 @@
  * the cake shell command: cake schema create Sessions
  *
  */
-	Configure::write('Session', array(
-		'defaults' => 'php'
-	));
+/**
+ * The preferred session handling method. Valid values:
+ *
+ * 'php'	 		Uses settings defined in your php.ini.
+ * 'cake'		Saves session files in CakePHP's /tmp directory.
+ * 'database'	Uses CakePHP's database sessions.
+ *
+ * To define a custom session handler, save it at /app/config/<name>.php.
+ * Set the value of 'Session.save' to <name> to utilize it in CakePHP.
+ *
+ * To use database sessions, execute the SQL file found at /app/config/sql/sessions.sql.
+ *
+ */
+	Configure::write('Session.save', 'php');
+/**
+ * The name of the table used to store CakePHP database sessions.
+ *
+ * 'Session.save' must be set to 'database' in order to utilize this constant.
+ *
+ * The table name set here should *not* include any table prefix defined elsewhere.
+ */
+	//Configure::write('Session.table', 'cake_sessions');
+/**
+ * The DATABASE_CONFIG::$var to use for database session handling.
+ *
+ * 'Session.save' must be set to 'database' in order to utilize this constant.
+ */
+	//Configure::write('Session.database', 'default');
+/**
+ * The name of CakePHP's session cookie.
+ */
+	Configure::write('Session.cookie', 'CAKEPHP');
+/**
+ * Session time out time (in seconds).
+ * Actual value depends on 'Security.level' setting.
+ */
+	Configure::write('Session.timeout', '604800');
+/**
+ * If set to false, sessions are not automatically started.
+ */
+	Configure::write('Session.start', true);
+/**
+ * When set to false, HTTP_USER_AGENT will not be checked
+ * in the session
+ */
+	Configure::write('Session.checkAgent', true);
 
 /**
  * The level of CakePHP security.

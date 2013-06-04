@@ -4,11 +4,8 @@
 		<div class="header first">
 			<h3>Sign Up</h3>
 		</div>
-		<? if(isset($errors)){?>
-		<?=implode("<br />",$errors)?>
-		<? } ?>
 
-		<?/*<form id="signupForm" action="/users/signup" method="POST">
+		<form id="signupForm" action="/users/signup" method="POST">
 			<label>Username:</label>
 			<input type="text" name="data[NewUser][username]" value="<?=(isset($data['username']))?$data['username']:''?>" title="What do you want to go by?" />
 			<div class="clear"></div>
@@ -23,7 +20,7 @@
 			<div class="clear"></div>
 			<br>
 			<input type="submit" class="big blue btn" value="Register" />
-		</form>*/?>
+		</form>
 		<?/* echo $this->Form->create('User');
 		    echo $this->Form->input('username');
 		    echo $this->Form->input('password');

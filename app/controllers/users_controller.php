@@ -11,7 +11,7 @@ class UsersController extends AppController {
 		$this->Auth->allow('signup');
 		// $this->Auth->allow('reset');
 		// $this->Auth->allow('reset_pass');
-		//$this->Auth->allow('login');
+		$this->Auth->allow('login');
 		$this->Auth->autoRedirect = false;
 		parent::beforeFilter();
 	}
@@ -51,8 +51,16 @@ class UsersController extends AppController {
     		}
 
     	}else {
+    		pr($this->data);
+    		print "<br /><br />";
+    		pr($this->Auth);
+    		print "<br/>";
+    		pr($_SESSION);
+    		exit;
+    		if($this->Auth->login($this->data['User'])){
+				$this->redirect($this->Auth->redirect());
 
-
+			}
     		//$_POST['email']=$this->data['User']['email'];
     		$error = 'Whoops, we didn\'t recognize that e-mail/password combination.&nbsp;&nbsp;Forgot your password?&nbsp;&nbsp;<a href="/users/reset">Click here to retrieve it.</a>';
     		$this->set('error',$error);
@@ -109,9 +117,8 @@ class UsersController extends AppController {
 		
 		$data = $this->User->validateSignUpForm($this->data['NewUser']);
 		if(isset($data['errors']) && !empty($data['errors'])){
-			pr($data['errors']);
 			$this->set('data',$this->data['NewUser']);
-			$this->Session->setFlash(implode('<br>',$data['errors']));
+			$this->set('errors',$data['errors']);
 			$this->render('login');
 		} else { //success!
 			$this->Auth->login($data['success']);

@@ -108,11 +108,12 @@
 			</div>
 			<?php } ?> 
 	    </div>   
+	    <? if(isset($error) && !empty($error)){ ?>
 		<div id="errorMessage">							
-	    	<? if(isset($error) && !empty($error)){ ?>
 	    	<?=$error?>
-	    	<? } ?>
 	    </div>
+	    <? } ?>
+
     	<?/*
 		<div id="authMessage"></div>
 		<?php if(isset($_SESSION['Message']['flash']['message']) && !empty($_SESSION['Message']['flash']['message'])){ ?>

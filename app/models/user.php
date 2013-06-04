@@ -29,20 +29,20 @@ class User extends AppModel {
 	//        )
 	//    );
 
-	function beforeSave() {
-	     if(isset($this->data['User']['password'])) {
-	          $this->data['User']['password'] = md5($this->data['User']['password']);
-	     }
-	     return true;
-	}
-
-	// public function beforeSave($options = array()) {
-	//     if (isset($this->data[$this->alias]['password'])) {
-	//         $this->data[$this->alias]['password'] = $this->hashPassword($this->data[$this->alias]['password']);
-	//         //AuthComponent::password($this->data[$this->alias]['password']);
-	//     }
-	//     return true;
+	// function beforeSave() {
+	//      if(isset($this->data['User']['password'])) {
+	//      //     $this->data['User']['password'] = md5($this->data['User']['password']);
+	//      }
+	//      return true;
 	// }
+
+	public function beforeSave($options = array()) {
+	    if (isset($this->data[$this->alias]['password'])) {
+	        $this->data[$this->alias]['password'] = $this->hashPassword($this->data[$this->alias]['password']);
+	        //AuthComponent::password($this->data[$this->alias]['password']);
+	    }
+	    return true;
+	}
 
 	function getUserName($user_id){
 		$data=$this->find('first',array('conditions'=>array('User.id'=>$user_id)));
