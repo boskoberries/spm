@@ -1545,3 +1545,13 @@ ul.tag-list li a:hover{
     box-shadow: 1px 1px 10px rgba(0,0,0,.3);
     text-transform: uppercase;
 }
+#errorMessage{
+  position: absolute;
+  background: tomato;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 2px;
+  right: 10px;
+  width: 250px;
+  font-weight: bold;
+}

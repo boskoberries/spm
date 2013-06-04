@@ -1,58 +1,51 @@
 <?php 
+App::import('Sanitize');
 	class AppController extends Controller {
 		//var $helpers=array('Html','Javascript','Session');
 		// AppController's components are NOT merged with defaults,
 		// so session component is lost if it's not included here!
 		//var $components = array('Session','Auth');
-		var $components = array(
-		    'Auth' => array(
-		        'autoRedirect' => false,
-		    ),
-		    'Session',
-		);
-		var $helpers = array(
-		    'Html',
-		    'Javascript',
-		    'Form',
-		    'Session',
-		);
+		var $components = array('Auth', 'Session', 'Cookie'	);
+		var $helpers = array('Html', 'Javascript', 'Form', 'Session');
 		
+		function isAuthorized() {
+
+		}
+
 	    public function beforeFilter() {
 //	        $this->Auth->allow('*');//index', 'view');
 	    	$this->loadModel('League');
 			$leagues = $this->League->getLeaguesForHeader();
-			$this->set('leagues',$leagues);
-		}
+			// Handle the user auth filter
+			//  This, along with no salt in the config file allows for straight
+			// md5 passwords to be used in the user model
+			Security::setHash("md5");
+			$this->Auth->fields = array('username' => 'email', 'password' => 'password');
 
-		function afterFilter() {
-		    # Update User last_access datetime
-		   if ($this->Auth->user()) {
-		        $this->loadModel('User');
-		        $this->User->id = $this->Auth->user('id');
-		        $this->User->saveField('last_access', date('Y-m-d H:i:s'));
-		    }
-		}
-
-
-
-
-
-		/*function beforeFilter(){
-			$this->Auth->allow('*');
-//			$this->render();
 			//$this->Auth->loginAction = array('controller' => 'registration', 'action' => 'index');
 			$this->Auth->loginAction = array('controller' => 'users', 'action' => 'login');
 
 			//$this->Auth->loginRedirect = array('controller' => 'users', 'action' => 'dashboard');
 			$this->Auth->logoutRedirect = array('controller' => 'users', 'action' => 'login');
 			$this->Auth->loginError = 'Whoops, our system didn\'t recognize that e-mail / password combination.  Please try again.';
-			if($this->Auth->user()){
-				$this->set('user',$this->Auth->user());
-			} else{
+			$this->Auth->authorize = 'controller';
 
+			$cookie = $this->Cookie->read('User');
+
+			$user_id=$this->Auth->user('id');
+			$data=$this->Auth->user();
+
+			if (is_array($cookie) && !$this->Auth->user()){
+				if ($this->User->checkLogin($cookie['email'], $cookie['token'])){
+					if (!$this->Auth->login($this->User)){
+						$this->Cookie->del('User');
+					}
+				}			
 			}
-		}*/
 
+
+			$this->set('leagues',$leagues);
+		}
 
 	  	function checkId($id){
   			$arr = explode("-",$id);

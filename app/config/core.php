@@ -180,12 +180,13 @@
 /**
  * The level of CakePHP security.
  */
-	Configure::write('Security.level', 'medium');
+	Configure::write('Security.level', 'low');
 
 /**
  * A random string used in security hashing methods.
  */
-	Configure::write('Security.salt', '12oi3j1ej0129j1d09jd019j1Ej');
+	// Configure::write('Security.salt', '12oi3j1ej0129j1d09jd019j1Ej');
+	Configure::write('Security.salt', '');
 
 /**
  * A random numeric string (digits only) used to encrypt/decrypt strings.

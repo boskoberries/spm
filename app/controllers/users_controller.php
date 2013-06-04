@@ -8,30 +8,68 @@ class UsersController extends AppController {
 
 
 	public function beforeFilter() {
-	    parent::beforeFilter();
-	    //$this->Auth->allow('login');
-	    //$this->Auth->allow('signup'); // Letting users register themselves
-		$this->Auth->allow('*');
+		$this->Auth->allow('signup');
+		// $this->Auth->allow('reset');
+		// $this->Auth->allow('reset_pass');
+		//$this->Auth->allow('login');
+		$this->Auth->autoRedirect = false;
+		parent::beforeFilter();
 	}
 
-
+    function isAuthorized(){
+		if (isset($this->params[Configure::read('Routing.admin')])){
+        	if ($this->Auth->user('admin') == 0) {
+            	return false;
+            }
+        }
+        return true;
+	}
 	
 
-    function login() {
-//    	pr($this->data);exit;
-    	if (!empty($this->data) && $this->Auth->user()) {
-    	    print "Asdas";exit;
-    	    $this->User->id = $this->Auth->user('id');
-    	    $this->User->saveField('last_login', date('Y-m-d H:i:s'));
-    	    $this->redirect($this->Auth->redirect());
+    function login() {	
+
+    	if ($this->Auth->user()) {
+    		print "I AM INNNNN";exit;
+    		$this->User->id = $this->Auth->user('id');
+    		$this->User->saveField('last_login', date('Y-m-d H:i:s'));
+    		$this->redirect($this->Auth->redirect());
+
     	}
+ 
+    	if (empty($this->data)) {
+
+
+    		$cookie = $this->Cookie->read('Auth.User');
+	   		if (!is_null($cookie)) {
+    			if ($this->Auth->login($cookie)) {
+    				//  Clear auth message, just in case we use it.
+    				$this->Session->delete('Message.auth');
+    				$this->redirect($this->Auth->redirect());
+    			} else { // Delete invalid Cookie
+    				$this->Cookie->delete('Auth.User');
+    			}
+    		}
+
+    	}else {
+
+
+    		//$_POST['email']=$this->data['User']['email'];
+    		$error = 'Whoops, we didn\'t recognize that e-mail/password combination.&nbsp;&nbsp;Forgot your password?&nbsp;&nbsp;<a href="/users/reset">Click here to retrieve it.</a>';
+    		$this->set('error',$error);
+    		//$this->data['flash'] = 'Whoops, we didn\'t recognize that e-mail/password combination.&nbsp;&nbsp;Forgot your password?&nbsp;&nbsp;<a href="/users/reset">Click here to retrieve it.</a>';
+    		//if(isset($this->data['Event']['domain'])){
+    		//	$this->redirect('/registration?site=true');
+    		//}
+    	}
+
     }
 
     function logout() {
+      	$this->Session->delete('Auth');
         $this->redirect($this->Auth->logout());
     }
 
-    function register(){
+    /*function register(){
     	//pr($this->Auth->user());
     	if ($this->data) {
     		// print $this->data['NewUser']['password'];
@@ -50,7 +88,7 @@ class UsersController extends AppController {
 	    	    }
     	   //	 }
     	}
-    }
+    }*/
 
     function favorites(){
     	$data['user_id'] = $this->Auth->user('id');
@@ -59,45 +97,15 @@ class UsersController extends AppController {
     	$this->set('data',$data);
     }
 
- //    function beforeFilter(){
-	// 	//$this->Session->write('Auth.redirect', null);
-	// 	$this->Auth->allow('login','signup');
-	// 	$this->Auth->autoRedirect = false;
-		
-	// 	parent::beforeFilter();
-	// }
-
-
-
- //    function isAuthorized(){
-	// 	if (isset($this->params[Configure::read('Routing.admin')])){
- // 	   		if ($this->Auth->user('admin') == 0) {
- //        		return false;
- //    	    }
- //        }
- //        return true;
-	// }
-
-
 	function index(){
 
 	}
-
-// 	function logout(){
-// 		$this->Session->delete('Auth');
-// 		$this->Auth->logout();
-// //		$this->redirect($this->Auth->logout());
-// //		exit;
-// //		print "wt";exit;
-// 		$this->redirect('/users/login');
-// 		exit;
-// 	}
 
 	function signup(){
 		if ($this->Auth->user()) { //if logged in, redirect.
 			$this->redirect('/memes');
 		} 
-		pr($this->data);exit;
+		//pr($this->data);exit;
 		
 		$data = $this->User->validateSignUpForm($this->data['NewUser']);
 		if(isset($data['errors']) && !empty($data['errors'])){
@@ -107,60 +115,17 @@ class UsersController extends AppController {
 			$this->render('login');
 		} else { //success!
 			$this->Auth->login($data['success']);
-			print "DONE!";
-			pr($this->Auth->user());
-			exit;
+			//print "DONE!";
+			// pr($this->Auth->user());
+			// exit;
 
 		}
 	}
 
-	// function login(){
-	// 	if ($this->request->is('post')) {
-	// 	    $this->User->create();
-	// 	    if ($this->User->save($this->request->data)) {
-	// 	        $this->Session->setFlash(__('The user has been saved'));
-	// 	        $this->redirect(array('action' => 'index'));
-	// 	    } else {
-	// 	        $this->Session->setFlash(__('The user could not be saved. Please, try again.'));
-	// 	    }
-	// 	}
-
-	// }
-	// function login(){
-	// 	if (!empty($_POST)) {
-
-	// 		$cookie = $this->Cookie->read('Auth.User');
-
-	// 		if (!is_null($cookie)) {
-	// 			if ($this->Auth->login($cookie)) {
-
-	// 				//  Clear auth message, just in case we use it.
-	// 				$this->Session->delete('Message.auth');
-	// 				$this->redirect($this->Auth->redirect());
-	// 			} else { // Delete invalid Cookie
-	// 				$this->Cookie->delete('Auth.User');
-	// 			}
-	// 		}
-	// 	}else {
-
-
-	// 		//$_POST['email']=$this->data['User']['email'];
-	// 		$this->Session->setFlash('Whoops, we didn\'t recognize that e-mail/password combination.&nbsp;&nbsp;Forgot your password?&nbsp;&nbsp;<a href="/users/reset">Click here to retrieve it.</a>', 'default');
-	// 		//$this->data['flash'] = 'Whoops, we didn\'t recognize that e-mail/password combination.&nbsp;&nbsp;Forgot your password?&nbsp;&nbsp;<a href="/users/reset">Click here to retrieve it.</a>';
-	// 		//if(isset($this->data['Event']['domain'])){
-	// 		//	$this->redirect('/registration?site=true');
-	// 		//}
-	// 	}
-	// }
   	function login2(){
 
 		if(!empty($this->data)){	
-			//print_r($this->data);
-			//exit;
-			//$data['username']=trim($this->data['User']['email']);
-			// if(empty($this->data['User']['password'])){
-			// 	print "yep";
-			// }
+	
 			if(!empty($this->data['User']['email'])){
 				$data['email']=trim($this->data['User']['email']);
 			}
@@ -184,14 +149,6 @@ class UsersController extends AppController {
                 }
         	}    
 				            
-				
-				/*$extra_params='';
-				if(isset($this->data['event_redirect'])){
-					$extra_params='?ref_to='.$this->data['event_redirect'];
-					$profile_after_register=$this->data['event_redirect'];
-				}*/
-
-
 				
             if(!sizeof($errors)){ //success.
 				$data['password'] = trim($this->data['User']['password']);

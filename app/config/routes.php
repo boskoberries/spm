@@ -28,6 +28,8 @@
  */
 //print_r($this->args);
 	Router::connect('/', array('controller' => 'memes', 'action' => 'index'));
+	//Router::connect('/login', array('controller' => 'users', 'action' => 'login'));
+	//Router::connect('/signup/*', array('controller' => 'users', 'action' => 'signup'));
 /**
  * ...and connect the rest of 'Pages' controller's urls.
  */
