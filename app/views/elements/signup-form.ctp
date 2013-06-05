@@ -9,7 +9,7 @@
 			<label>Username:</label>
 			<input type="text" name="data[NewUser][username]" value="<?=(isset($data['username']))?$data['username']:''?>" title="What do you want to go by?" />
 			<div class="clear"></div>
-			<label>Email:</label>
+			<label>Email (optional):</label>
 			<input type="text" name="data[NewUser][email]" value="<?=(isset($data['email']))?$data['email']:''?>" title="Your email address will be used for logging in" />
 			<div class="clear"></div>
 			<label>Password:</label>

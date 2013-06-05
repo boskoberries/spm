@@ -50,15 +50,14 @@
          							<li><a href="/baseball" class="nav-link ">Baseball</a></li>
          							<li><a href="/hockey" class="nav-link ">Hockey</a></li>
          							<li><a href="/soccer">Soccer</a></li>
-
-         							<!-- <li class="has-children">
+         							<?/* <li class="has-children">
      									<a href="#" class="nav-link ">Other Sports <span class="icon-down"></span></a>
      									<ul class="">
      										<li><a href="/soccer">Soccer</a></li>
      										<li><a href="/tennis">Tennis</a></li>
      										<li><a href="/nascar">NASCAR</a></li>
      									</ul>
-     								</li> -->
+     								</li> */?>
          							<li><a href="/" class="nav-link ">All Sports</a></li>
          							<li><a id="createYourOwn" href="/memes/create" class="nav-link button">Create Your Own!</a></li>
          						</ul>	
@@ -69,7 +68,7 @@
 	    </div>  
 	    <div id="subnav">
 	    	<div class="right">
-		    	<a href="/users/favorites">Your favorites (<?=$fav_count?>)</a>&nbsp;|&nbsp;
+		    	<a href="/users/favorites">Your favorites (<?=(isset($fav_count))?$fav_count:0?>)</a>&nbsp;|&nbsp;
 		    	<? if(isset($user) && !empty($user)){ ?>
 		    	<span class="logged-in bold">Logged in as: <?=$user['User']['email']?></span>
 		    	<a href="/users/logout">(sign out)</a>
@@ -113,6 +112,7 @@
 	    	<?=$error?>
 	    </div>
 	    <? } ?>
+	    <div id="authMessage"></div>
 
     	<?/*
 		<div id="authMessage"></div>

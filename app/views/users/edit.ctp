@@ -1,0 +1,12 @@
+<?php
+echo '<h2>Edit User';
+echo $form->create('User');
+echo $form->hidden('id');
+echo $form->input('username');
+echo $form->input('clear_password', array('type' => 'password', 'label' => 'Password'));
+echo $form->input('confirm_password', array('type' => 'password'));
+echo $form->input('email');
+echo $form->input('status', array('options' => array('Active' => 'Active', 'Inactive' => 'Inactive')));
+echo $form->submit('Submit', array('after' => ' ' . $html->link('Cancel', array('action' => 'index'))));
+echo $form->end();
+?>

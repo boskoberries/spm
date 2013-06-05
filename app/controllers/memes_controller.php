@@ -8,7 +8,7 @@ class MemesController extends AppController {
 	var $paginate_limit = 30;
 
 	function beforeFilter(){
-		//$this->Auth->allow('*');
+		$this->Auth->allow('*');
 		parent::beforeFilter();
 	}
     function isAuthorized(){
