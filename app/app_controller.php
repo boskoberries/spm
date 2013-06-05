@@ -1,5 +1,5 @@
 <?php 
-App::import('Sanitize');
+	App::import('Sanitize');
 	class AppController extends Controller {
 		//var $helpers=array('Html','Javascript','Session');
 		// AppController's components are NOT merged with defaults,
@@ -14,7 +14,7 @@ App::import('Sanitize');
 
 	    public function beforeFilter() {
 //	        $this->Auth->allow('*');//index', 'view');
-	    	$this->loadModel('League');
+	    	$this->loadModel('League');$this->loadModel('UserFavorite');
 			$leagues = $this->League->getLeaguesForHeader();
 			// Handle the user auth filter
 			//  This, along with no salt in the config file allows for straight
@@ -32,8 +32,9 @@ App::import('Sanitize');
 
 			$cookie = $this->Cookie->read('User');
 
-			$user_id=$this->Auth->user('id');
-			$data=$this->Auth->user();
+			$user = $this->Auth->user();
+
+			
 
 			if (is_array($cookie) && !$this->Auth->user()){
 				if ($this->User->checkLogin($cookie['email'], $cookie['token'])){
@@ -43,7 +44,9 @@ App::import('Sanitize');
 				}			
 			}
 
-
+			$fav_count = $this->UserFavorite->getFavorites($this->Auth->user('id'),true);
+			$this->set('fav_count',$fav_count);
+			$this->set('user',$user);
 			$this->set('leagues',$leagues);
 		}
 

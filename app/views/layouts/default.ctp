@@ -69,9 +69,9 @@
 	    </div>  
 	    <div id="subnav">
 	    	<div class="right">
-		    	<a href="/users/favorites">Your favorites (3)</a>&nbsp;|&nbsp;
-		    	<? if(isset($user)){ ?>
-		    	<span class="logged-in bold">Logged in as: butangphp</span>
+		    	<a href="/users/favorites">Your favorites (<?=$fav_count?>)</a>&nbsp;|&nbsp;
+		    	<? if(isset($user) && !empty($user)){ ?>
+		    	<span class="logged-in bold">Logged in as: <?=$user['User']['email']?></span>
 		    	<a href="/users/logout">(sign out)</a>
 
 		    	<? } else { ?>

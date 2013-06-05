@@ -8,8 +8,18 @@ class MemesController extends AppController {
 	var $paginate_limit = 30;
 
 	function beforeFilter(){
-		$this->Auth->allow('*');
+		//$this->Auth->allow('*');
+		parent::beforeFilter();
 	}
+    function isAuthorized(){
+		if (isset($this->params[Configure::read('Routing.admin')])){
+        	if ($this->Auth->user('admin') == 0) {
+            	return false;
+            }
+        }
+        return true;
+	}
+
   	function index($cat_id=null){
   		$data['sort'] = $this->Meme->getSortParam($_GET,$this->params);
 		$data['memes']=  $this->Meme->getMemesByPopularity($data,$this->params);
