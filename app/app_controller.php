@@ -4,7 +4,6 @@
 		//var $helpers=array('Html','Javascript','Session');
 		// AppController's components are NOT merged with defaults,
 		// so session component is lost if it's not included here!
-//		var $components = array('Auth', 'Session', 'Cookie'	);
 		var $components = array(
 		    'Auth' => array(
 		        'autoRedirect' => false,
@@ -17,8 +16,13 @@
 		function isAuthorized() {
 
 		}
+		function beforeFilter(){
+			$this->loadModel('UserFavorite');
+			$info['user'] = $this->Auth->user();
+			$info['fav_count'] = $this->UserFavorite->getFavorites($this->Auth->user('id'),true);
+			$this->set('info',$info);
+		}
 
-	    
 // 	    public function beforeFilter() {
 // //	        $this->Auth->allow('*');//index', 'view');
 // 	    	$this->loadModel('League');$this->loadModel('UserFavorite');

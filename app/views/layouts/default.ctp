@@ -68,9 +68,9 @@
 	    </div>  
 	    <div id="subnav">
 	    	<div class="right">
-		    	<a href="/users/favorites">Your favorites (<?=(isset($fav_count))?$fav_count:0?>)</a>&nbsp;|&nbsp;
-		    	<? if(isset($user) && !empty($user)){ ?>
-		    	<span class="logged-in bold">Logged in as: <?=$user['User']['email']?></span>
+		    	<a href="/users/favorites">Your favorites (<?=(isset($info['fav_count']))?$info['fav_count']:0?>)</a>&nbsp;|&nbsp;
+		    	<? if(isset($info['user']) && !empty($info['user'])){ ?>
+		    	<span class="logged-in bold">Logged in as: <?=$info['user']['User']['username']?></span>
 		    	<a href="/users/logout">(sign out)</a>
 
 		    	<? } else { ?>
@@ -79,11 +79,11 @@
 		    	<? } ?>
 		    	<input id="searchBar" type="text" placeholder="Search..." />
 		    </div>
-			<?php if(isset($info)){ ?>
+			<?php if(false && isset($info)){ ?>
          		<div class="three columns">
         		<a id="accountName" class="logout" >
-				<img src="/img/<?php echo $info['User']['image_url'];?>" class="user-avatar" />
-				<?php echo $info['User']['account_name'];?>&nbsp;&#9660;</a>
+				<img src="/img/<?php echo $info['user']['User']['image_url'];?>" class="user-avatar" />
+				<?php echo $info['user']['User']['account_name'];?>&nbsp;&#9660;</a>
 		
 				<div id="accountDropDown" class="hide_me">
 					<div class="dropDownPointer">

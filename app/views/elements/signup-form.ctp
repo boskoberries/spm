@@ -5,7 +5,7 @@
 			<h3>Sign Up</h3>
 		</div>
 
-		<form id="signupForm" action="/users/signup" method="POST">
+		<?/*<form id="signupForm" action="/users/signup" method="POST">
 			<label>Username:</label>
 			<input type="text" name="data[NewUser][username]" value="<?=(isset($data['username']))?$data['username']:''?>" title="What do you want to go by?" />
 			<div class="clear"></div>
@@ -21,30 +21,36 @@
 			<br>
 			<input type="submit" class="big blue btn" value="Register" />
 		</form>
-		<?/* echo $this->Form->create('User');
-		    echo $this->Form->input('username');
-		    echo $this->Form->input('password');
-		    echo $this->Form->end('Signup'); */?>
+*/?>
+		<?php
+			echo $form->create('User');
+			echo $form->input('username',array('label'=>'Username:'));
+			echo $form->input('email',array('label'=>'Email (optional):'));
+			echo $form->input('clear_password', array('type' => 'password', 'label' => 'Password:'));
+			echo $form->input('confirm_password', array('type' => 'password'));
+			//echo $form->input('status', array('options' => array('Active' => 'Active', 'Inactive' => 'Inactive')));
+			echo "<br />";
+			
+			echo $form->submit('Register',array('class'=>'big blue btn'));//, array('after' => ' ' . $html->link('Cancel', array('action' => 'index'))));
+			echo $form->end();
+		?>
+
 	</div>
 	<div class="login-form left">
 		<div class="header">
 			<h3>Log In</h3>
 		</div>
-		<?/*
-		<?php echo $this->Form->create('User',array('action'=>'login')); ?>
-			<label>Username or email:</label>
-	        <?php echo $this->Form->input('email');
-		        echo $this->Form->input('password');
-		    ?>
-			<?php echo $this->Form->end(__('Submit')); ?>
-		*/?>
-		<?/* echo $this->Session->flash('auth');
-		    echo $this->Form->create('Register');
-		    echo $this->Form->input('email');
-		    echo $this->Form->input('password');
-		    echo $this->Form->end('Login'); */?>
+		<?php
+			echo $form->create('User', array('action' => 'login'));
+			echo $form->input('username',array('label'=>'Username:'));
+			echo $form->input('password',array('label'=>'Password:'));
+			echo "<br />";
+			
+			echo $form->submit('Login',array('class'=>'big blue btn'));//, array('after' => ' ' . $html->link(
+			echo $form->end();
+		?>
 
-		<form id="userLogin" action="/users/login" method="POST">
+		<!-- <form id="userLogin" action="/users/login" method="POST">
 			<label>Email Address:</label>
 			<input id="em2" type="text" name="data[User][email]" value="" />
 			<div class="clear"></div>
@@ -52,6 +58,6 @@
 			<input id="pw2" type="password" name="data[User][password]" value="" />
 			<br/><br>
 			<input type="submit" class="blue big btn" value="Login" />
-		</form>
+		</form> -->
 	</div>
 </div>

@@ -13,19 +13,19 @@ class UsersController extends AppController {
 		// $this->Auth->allow('reset');
 		// $this->Auth->allow('reset_pass');
 		$this->Auth->allow('login');
-	    $this->Auth->allow('*');
+    $this->Auth->allow('*');
 		// $this->Auth->autoRedirect = false;
-		// parent::beforeFilter();
+		parent::beforeFilter();
 	}
 
-    function isAuthorized(){
-		if (isset($this->params[Configure::read('Routing.admin')])){
-        	if ($this->Auth->user('admin') == 0) {
-            	return false;
-            }
-        }
-        return true;
-	}
+ //  function isAuthorized(){
+	// 	  if (isset($this->params[Configure::read('Routing.admin')])){
+ //        	if ($this->Auth->user('admin') == 0) {
+ //            	return false;
+ //            }
+ //        }
+ //        return true;
+	// }
 	
 	function index() {
 	    $users = $this->paginate('User');
@@ -82,7 +82,8 @@ class UsersController extends AppController {
         if (!empty($this->data) && $this->Auth->user()) {
             $this->User->id = $this->Auth->user('id');
             $this->User->saveField('last_login', date('Y-m-d H:i:s'));
-            $this->redirect($this->Auth->redirect());
+            //$this->redirect($this->Auth->redirect());
+            $this->redirect('/memes');          
         }
     }
     
@@ -98,21 +99,20 @@ class UsersController extends AppController {
     // }
 
     function add() {
-
-           if (!empty($this->data)) {
-               $this->User->set($this->data);
-               if ($this->User->validates()) {
-                   $this->data['User']['password'] = $this->data['User']['clear_password'];
-                   $this->data = $this->Auth->hashPasswords($this->data);
-                   if (!$this->_store_clear_password) {
-                       unset($this->data['User']['clear_password']);
-                   }
-                   $this->User->save($this->data, false);
-                   $this->Session->setFlash('User Added');
-                   $this->redirect('index');
-               }
-           }
-       }
+      if (!empty($this->data)) {
+          $this->User->set($this->data);
+          if ($this->User->validates()) {
+            $this->data['User']['password'] = $this->data['User']['clear_password'];
+            $this->data = $this->Auth->hashPasswords($this->data);
+            if (!$this->_store_clear_password) {
+               unset($this->data['User']['clear_password']);
+            }
+            $this->User->save($this->data, false);
+            $this->Session->setFlash('User Added');
+            $this->redirect('index');
+          }
+        }
+    }
 
 
        function edit($id = null) {
@@ -192,7 +192,7 @@ class UsersController extends AppController {
 			$user = $this->User->read(null,$this->User->id);
 			$this->Auth->login($user);
 		} else {
-			pr($_SESSION);
+			//pr($_SESSION);
 			//if(isset($data['errors']) && !empty($data['errors'])){
 			$this->set('data',$this->data['NewUser']);
 				//$this->set('errors',$data['errors']);
