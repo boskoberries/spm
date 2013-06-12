@@ -19,6 +19,7 @@
 		function beforeFilter(){
 			$this->loadModel('UserFavorite');
 			$info['user'] = $this->Auth->user();
+			$info['meme_count'] = $this->Meme->getUserMemeCount($this->Auth->user('id'),true);
 			$info['fav_count'] = $this->UserFavorite->getFavorites($this->Auth->user('id'),true);
 			$this->set('info',$info);
 		}

@@ -68,6 +68,8 @@
 	    </div>  
 	    <div id="subnav">
 	    	<div class="right">
+	    		<a href="/users/favorites">Your memes (<?=(isset($info['meme_count']))?$info['meme_count']:0?>)</a>
+	    		&nbsp;|&nbsp;
 		    	<a href="/users/favorites">Your favorites (<?=(isset($info['fav_count']))?$info['fav_count']:0?>)</a>&nbsp;|&nbsp;
 		    	<? if(isset($info['user']) && !empty($info['user'])){ ?>
 		    	<span class="logged-in bold">Logged in as: <?=$info['user']['User']['username']?></span>

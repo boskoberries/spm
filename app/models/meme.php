@@ -299,6 +299,9 @@ class Meme extends AppModel {
 
   	}
 
+  	function getUserMemeCount($user_id,$ip_fallback=null){
+  		return $this->find('count',array('conditions'=>array('user_id'=>$user_id,'deleted'=>0)));
+  	}
   	/**
   	 * Writes the given text with a border into the image using TrueType fonts.
   	 * @author John Ciacia 
