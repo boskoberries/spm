@@ -11,7 +11,7 @@ class UsersController extends AppController {
 	public function beforeFilter() {
 		$this->Auth->allow('signup');
 		//$this->Auth->allow('reset');
-		$this->Auth->allow('reset_pass');
+		$this->Auth->allow('reset_password');
 		$this->Auth->allow('login');
     //$this->Auth->allow('*');
 		// $this->Auth->autoRedirect = false;
@@ -118,6 +118,22 @@ class UsersController extends AppController {
           }
         }
         $this->render('login');
+    }
+
+    function reset_password(){
+        if(!empty($this->data)){
+          if($this->User->isValidEmail($this->data['User']['email'])){
+              $data['password_sent'] = true;
+              $data['email'] = $this->data['User']['email'];
+              $this->set('data', $data);
+              $options = $this->User->resetPasswordParams($data['email']);
+              $this->__sendEmail($options);
+
+          } else{
+             $this->User->validates();
+          }
+        }
+
     }
 	
 		

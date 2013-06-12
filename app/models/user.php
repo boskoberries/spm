@@ -116,7 +116,7 @@ class User extends AppModel {
 	//     return true;
 	// }
 
-function validateConfirmPasswordEmptyUpdate() {
+	function validateConfirmPasswordEmptyUpdate() {
        return !empty($this->data['User']['clear_password']) && !empty($this->data['User']['confirm_password']);
    }
    
@@ -200,6 +200,15 @@ function validateConfirmPasswordEmptyUpdate() {
 	}
 	function hashPassword($password){
 		return md5($password);
+	}
+
+	function resetPasswordParams($email){
+		$options = array(
+			'to'=>$email,
+			'from'=>'Sports Memes <support@sportsmemes.com>',
+			'subject'=>'Password reset',
+			'template'=>'password_reset'
+		);
 	}
 
 }

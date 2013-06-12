@@ -48,7 +48,7 @@
 			echo $form->submit('Login',array('class'=>'big blue btn'));//, array('after' => ' ' . $html->link(
 			echo $form->end();
 		?>
-		<a href="#">Forgot username/password?</a>
+		<a href="/users/reset_password">Forgot username/password?</a>
 
 		<!-- <form id="userLogin" action="/users/login" method="POST">
 			<label>Email Address:</label>
