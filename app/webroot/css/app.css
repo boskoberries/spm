@@ -638,6 +638,7 @@
     }
 
         .error-msg,
+        .error-message,
         .required {
             color:#C30000;
         }

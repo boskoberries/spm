@@ -330,12 +330,10 @@ class MemesController extends AppController {
 			// allocate colors and measure final text position
 			$font_color = ImageColorAllocate($image,$font_rgb['red'],$font_rgb['green'],$font_rgb['blue']);
 			$font_color2 =ImageColorAllocate($image,0,0,0);
-			$im = imagecreatetruecolor(400, 30);
-			$black = imagecolorallocate($im, 0, 0, 0);
-			$stroke_color = imagecolorallocate($image, 0, 0, 0);
-//			$this->imagettfstroketext($image, 10, 0, 10, 50, $font_color, $stroke_color, $font_file, "Hello, World!", 2);
+			//$watermark = imagecolorallocatealpha($image,0,0,0,0);
 
-//			print_r($font_color);exit;$grey = '#999999';
+			$im = imagecreatetruecolor(400, 30);
+			$stroke_color = imagecolorallocate($image, 0, 0, 0);
 
 			// Write the text
 			if(isset($caption_count)){
@@ -343,11 +341,7 @@ class MemesController extends AppController {
 					// x and y for the bottom right of the text so it expands like right aligned text
 					$x_coord = $this->data['caption_coords']['letter_left'][$i]+2;//for padding.
 					$y_coord = $this->data['caption_coords']['letter_top'][$i];
-				//	print_r($this->data);exit;
-					// $x_coord = $this->data['caption_coords']['left'][$i];
-					// $y_coord = $this->data['caption_coords']['top'][$i];
-					
-					//$y_coord = $this->data['caption_coords']['top'][$i]+12+10;//for the padding top of the div.caption
+					//print_r($this->data);exit;
 
 					//$font_Size
 					$font_size = $this->data['caption']['size'][$i];						
@@ -363,19 +357,13 @@ class MemesController extends AppController {
 					//pr($lines);
 					//exit;
 					for($z=0; $z< count($lines); $z++){
-						$newY = $y_coord + ($z * $font_size * 1);//-10;//adding 10 for bottom padding considerations.
-
-						//imagettftext($image, $font_size, 0, ($x_coord+2), ($newY+2), $black, $font_file, $lines[$z]);//adding same text shadow.
-						//imagettftext($image, $font_size, 0, $x_coord, $newY, $black, $font_file,  $lines[$z]);
-						$this->imagettfstroketext($image, $font_size, 0, $x_coord, $newY, $font_color, $stroke_color, $font_file, $lines[$z], 3);
-						//imagettftext($image, $font_size, 0, $x_coord, $newY, $font_color, $font_file,  $lines[$z]);
-   		 				//imagettftext($image, $font_size, 0, $x_coord, $newY, $font_color, $font_file,  $lines[$z]);
-
+						$newY = $y_coord + ($z * $font_size * 1)-5;//adding 10 for bottom padding considerations.
+						$this->Meme->imagettfstroketext($image, $font_size, 0, $x_coord, $newY, $font_color, $stroke_color, $font_file, $lines[$z], 3);
+						
 				    }
 				}
 			}
-			$this->imagettfstroketext($image, 9, 0, ($image_height[0]-100), ($image_height[1]-2), $font_color, $stroke_color, $font_file, 'SPORTSMEMES.COM', 1);
-			//exit;
+			$this->Meme->imagettfstroketext($image, 9, 0, ($image_height[0]-100), ($image_height[1]-2), $font_color, $stroke_color, $font_file, 'SPORTSMEMES.COM', 1);
 
 			$new_path = WWW_ROOT."/img/user_memes/".$meme['image_url'];	
 			$cropped_path = WWW_ROOT."/img/user_memes/".$meme['image_url_medium'];
@@ -437,6 +425,7 @@ class MemesController extends AppController {
 			$this->redirect('/memes/view/'.$meme_id);
 			exit;
 		}
+		$data['user'] = $this->Auth->user();
 		$data['dimensions'] = getimagesize(WWW_ROOT."/img/user_memes/".$data['meme']['Meme']['image_url_original']);
 		$data['caption_sizes']=$this->Meme->getCaptionSizes();
 		$data['team_colors'] = $this->_getTeamColors();
@@ -523,11 +512,20 @@ class MemesController extends AppController {
 	
 	}
 	
-	function users($user_id){
+	function users($user_id=null){
 		$user_id = $this->checkId($user_id,'User');
+		if(empty($user_id) || $user_id=null || $user_id<0){
+			$user = $this->Auth->user();
+			if(!empty($user)){
+				$user_id = $user['User']['id'];
+			} else{
+				$this->redirect('/memes');
+			}
+		} 
+		$data['user'] = $this->User->find('first',array('conditions'=>array('User.id'=>$user_id)));
+		$data['sort'] = $this->Meme->getSortParam($_GET,$this->params);
 		$data['memes'] = $this->Meme->findAllByUserId($user_id);
 		$this->set('data',$data);
-		$this->render('popular');
 	}
 
 	function saveFavorite(){
@@ -584,30 +582,6 @@ class MemesController extends AppController {
 			//$data['favorites'] = $this->Meme->
 		}
 	
-	}
-
-	/**
-	 * Writes the given text with a border into the image using TrueType fonts.
-	 * @author John Ciacia 
-	 * @param image An image resource
-	 * @param size The font size
-	 * @param angle The angle in degrees to rotate the text
-	 * @param x Upper left corner of the text
-	 * @param y Lower left corner of the text
-	 * @param textcolor This is the color of the main text
-	 * @param strokecolor This is the color of the text border
-	 * @param fontfile The path to the TrueType font you wish to use
-	 * @param text The text string in UTF-8 encoding
-	 * @param px Number of pixels the text border will be
-	 * @see http://us.php.net/manual/en/function.imagettftext.php
-	 */
-	function imagettfstroketext(&$image, $size, $angle, $x, $y, &$textcolor, &$strokecolor, $fontfile, $text, $px) {
-	 
-	    for($c1 = ($x-abs($px)); $c1 <= ($x+abs($px)); $c1++)
-	        for($c2 = ($y-abs($px)); $c2 <= ($y+abs($px)); $c2++)
-	            $bg = imagettftext($image, $size, $angle, $c1, $c2, $strokecolor, $fontfile, $text);
-	 
-	   return imagettftext($image, $size, $angle, $x, $y, $textcolor, $fontfile, $text);
 	}
 }
 

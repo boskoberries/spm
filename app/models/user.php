@@ -41,6 +41,12 @@ class User extends AppModel {
 	            'message' => 'That username is already in use',
 	        ),
 	    ),
+        'email' => array(
+        	'rule'=>'email',
+        	'required'=>true,
+        	'allowEmpty'=>true,
+        	'message'=>'Enter a valid email address'
+    	),
 	    'clear_password' => array(
 	        'empty' => array(
 	            'rule' => 'notEmpty',
@@ -62,14 +68,14 @@ class User extends AppModel {
 	            'required' => true,
 	            'allowEmpty' => false,
 	            'on' => 'create',
-	            'message' => 'Please confirm the password 1',
+	            'message' => 'Please re-enter your password',
 	        ),
 	        'empty_update' => array(
 	            'rule' => 'validateConfirmPasswordEmptyUpdate',
 	            'required' => true,
 	            'allowEmpty' => true,
 	            'on' => 'update',
-	            'message' => 'Please confirm the password 2',
+	            'message' => 'Please re-enter your password',
 	        ),
 	        'match' => array(
 	            'rule' => 'validateConfirmPasswordMatch',

@@ -108,7 +108,8 @@
 				<label>Created By:</label>
 				<input type="radio" name="data[meme][creator]" value="anon" checked="checked" /> Anonymous
 				<br />
-				<input type="radio" name="data[meme][creator]" value="user" /> Username
+				<input type="radio" name="data[meme][creator]" value="user" /> 
+					<?=(!empty($data['user']))?$data['user']['User']['username']:'Username'?>
 			</div>
 
 

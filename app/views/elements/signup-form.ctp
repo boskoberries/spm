@@ -23,7 +23,7 @@
 		</form>
 */?>
 		<?php
-			echo $form->create('User');
+			echo $form->create('User',array('action'=>'signup'));
 			echo $form->input('username',array('label'=>'Username:'));
 			echo $form->input('email',array('label'=>'Email (optional):'));
 			echo $form->input('clear_password', array('type' => 'password', 'label' => 'Password:'));
@@ -45,10 +45,10 @@
 			echo $form->input('username',array('label'=>'Username:'));
 			echo $form->input('password',array('label'=>'Password:'));
 			echo "<br />";
-			
 			echo $form->submit('Login',array('class'=>'big blue btn'));//, array('after' => ' ' . $html->link(
 			echo $form->end();
 		?>
+		<a href="#">Forgot username/password?</a>
 
 		<!-- <form id="userLogin" action="/users/login" method="POST">
 			<label>Email Address:</label>
