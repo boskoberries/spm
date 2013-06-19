@@ -227,19 +227,7 @@ class MemesController extends AppController {
   		if(!empty($this->data)){
 
 			if(isset($this->data['meme']['parent'])){
-				//$this->data['meme']['parent']=12;
-				$meme_img = $this->Meme->read(null,$this->data['meme']['parent']);
-				
-				$new_meme = array(
-					'title'=>$meme_img['Meme']['title'],
-					'type_id'=>$meme_img['Meme']['type_id'],
-					'parent_id'=>$this->data['meme']['parent'],
-					'image_url_original'=>$meme_img['Meme']['image_url_original'],
-					'mime_type'=>$meme_img['Meme']['mime_type'],
-					'active'=>1,
-					'league_id'=>$meme_img['Meme']['league_id']
-				);
-				
+				$new_meme = $this->Meme->baseOnParent($this->data['meme']['parent']);
 				$this->Meme->create();
 				$this->Meme->save($new_meme);
 				$data['meme_id'] = $this->Meme->id;			
@@ -248,7 +236,6 @@ class MemesController extends AppController {
 			else{
 				$data['meme_id']=$meme_id;
 			  	$meme_img = $this->Meme->find('first',array('conditions'=>array('Meme.id'=>$meme_id)));
-
 			}		
 			
   			if(isset($this->data['caption'])){
@@ -337,6 +324,7 @@ class MemesController extends AppController {
 
 			// Write the text
 			if(isset($caption_count)){
+				$this->data['caption']['body'][1] = str_replace("like them apples ","\nlike them apples",$this->data['caption']['body'][1]);
 				for($i=0;$i<$caption_count;$i++){
 					// x and y for the bottom right of the text so it expands like right aligned text
 					$x_coord = $this->data['caption_coords']['letter_left'][$i]+2;//for padding.
@@ -352,12 +340,24 @@ class MemesController extends AppController {
 					if($this->data['caption']['text_style']!='lower'){
 						$this->data['caption']['body'][$i]= strtoupper($this->data['caption']['body'][$i]);
 					}
-					
+
 					$lines=explode("\n",$this->data['caption']['body'][$i]);
-					//pr($lines);
-					//exit;
+					// if($i==1){
+					// 	pr($lines);
+					// 	exit;
+					// }
 					for($z=0; $z< count($lines); $z++){
-						$newY = $y_coord + ($z * $font_size * 1)-5;//adding 10 for bottom padding considerations.
+						$newY = $y_coord + ($z * $font_size * 1);//-5;//adding 10 for bottom padding considerations.
+						if($z>0){
+							// print $newY;
+							// print "font ".$font_size;
+							// exit;
+							$newY += 5; //for line height.. $font_size;
+						}
+						// pr($newY);
+						// if($z==1){
+						// 	exit;
+						// }
 						$this->Meme->imagettfstroketext($image, $font_size, 0, $x_coord, $newY, $font_color, $stroke_color, $font_file, $lines[$z], 3);
 						
 				    }

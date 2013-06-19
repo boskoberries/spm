@@ -299,6 +299,20 @@ class Meme extends AppModel {
 
   	}
 
+  	function baseOnParent($parent_id){
+  		$meme_img = $this->Meme->find('first',array("conditions"=>array("Meme.id"=>$parent_id)));
+  		$new_meme = array(
+  			'title'=>$meme_img['Meme']['title'],
+  			'type_id'=>$meme_img['Meme']['type_id'],
+  			'parent_id'=>$meme_img['Meme']['parent_id'],
+  			'image_url_original'=>$meme_img['Meme']['image_url_original'],
+  			'mime_type'=>$meme_img['Meme']['mime_type'],
+  			'active'=>1,
+  			'league_id'=>$meme_img['Meme']['league_id']
+  		);
+  		return $new_meme;
+  	}
+
   	function getUserMemeCount($user_id,$ip_fallback=null){
   		return $this->find('count',array('conditions'=>array('user_id'=>$user_id,'deleted'=>0)));
   	}
