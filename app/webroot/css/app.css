@@ -939,6 +939,7 @@ background: #FFB32C;
 
     nav.global {
         margin:2px 0 0 0;
+        padding-left: 0;
      }
     
         nav.global a {
@@ -1185,6 +1186,7 @@ background: #FFB32C;
 	background-color:#ccc;
 	padding:5px 10px;
 	border:1px solid #999;
+  min-width: 380px;
 }
 .bubble-font{
 	color:#fff;
@@ -1198,6 +1200,7 @@ background: #FFB32C;
     float: left;
 	clear:both;
 	margin-bottom:15px;
+  position: relative;
 }
 .panel-ct span{
 	float:left;
@@ -1222,7 +1225,8 @@ background: #FFB32C;
 float:none !important;
 }	
 span.delete{ 
-	padding-left:5px;
+  top: 0;
+  right: -5px;
     position: absolute;
 }
 .delete{
