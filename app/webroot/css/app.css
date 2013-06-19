@@ -896,9 +896,8 @@ background: #FFB32C;
 ----------------------------------------- */
 
     div.global-header {
-        width:100%;
         color:#ffffff;
-        padding:15px 70px;
+        padding:15px 20px;
         background: #00A6FC;
         filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#0192DD', endColorstr='#00A6FC'); /* for IE */
         background: -webkit-gradient(linear, left top, left bottom, from(#0192DD), to(#00A6FC)); /* for webkit browsers */
@@ -907,9 +906,9 @@ background: #FFB32C;
         border-bottom:1px solid #333333;
     }
 
-    div.global-header #mainNavRow{
+/*    div.global-header #mainNavRow{
         margin-left: 0;
-    }
+    }*/
 
     div.global-header #mainNavRow .three.columns{
         margin-top:10px;
@@ -940,6 +939,7 @@ background: #FFB32C;
 
     nav.global {
         margin:2px 0 0 0;
+        max-width: 70%;
     }
     
         nav.global a {
@@ -1119,11 +1119,8 @@ background: #FFB32C;
                 display: inline;
                 float: left;
             }
-            
-            nav.global .nav-links li:last-child{
-                float: right;;
-            } 
-        nav.global div ul li ul.subnav {
+                   
+         nav.global div ul li ul.subnav {
             position:absolute;
             top: 35px;
             left: -30px;

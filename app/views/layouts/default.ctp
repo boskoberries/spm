@@ -33,8 +33,7 @@
                 	   <a href="/" class="logo" >SPORTS MEMES</a>
                 	</div>
                 	<div class="nine columns">
-	                    <nav class="global">
-							
+							<nav class="global nine columns">
 								<ul class="nav-links">
 									<? $i = 1;?>
 									<?/*<? foreach($leagues as $league){
@@ -46,24 +45,25 @@
 										$i++;
 									 } ?> */?>
 									<li><a href="/football" class="nav-link ">Football</a></li>
-         							<li><a href="/basketball" class="nav-link ">Basketball</a></li>
-         							<li><a href="/baseball" class="nav-link ">Baseball</a></li>
-         							<li><a href="/hockey" class="nav-link ">Hockey</a></li>
-         							<li><a href="/soccer">Soccer</a></li>
-         							<?/* <li class="has-children">
-     									<a href="#" class="nav-link ">Other Sports <span class="icon-down"></span></a>
-     									<ul class="">
-     										<li><a href="/soccer">Soccer</a></li>
-     										<li><a href="/tennis">Tennis</a></li>
-     										<li><a href="/nascar">NASCAR</a></li>
-     									</ul>
-     								</li> */?>
-         							<li><a href="/" class="nav-link ">All Sports</a></li>
-         							<li><a id="createYourOwn" href="/memes/create" class="nav-link button">Create Your Own!</a></li>
-         						</ul>	
-         					
+	     							<li><a href="/basketball" class="nav-link ">Basketball</a></li>
+	     							<li><a href="/baseball" class="nav-link ">Baseball</a></li>
+	     							<li><a href="/hockey" class="nav-link ">Hockey</a></li>
+	     							<li><a href="/soccer">Soccer</a></li>
+	     							<?/* <li class="has-children">
+	 									<a href="#" class="nav-link ">Other Sports <span class="icon-down"></span></a>
+	 									<ul class="">
+	 										<li><a href="/soccer">Soccer</a></li>
+	 										<li><a href="/tennis">Tennis</a></li>
+	 										<li><a href="/nascar">NASCAR</a></li>
+	 									</ul>
+	 								</li> */?>
+	     							<li><a href="/" class="nav-link ">All Sports</a></li>
+	     							<!-- <li><a id="createYourOwn" href="/memes/create" class="nav-link button">Create Your Own!</a></li> -->
+	     						</ul>	    
 						</nav>
+						<a id="createYourOwn" href="/memes/create" class="nav-link button right three columns">Create Your Own!</a>
 					</div>	
+
 	            </div>
 	    </div>  
 	    <div id="subnav">
