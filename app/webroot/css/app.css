@@ -1182,11 +1182,9 @@ background: #FFB32C;
 }
 
 .control-panel{
-	float:left;
 	background-color:#ccc;
 	padding:5px 10px;
 	border:1px solid #999;
-  min-width: 380px;
 }
 .bubble-font{
 	color:#fff;
@@ -1201,7 +1199,9 @@ background: #FFB32C;
 	clear:both;
 	margin-bottom:15px;
   position: relative;
+  width: 100%;
 }
+
 .panel-ct span{
 	float:left;
 }
@@ -1213,9 +1213,11 @@ background: #FFB32C;
     margin-top:0px;
 }
 .panel-ct input[type="submit"]{
-    font-size:18px;
-    padding:19px 34px;
-    left:13%;
+  /*  font-size:18px;*/
+    padding:19px;
+    width: 75%;
+    font-size: 1.2em;
+/*    left:13%;*/
 }
 #meme-title{
     width:250px;
@@ -1304,10 +1306,7 @@ span.delete{
     box-shadow:0 4px 8px -5px #777 inset;
 }
 .push-right{float:right;}
-.select-inputs{
-	float:left;
-	margin-left:90px;
-}
+
 .delete-button{
 	/*background-color:#333;*/
 	padding:0 5px;
@@ -1320,7 +1319,7 @@ span.delete{
 	background-color:#333;
 }
 input.caption-txt-input{
-    width: 70%;
+   /* width: 70%;*/
     font-size: 14px;
 }
 textarea.caption-txt-input{

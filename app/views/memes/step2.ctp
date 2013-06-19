@@ -14,7 +14,7 @@
 
 	<img id="meme-image-size" src="/img/user_memes/<?=$data['meme']['Meme']['image_url_original']?>" class="hide" />
 
-	<div id="controlPanel" class="control-panel four columns">
+	<div id="controlPanel" class="control-panel four columns left">
 	<form action="/memes/step2/<?=$data['meme']['Meme']['id']?>" method="post" target="_blank">
 
 		<div class="panel-top">	
@@ -118,7 +118,7 @@
 				<input type="text" id="tag-search" name="data[meme][tags]" value="" placeholder="Add tags here" />			
 			</div>
 			
-			<div class="panel-ct">
+			<div class="panel-ct center">
 				<br />
 				<input type="submit" class="button" value="GENERATE YOUR MEME!" />
 			</div>	
@@ -130,7 +130,11 @@
 		<h2 class="meme-title"><?=ucwords($data['meme']['Meme']['title'])?></h2>
 		<? } ?>
 		
-		<div id="containable" class="step1-img ">
+		<div id="containable" class="step1-img clear">
+			<? if(isset($data['remake'])){ ?>
+			<h2 class="meme-title"><?=ucwords($data['meme']['Meme']['title'])?></h2>
+			<? } ?>
+			
 			<? if(isset($data['remake']) && !empty($data['meme']['MemeCaption'])){?>
 				<? $z = 1;?>
 				<? foreach($data['meme']['MemeCaption'] as $caption){?>
