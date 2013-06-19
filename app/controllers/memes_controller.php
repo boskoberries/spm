@@ -514,7 +514,7 @@ class MemesController extends AppController {
 	
 	function users($user_id=null){
 		$user_id = $this->checkId($user_id,'User');
-		if(empty($user_id) || $user_id=null || $user_id<0){
+		if(empty($user_id) || $user_id==null || $user_id<0){
 			$user = $this->Auth->user();
 			if(!empty($user)){
 				$user_id = $user['User']['id'];
@@ -523,9 +523,13 @@ class MemesController extends AppController {
 			}
 		} 
 		$data['user'] = $this->User->find('first',array('conditions'=>array('User.id'=>$user_id)));
+		if(empty($data['user'])){
+			$this->redirect('/memes');				
+		}
+
 		$data['sort'] = $this->Meme->getSortParam($_GET,$this->params);
 		$data['memes'] = $this->Meme->findAllByUserId($user_id);
-		$this->set('data',$data);
+			$this->set('data',$data);
 	}
 
 	function saveFavorite(){
