@@ -27,6 +27,14 @@
 		<![endif]-->
 	</head>
 	<body>
+		<div id="fb-root"></div>
+		<script>(function(d, s, id) {
+		  var js, fjs = d.getElementsByTagName(s)[0];
+		  if (d.getElementById(id)) return;
+		  js = d.createElement(s); js.id = id;
+		  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=378957218792212";
+		  fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));</script>
    		<div class="global-header">
         	    <div id="mainNavRow" class="row">
                 	<div class="three columns">
@@ -58,7 +66,6 @@
 	 									</ul>
 	 								</li> */?>
 	     							<li><a href="/" class="nav-link ">All Sports</a></li>
-	     							<!-- <li><a id="createYourOwn" href="/memes/create" class="nav-link button">Create Your Own!</a></li> -->
 	     						</ul>	    
 						</nav>
 						<a id="createYourOwn" href="/memes/create" class="nav-link button right three columns">Create Your Own!</a>
@@ -67,6 +74,9 @@
 	            </div>
 	    </div>  
 	    <div id="subnav">
+	    	<div class="left">
+<!-- 	    		<div class="fb-like" data-href="http://sportsmemes.com" data-send="false" data-width="20" data-show-faces="false" data-font="lucida grande"></div> -->
+	    	</div>
 	    	<div class="right">
 	    		<a href="/memes/users/<?=$info['user']['User']['id']?>">Your memes (<?=(isset($info['meme_count']))?$info['meme_count']:0?>)</a>
 	    		&nbsp;|&nbsp;

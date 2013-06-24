@@ -1,9 +1,10 @@
-<div class="meme-entry relative <?=(isset($small))?$small:''?>" meme-id="<?=$m['Meme']['id']?>">
+<div class="meme-entry-wrap left">
+<div class="meme-entry left relative <?=(isset($small))?$small:''?>" meme-id="<?=$m['Meme']['id']?>">
 	<? if(isset($data['isAdmin'])){?>
 		<a href="#" class="delete-meme hide icon-delete" meme-id="<?=$m['Meme']['id']?>"></a>
 	<? } ?>
 	<div class="title"><?=$m['Meme']['title']?></div>
-	<a href="/memes/view/<?=$m['Meme']['url']?>">
+	<a class="meme-link" href="/memes/view/<?=$m['Meme']['url']?>">
 		<img class="meme" src="/img/user_memes/<?=$m['Meme']['image_url_medium']?>" />
 	</a>
 	<div class="action-box hide">
@@ -28,4 +29,5 @@
 <?/*		<div class="star" <? if(isset($m['Meme']['user_rating'])) echo "data-rating=\"{$m['Meme']['user_rating']}\"";?>></div>*/?>
 	</div>				
 
+</div>
 </div>

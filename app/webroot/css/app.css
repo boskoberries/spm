@@ -1355,36 +1355,6 @@ a:hover{
     text-decoration:underline;
 }
 
-.meme-entry{
-	float:left;
-	margin:0 10px 0 0;
-    position:relative;
-    min-width:100px;
-    max-width:300px;
-}
-.meme-entry:hover div.action-box{
-    display:block;
-}
-a.delete-meme{
-    position: absolute;
-    top:0;
-    left:0;
-}
-.meme-entry:hover a.delete-meme{
-    display: block;
-}
-
-.child-count{
-    position:absolute;
-    right:2px;
-    top:0px;
-}
-.meme-entry:hover .child-count{
-    display:block;
-}
-/*.meme-entry:nth-child(4n){
-    clear:left;
-}*/
 .meme-entry img.meme{
 	/*width:150px;
 	height:150px;*/

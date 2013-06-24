@@ -1,5 +1,7 @@
+.meme-entry-wrap{
+  min-height: 370px;
+}
 .meme-entry{
-	float:left;
 	margin:0 10px 0 0;
     position:relative;
     min-width:100px;
