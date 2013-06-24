@@ -2,7 +2,7 @@
 class SearchController extends AppController {
 
 	var $name = 'Search';
-	var $uses = array('Meme');
+	var $uses = array('Meme','Team');
 
 	function beforeFilter(){
 		$this->Auth->allow('*');
@@ -22,7 +22,7 @@ class SearchController extends AppController {
 		$return_array = array();
 
 		if(strlen($term)>2){
-			$return_array = $this->Meme->findSearchResults($term);
+			$return_array = $this->Team->searchTeamsByTerm($term);
 		}
 		//print json_encode($data);
 		echo json_encode($return_array);

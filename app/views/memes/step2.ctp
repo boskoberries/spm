@@ -1,9 +1,14 @@
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+
 <style type="text/css">
 .step1-img{
 	background: url("/img/user_memes/<?=$data['meme']['Meme']['image_url_original']?>") no-repeat scroll 0 0 transparent;
 	width: <?=$data['dimensions'][0]?>px;
 	width: 100%;
 	height: <?=$data['dimensions'][1]?>px;		
+}
+.ui-autocomplete-loading {
+	opacity: 0.6;
 }
 </style>
 <?=$javascript->link('/js/jquery.quickfit.js')?>

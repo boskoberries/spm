@@ -91,7 +91,7 @@ $(document).ready(function(){
 					<? if($i==1){ ?>
 						<div class="carousel-page current" page="1">
 					<? } ?>
-					<div class="meme-entry small">
+					<div class="meme-entry left small">
 						<a class="left" href="/memes/add/<?=$meme['Meme']['url']?>" title="<?=$meme['Meme']['title']?>">
 							<img class="meme" src="/img/user_memes/<?=$meme['Meme']['image_url_medium']?>" />
 						</a>
