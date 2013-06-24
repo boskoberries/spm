@@ -67,13 +67,27 @@
 				<div class="panel-ct">
 					<label>Sport: <span class="required no-float">*</span></label>
 					<select name="data[meme][sport_id]" class="sport-select" >
-						<option value="">Select A Sport</option>
-						<? foreach($data['sports'] as $sport){ ?>
-						<option value="<?=$sport['Sport']['id']?>"><?=$sport['Sport']['name']?></option>
-						<? } ?>
+						<optgroup label="Football">
+							<option value="1">NFL</option>
+							<option value="1">NCAAF</option>
+							<option value="1">General</option>
+						</optgroup>
+						<optgroup label="Basketball">
+							<option value="1">NBA</option>
+							<option value="1">NCAAB</option>
+							<option value="1">General</option>
+						</optgroup>
+						<optgroup label="Baseball">
+							<option value="1">MLB</option>
+							<option value="1">General</option>
+						</optgroup>
+						<option value="">Tennis</option>
+						<option value="">Hockey</option>
+						<option value="">Golf</option>
+						<option value="">Tennis</option>
 					</select>	
 				</div>
-				<div id="subSelectLeague" class="panel-ct">
+				<!-- <div id="subSelectLeague" class="panel-ct">
 					<label>League: </label>
 					<select name="data[meme][league_id]" class="league-select">			
 						<option value="">Select A League</option>
@@ -85,8 +99,8 @@
 						<? }
 					} ?>
 					</select>
-				</div>
-				<div id="subSelectTeam" class="panel-ct">
+				</div> -->
+				<!-- <div id="subSelectTeam" class="panel-ct">
 					<label>Team: </label>
 					<select name="data[meme][team_id][]" class="team-select">
 						<option value="">Select A Team</option>
@@ -100,7 +114,7 @@
 					</select>
 					<br>
 					<a id="addAnotherTeam" class=" tight blue btn" href="#">Add another team</a>
-				</div>
+				</div> -->
 			<? } else {?>
 				<input id="parent-meme" type="hidden" name="data[meme][parent]" value="<?=$data['parent_id']?>" />
 			<? } ?>
