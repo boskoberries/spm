@@ -2,6 +2,13 @@
 class MemeTag extends AppModel {
 
 	var $name = 'MemeTag';
+	var $belongsTo = array(
+		'Meme' => array(
+			'className' => 'Meme',
+			'foreignKey' => 'meme_id',
+			'dependent' => false
+		)
+	);
 	var $hasMany = array(
 		// 'MemeCaption' => array(
 		// 	'className' => 'MemeCaption',

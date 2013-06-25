@@ -77,7 +77,7 @@
 			<b>Tags:</b>
 			<ul class="tag-list">
 				<? foreach($data['MemeTag'] as $tag){ ?>
-				<li><a href="/tags/<?=$tag['tag_name']?>"><?=$tag['tag_name']?></a></li>
+				<li><a href="/tags/view/<?=$tag['slug']?>"><?=$tag['tag_name']?></a></li>
 				<? } ?>
 			</ul>
 		</div>

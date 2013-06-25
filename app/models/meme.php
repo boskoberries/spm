@@ -30,8 +30,12 @@ class Meme extends AppModel {
 		for($i=0; $i<count($results); $i++ ) {
 			if(isset($results[$i]['Meme']['title'])){
 				$title=$results[$i]['Meme']['title'];
-				
 				$results[$i]['Meme']['url']=$this->getUrlPart($title.'-'.$results[$i]['Meme']['id']);
+			} 
+			if(isset($results[$i]['MemeTag'])){
+				for($z=0;$z<count($results[$i]['MemeTag']);$z++){
+					$results[$i]['MemeTag'][$z]['slug'] = $this->getUrlPart($results[$i]['MemeTag'][$z]['tag_name']);
+				}
 			}
 		}
 		return $results;

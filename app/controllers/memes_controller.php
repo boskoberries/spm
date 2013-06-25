@@ -478,9 +478,11 @@ class MemesController extends AppController {
 	function view($meme_id){
 
 		$meme_id = $this->checkId($meme_id);
-		$data=$this->Meme->read(null,$meme_id);
-
+		$data=$this->Meme->find('first',array('conditions'=>array('Meme.id'=>$meme_id)));
 		if(empty($data)){
+			$this->redirect('/memes/browse');
+		} elseif($data['Meme']['deleted']==1 || $data['Meme']['active']==0){
+			$this->Session->setFlash('This meme is no longer visible.');
 			$this->redirect('/memes/browse');
 		}
 		$data['user_id'] = $this->Auth->user('id');
@@ -530,7 +532,7 @@ class MemesController extends AppController {
 
 		$data['sort'] = $this->Meme->getSortParam($_GET,$this->params);
 		$data['memes'] = $this->Meme->findAllByUserId($user_id);
-			$this->set('data',$data);
+		$this->set('data',$data);
 	}
 
 	function saveFavorite(){
