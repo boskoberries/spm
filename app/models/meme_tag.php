@@ -10,12 +10,12 @@ class MemeTag extends AppModel {
 		// )
 	);
 
-	function saveTags($meme_id,$tag_list){
+	function saveTags($meme_id,$tag_list,$user_id){
 		$tag_array = explode(",",$tag_list);
 		$Tag = ClassRegistry::init('Tag');
 		foreach($tag_array as $t){
 			if(trim($t)!=''){
-				$tag_id = $Tag->findAndReturn($t);
+				$tag_id = $Tag->findAndReturn($t,$user_id);
 				$info = array('meme_id'=>$meme_id,'tag_id'=>$tag_id['id'],'tag_name'=>$tag_id['name'],
 				'created'=>date('Y-m-d H:i:s'));
 				$this->create();

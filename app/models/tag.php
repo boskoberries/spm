@@ -10,11 +10,19 @@ class Tag extends AppModel {
 		// )
 	);
 
-	function findAndReturn($tag_name){
+	function findAndReturn($tag_name,$user_id){
 		$row = $this->find('first',array('conditions'=>array("name"=>$tag_name)));
 		if(empty($row)){
-			$info = array('name'=>ucwords(strtolower($tag_name)),'created'=>date('Y-m-d H:i:s'));
-			$this->create();
+			$info = array(
+				'name'=>ucwords(strtolower($tag_name)),
+				'created'=>date('Y-m-d H:i:s'),
+				'user_id'=>$user_id,
+				'ip_address'=>$_SERVER['REMOTE_ADDR']
+			);
+			if(!is_numeric(($user_id))){
+				$info['user_id']=0;
+			}
+			$this->create(false);
 			$this->save($info);
 			$tag_id = $this->id;
 		} else{

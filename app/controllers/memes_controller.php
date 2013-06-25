@@ -225,13 +225,13 @@ class MemesController extends AppController {
   		$this->loadModel('MemeTag');
   		
   		if(!empty($this->data)){
-
+  		//	pr($this->data);exit;
 			if(isset($this->data['meme']['parent'])){
 				$new_meme = $this->Meme->baseOnParent($this->data['meme']['parent']);
 				$this->Meme->create();
 				$this->Meme->save($new_meme);
 				$data['meme_id'] = $this->Meme->id;			
-				
+				$meme_img = $this->Meme->find('first',array('conditions'=>array('Meme.id'=>$meme_id)));
 			}
 			else{
 				$data['meme_id']=$meme_id;
@@ -263,7 +263,8 @@ class MemesController extends AppController {
   			}
   			
 			$image_file = WWW_ROOT.'img/user_memes/'.$meme_img['Meme']['image_url_original'];
-			
+//			pr($this->data['meme']['league_id']);exit;
+
   			$meme = array('id'=>$data['meme_id'],
   				'title'=>(isset($new_meme))?$new_meme['title']:$this->data['meme']['title'],
   				'public' => ($this->data['meme']['public']=='1')?1:0,
@@ -347,7 +348,7 @@ class MemesController extends AppController {
 					// 	exit;
 					// }
 					for($z=0; $z< count($lines); $z++){
-						$newY = $y_coord + ($z * $font_size * 1);//-5;//adding 10 for bottom padding considerations.
+						$newY = $y_coord + ($z * $font_size * 1)-5;//adding 5 for bottom padding considerations.
 						if($z>0){
 							// print $newY;
 							// print "font ".$font_size;
@@ -363,7 +364,7 @@ class MemesController extends AppController {
 				    }
 				}
 			}
-			$this->Meme->imagettfstroketext($image, 9, 0, ($image_height[0]-100), ($image_height[1]-2), $font_color, $stroke_color, $font_file, 'SPORTSMEMES.COM', 1);
+			$this->Meme->imagettfstroketext($image, 8, 0, ($image_height[0]-90), ($image_height[1]-2), $font_color, $stroke_color, $font_file, 'SPORTSMEMES.COM', 1);
 
 			$new_path = WWW_ROOT."/img/user_memes/".$meme['image_url'];	
 			$cropped_path = WWW_ROOT."/img/user_memes/".$meme['image_url_medium'];
@@ -408,7 +409,7 @@ class MemesController extends AppController {
 			$this->Meme->set($meme);
 			$this->Meme->save();
 		
-			$this->MemeTag->saveTags($data['meme_id'],$this->data['meme']['tags']);
+			$this->MemeTag->saveTags($data['meme_id'],$this->data['meme']['tags'],$this->Auth->user('id'));
 
 			$this->redirect('/memes/view/'.$data['meme_id']);
 			exit;

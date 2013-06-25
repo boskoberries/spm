@@ -300,7 +300,7 @@ class Meme extends AppModel {
   	}
 
   	function baseOnParent($parent_id){
-  		$meme_img = $this->Meme->find('first',array("conditions"=>array("Meme.id"=>$parent_id)));
+  		$meme_img = $this->find('first',array("conditions"=>array("Meme.id"=>$parent_id)));
   		$new_meme = array(
   			'title'=>$meme_img['Meme']['title'],
   			'type_id'=>$meme_img['Meme']['type_id'],

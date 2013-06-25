@@ -67,7 +67,7 @@
 				</div>	
 				<div class="panel-ct">
 					<label>Sport: <span class="required no-float">*</span></label>
-					<select name="data[meme][sport_id]" class="sport-select" >
+					<!-- <select name="data[meme][sport_id]" class="sport-select" >
 						<optgroup label="Football">
 							<option value="1">NFL</option>
 							<option value="1">NCAAF</option>
@@ -86,21 +86,21 @@
 						<option value="">Hockey</option>
 						<option value="">Golf</option>
 						<option value="">Tennis</option>
-					</select>	
-				</div>
-				<!-- <div id="subSelectLeague" class="panel-ct">
-					<label>League: </label>
-					<select name="data[meme][league_id]" class="league-select">			
-						<option value="">Select A League</option>
-						<? foreach($data['sports'] as $sport){
-						foreach($sport['League'] as $league){ ?>
+					</select> -->	
+
+					<select name="data[meme][league_id]" class="sport-select">			
+						<!-- <option value="">Select A League</option> -->
+					<? foreach($data['sports'] as $sport){ ?>
+						<optgroup label="<?=$sport['Sport']['name']?>">
+						<? foreach($sport['League'] as $league){ ?>
 							<option sport-id="<?=$sport['Sport']['id']?>" value="<?=$league['id']?>">
 								<?=$league['name']?>
 							</option>
-						<? }
-					} ?>
+						<? } ?>
+						</optgroup>
+					<? } ?>
 					</select>
-				</div> -->
+				</div>
 				<!-- <div id="subSelectTeam" class="panel-ct">
 					<label>Team: </label>
 					<select name="data[meme][team_id][]" class="team-select">
@@ -137,7 +137,6 @@
 				<label>Tag(s): </label>
 				<div class="mini-wrap left">
 					<input type="text" id="tag-search" name="data[meme][tags]" value="" placeholder="Add tags here" />
-					<br>		
 					<small class="">Ie New York Knicks, Carmelo Anthony, etc.</small>		
 				</div>
 			</div>
@@ -155,9 +154,6 @@
 		<? } ?>
 		
 		<div id="containable" class="step1-img clear">
-			<? if(isset($data['remake'])){ ?>
-			<h2 class="meme-title"><?=ucwords($data['meme']['Meme']['title'])?></h2>
-			<? } ?>
 			
 			<? if(isset($data['remake']) && !empty($data['meme']['MemeCaption'])){?>
 				<? $z = 1;?>
