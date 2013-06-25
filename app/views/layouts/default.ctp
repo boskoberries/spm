@@ -75,12 +75,16 @@
 	    </div>  
 	    <div id="subnav">
 	    	<div class="left">
-<!-- 	    		<div class="fb-like" data-href="http://sportsmemes.com" data-send="false" data-width="20" data-show-faces="false" data-font="lucida grande"></div> -->
+<!--<div class="fb-like" data-href="http://sportsmemes.com" data-send="false" data-width="20" data-show-faces="false" data-font="lucida grande"></div> -->
 	    	</div>
 	    	<div class="right">
+	    		<? if(isset($info['user']['User']['id'])){ ?>
 	    		<a href="/memes/users/<?=$info['user']['User']['id']?>">Your memes (<?=(isset($info['meme_count']))?$info['meme_count']:0?>)</a>
+	    		<? } else { //logged out ?>
+	    		<a href="/memes/users/">Your memes (<?=(isset($info['meme_count']))?$info['meme_count']:0?>)</a>
 	    		&nbsp;|&nbsp;
 		    	<a href="/users/favorites">Your favorites (<?=(isset($info['fav_count']))?$info['fav_count']:0?>)</a>&nbsp;|&nbsp;
+		    	<? } ?>
 		    	<? if(isset($info['user']) && !empty($info['user'])){ ?>
 		    	<span class="logged-in bold">Logged in as: <?=$info['user']['User']['username']?></span>
 		    	<a href="/users/logout">(sign out)</a>

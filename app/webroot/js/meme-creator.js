@@ -377,44 +377,65 @@ $.fn.toUnit = function (unit, settings) {
 	  return split( term ).pop();
 	}
 
-	$("#tag-search")
-		.bind( "keydown", function( event ) {
-		  if ( event.keyCode === $.ui.keyCode.TAB &&
-		      $( this ).data( "ui-autocomplete" ).menu.active ) {
-		    event.preventDefault();
-		  }
-		})
-		.autocomplete({
+	$("#tag-search").tagit({
+		autocomplete: {
+		  minLength: 2,
+		  delay: 0,
 		  source: function( request, response ) {
 		    $.getJSON( "/search", {
 		      term: extractLast( request.term )
 		    }, response );
-		  },
-		  search: function() {
-		    // custom minLength
-		    var term = extractLast( this.value );
-		    if ( term.length < 2 ) {
-		      return false;
-		    }
-		  },
-		  focus: function() {
-		    // prevent value inserted on focus
-		    return false;
-		  },
-		  select: function( event, ui ) {
-		    var terms = split( this.value );
-		    // remove the current input
-		    terms.pop();
-		    // add the selected item
-		    terms.push( ui.item.value );
-		    // add placeholder to get the comma-and-space at the end
-		    terms.push( "" );
-		    this.value = terms.join( ", " );
-		    return false;
-		  }
-		});
+	  		}
+	  	},		
+	  	allowSpaces:true,
+	  	tagLimit: 6,
+	  	beforeTagAdded: function(event, ui) {
+	  	    // do something special
+	  	    console.log('tag about to be added. '+ui.tag);
+	  	},
+	  	onTagLimitExceeded: function(event,ui){
+	  		alert('You have added enough tags!  Move on..');
+	  	}
+	});
 
-		//});
+	// $("#tag-search")
+	// 	.bind( "keydown", function( event ) {
+	// 	  if ( event.keyCode === $.ui.keyCode.TAB &&
+	// 	      $( this ).data( "ui-autocomplete" ).menu.active ) {
+	// 	    event.preventDefault();
+	// 	  }
+	// 	})
+	// 	.autocomplete({
+	// 	  source: function( request, response ) {
+	// 	    $.getJSON( "/search", {
+	// 	      term: extractLast( request.term )
+	// 	    }, response );
+	// 	  },
+	// 	  search: function() {
+	// 	    // custom minLength
+	// 	    var term = extractLast( this.value );
+	// 	    if ( term.length < 2 ) {
+	// 	      return false;
+	// 	    }
+	// 	  },
+	// 	  focus: function() {
+	// 	    // prevent value inserted on focus
+	// 	    return false;
+	// 	  },
+	// 	  select: function( event, ui ) {
+	// 	    var terms = split( this.value );
+	// 	    // remove the current input
+	// 	    terms.pop();
+	// 	    // add the selected item
+	// 	    terms.push( ui.item.value );
+	// 	    // add placeholder to get the comma-and-space at the end
+	// 	    terms.push( "" );
+	// 	    this.value = terms.join( ", " );
+	// 	    return false;
+	// 	  }
+	// 	});
+
+	// 	//});
 
 	$('#meme-image-size').load(function(){
 		var w =    $(this).width();

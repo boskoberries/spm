@@ -4,3 +4,10 @@
 select.team-select.indented{
 	margin-left:92px;	
 }
+ul.tagit {
+	width: 250px;
+	font-size: 12px;
+	border:1px solid #999999;
+	border-radius: 0;	
+	padding: 6px 4px;
+}

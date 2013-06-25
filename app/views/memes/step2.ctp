@@ -11,10 +11,11 @@
 	opacity: 0.6;
 }
 </style>
+<?=$javascript->link('/js/tag-it.min.js')?>
 <?=$javascript->link('/js/jquery.quickfit.js')?>
 <?=$javascript->link('/js/meme-creator.js')?>
 <?=$html->css('create.css')?>
-
+<?=$html->css('jquery.tagit.css')?>
 <div class="row">
 
 	<img id="meme-image-size" src="/img/user_memes/<?=$data['meme']['Meme']['image_url_original']?>" class="hide" />
@@ -134,7 +135,11 @@
 
 			<div class="panel-ct">
 				<label>Tag(s): </label>
-				<input type="text" id="tag-search" name="data[meme][tags]" value="" placeholder="Add tags here" />			
+				<div class="mini-wrap left">
+					<input type="text" id="tag-search" name="data[meme][tags]" value="" placeholder="Add tags here" />
+					<br>		
+					<small class="">Ie New York Knicks, Carmelo Anthony, etc.</small>		
+				</div>
 			</div>
 			
 			<div class="panel-ct center">
