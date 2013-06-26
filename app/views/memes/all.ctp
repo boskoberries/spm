@@ -16,10 +16,10 @@
 
 	<div class="sorting-links">
 		<b>Sort By:</b>
-		<a href="?sort=rating" class="<?=($data['sort']=='rating')?'active':''?>" title="rating">Most Popular</a>&nbsp;|&nbsp;
-		<a href="?sort=viewcount" class="<?=($data['sort']=='viewcount')?'active':''?>" title="most views">View Count</a>&nbsp;|&nbsp;
-		<a href="?sort=newest" class="<?=($data['sort']=='newest')?'active':''?>" title="newest">Newest</a>&nbsp;|&nbsp;
-		<a href="?sort=oldest" class="<?=($data['sort']=='oldest')?'active':''?>" title="oldest">Oldest</a>&nbsp;|&nbsp;
+		<a href="?sort=rating" class="<?=($data['sort']=='rating' || $data['sort']=='')?'active':''?>" title="rating">Most Popular</a>
+		<a href="?sort=viewcount" class="<?=($data['sort']=='viewcount')?'active':''?>" title="most views">View Count</a>
+		<a href="?sort=newest" class="<?=($data['sort']=='newest')?'active':''?>" title="newest">Newest</a>
+		<a href="?sort=oldest" class="<?=($data['sort']=='oldest')?'active':''?>" title="oldest">Oldest</a>
 		<a href="?sort=random" class="<?=($data['sort']=='random')?'active':''?>" title="Random">Random</a>
 	</div>
 

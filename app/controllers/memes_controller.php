@@ -242,7 +242,7 @@ class MemesController extends AppController {
   				$caption_count=count($this->data['caption']['body']);
   				$this->MemeCaption->deleteAll(array('meme_id'=>$data['meme_id'])); //remove previously saved memes here first.
   				for($i=0;$i<$caption_count;$i++){
-					$data['body']=$this->data['caption']['body'][$i];
+					$data['body']=str_replace('01230','',$this->data['caption']['body'][$i]);
 					if(!empty($this->data['caption']['auto_size'][$i]) && !is_numeric($this->data['caption']['size'][$i])){
 						$data['font_size']=$this->data['caption']['auto_size'][$i];
 					}
