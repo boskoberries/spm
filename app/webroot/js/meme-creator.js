@@ -474,14 +474,37 @@ $.fn.toUnit = function (unit, settings) {
 			           console.log(words[i-1]);
 			       }
 		      } */
-
+		 	
+			console.log(word_array);
 			console.log(text);
+			//console.log(result);
+			//return false;
 			//console.log(text);
-			var first = $('<pre class="identifier">'+text.charAt(0)+'</pre>');
-			$obj.find("span").html(text.substring(1)).prepend(first);
+			//var first = $('<pre class="identifier">'+text.charAt(0)+'</pre>');
+	     	//console.log("height "+$obj.height());
+	     	//console.log("first - "+first.height());			
+			//$obj.find("span").html(text.substring(1)).prepend(first);
+
+		    var word_array = text.split(' ');
+			var len = word_array.length;
+			result = [];
+			for(var z=0;z<len;z++){
+				if(z==0){//first word.
+					var first_letter = word_array[z].charAt(0);
+					word_array[z].substr(1);
+					result[z] = '<pre class="idf"><pre class="identifier">'+first_letter+'</pre>'+word_array[z].substr(1)+'</pre>';
+				} else{
+					result[z] = '<pre class="idf">'+word_array[z]+'</pre>';
+				}
+			}	     
+			$obj.find("span").html(result.join(' '));
+
 			var $first_letter = $obj.find("pre.identifier");
 			if($first_letter.length){
-				console.log('wtf!')
+				// console.log('wtf!')
+				// console.log("height "+$obj.height());
+				// console.log("first - "+$first_letter.position());			
+
 				var $block = $("#controlPanel").find("div.panel-ct[capt-num="+$obj.attr("capt-num")+"]");
 				$block.find("input.caption-pos-left").val($obj.position().left);
 				$block.find("input.caption-pos-top").val($obj.position().top);
@@ -489,13 +512,37 @@ $.fn.toUnit = function (unit, settings) {
 				$block.find("input.caption-first-letter-left").val($first_letter.position().left);
 				$block.find("input.caption-first-letter-top").val($obj.position().top+$first_letter.height());
 
+				//now loop through and see if we can find the line break.
+				var first_word_top = $first_letter.parent("pre.idf").position().top;
+				var newLine = false;
+				var x = 0;
+				$obj.find("pre.idf").each(function(){
+					if(!newLine && $(this).position().top > first_word_top){
+						newLine=x;
+						console.log("WE FOUND A NEW LINE AT WORD "+x+" the word? "+$(this).text());
+						$block.find("input.caption-txt").
+						return;
+					}
+					x++;
+				});
+				if(newLine!==false){
+					//newLine = the nth word in the sentence. now have to pass an identifier through to the input so we know where to do the word break!
+					var words = $block.find(".caption-txt-input").val().split(' ');
+					for(var word_number in words){
+						if(word_number==newLine){
+							words[word_number] = '01230'+words[word_number];
+						}
+					}
+					$block.find(".caption-txt-input").val(words.join(' '));	
+					console.log(' i think i did it.  '+words.join(' '));
+				}
 
 			}
-			else{
-				console.log('niet');
+			else{ //shouldn't make it here.
+				//console.log('niet');
 			}
 
-
+			//consol.log()
 		});
 		//return false;
 		//return false;

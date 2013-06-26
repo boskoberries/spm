@@ -325,7 +325,7 @@ class MemesController extends AppController {
 
 			// Write the text
 			if(isset($caption_count)){
-				$this->data['caption']['body'][1] = str_replace("like them apples ","\nlike them apples",$this->data['caption']['body'][1]);
+				//$this->data['caption']['body'][1] = str_replace("like them apples ","\nlike them apples",$this->data['caption']['body'][1]);
 				for($i=0;$i<$caption_count;$i++){
 					// x and y for the bottom right of the text so it expands like right aligned text
 					$x_coord = $this->data['caption_coords']['letter_left'][$i]+2;//for padding.
@@ -342,24 +342,32 @@ class MemesController extends AppController {
 						$this->data['caption']['body'][$i]= strtoupper($this->data['caption']['body'][$i]);
 					}
 
-					$lines=explode("\n",$this->data['caption']['body'][$i]);
+					//$lines=explode("\n",$this->data['caption']['body'][$i]);
+					$lines = preg_split("/(\n|01230)/",$this->data['caption']['body'][$i]);
 					// if($i==1){
+					// 	pr($this->data);
 					// 	pr($lines);
 					// 	exit;
 					// }
+					$stroke_width = 3;
+					// if($font_size<65){
+					// 	$stroke_width=2;
+					// }
+//					print $font_size;exit;
 					for($z=0; $z< count($lines); $z++){
 						$newY = $y_coord + ($z * $font_size * 1)-5;//adding 5 for bottom padding considerations.
 						if($z>0){
 							// print $newY;
 							// print "font ".$font_size;
 							// exit;
-							$newY += 5; //for line height.. $font_size;
+							$newY += ($stroke_width*2);//add extra cushion for stroke width top and bottom.//5; //for line height.. $font_size;
 						}
 						// pr($newY);
 						// if($z==1){
 						// 	exit;
 						// }
-						$this->Meme->imagettfstroketext($image, $font_size, 0, $x_coord, $newY, $font_color, $stroke_color, $font_file, $lines[$z], 3);
+
+						$this->Meme->imagettfstroketext($image, $font_size, 0, $x_coord, $newY, $font_color, $stroke_color, $font_file, $lines[$z], $stroke_width);
 						
 				    }
 				}

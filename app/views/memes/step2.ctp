@@ -126,10 +126,12 @@
 
 			<div class="panel-ct">
 				<label>Created By:</label>
-				<input type="radio" name="data[meme][creator]" value="anon" checked="checked" /> Anonymous
+				<label><input type="radio" name="data[meme][creator]" value="anon" checked="checked" /> Anonymous</label>
 				<br />
-				<input type="radio" name="data[meme][creator]" value="user" /> 
+				<label>
+					<input type="radio" name="data[meme][creator]" value="user" /> 
 					<?=(!empty($data['user']))?$data['user']['User']['username']:'Username'?>
+				</label>
 			</div>
 
 

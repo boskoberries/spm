@@ -336,7 +336,7 @@ class Meme extends AppModel {
   	 * @see http://us.php.net/manual/en/function.imagettftext.php
   	 */
   	function imagettfstroketext(&$image, $size, $angle, $x, $y, &$textcolor, &$strokecolor, $fontfile, $text, $px) {
-  	 
+  	 	//print $size;exit;
   	    for($c1 = ($x-abs($px)); $c1 <= ($x+abs($px)); $c1++)
   	        for($c2 = ($y-abs($px)); $c2 <= ($y+abs($px)); $c2++)
   	            $bg = imagettftext($image, $size, $angle, $c1, $c2, $strokecolor, $fontfile, $text);
