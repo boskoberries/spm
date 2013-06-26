@@ -933,17 +933,22 @@ div.slider-nav span.left {
 		/* Currently unused */
 	}
 	
-	
+	@media only screen and (max-width: 930px) {
+		div.global-header a.logo{ 
+			font-size: 28px !important;
+		}
+	}
+
 	/* Mobile */
 	@media only screen and (max-width: 767px) {
 		body { -webkit-text-size-adjust: none; }
 		
-		.row, body, .container { width: 100%; min-width: 0; margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; }
+		.row, body, .container { width: 100%; min-width: 0; margin-left: 0px; margin-right: 0px; margin-bottom: 10px; padding-left: 0px; padding-right: 0px; }
 		.row .row .column, .row .row .columns { padding: 0; }
 		.column, .columns { width: auto !important; float: none; margin-left: 0px; margin-right: 0px; padding-left: 20px; padding-right: 20px; }
 		.column:last-child, .columns:last-child { margin-right: 0px; }
 		#createYourOwn{ float:left; clear:both; }
-		nav.global a{ font-size: 12px !important;}
+		nav.global a{ font-size: 14px !important;}
 		.offset-by-one, .offset-by-two, .offset-by-three, .offset-by-four, .offset-by-five, .offset-by-six, .offset-by-seven, .offset-by-eight, .offset-by-nine, .offset-by-ten, .offset-by-eleven, .centered { margin-left: 0% !important; }
 		
 		

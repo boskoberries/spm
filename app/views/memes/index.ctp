@@ -3,20 +3,25 @@
 
 <div class="row">
 
-	<h2>Popular Memes</h2>
-	<div class="clear"></div>	
-	<div class="sorting-links">
-		<select id="sportSelect">
+	<h2>
+		<span class="left">Popular Memes</span>
+		<select id="sportSelect" class="left">
 			<option value="">All Sports</option>
 			<? foreach($data['sports'] as $sport){ ?>
 			<option value="<?=strtolower($sport['Sport']['name'])?>"><?=$sport['Sport']['name']?></option>
 			<? } ?>
 		</select>
+	</h2>
+
+	
+	<div class="clear"></div>	
+	<div class="sorting-links">
+		
 		<b>Most Popular:</b>
-		<a href="?sort=2" class="<?=(!isset($data['sort']) || $data['sort']=='' || $data['sort']=='2')?'active':''?>" title="most popular last 2 days">Right Now</a>&nbsp;|&nbsp;
-		<a href="?sort=7" class="<?=($data['sort']=='7')?'active':''?>" title="most popular last 7 days">Past Week</a>&nbsp;|&nbsp;
-		<a href="?sort=30" class="<?=($data['sort']=='30')?'active':''?>" title="most popular last 30 days">This Month</a>&nbsp;|&nbsp;
-		<a href="?sort=all" class="<?=($data['sort']=='all')?'active':''?>" title="most popular all time">All-Time</a>&nbsp;|&nbsp;
+		<a href="?sort=2" class="<?=(!isset($data['sort']) || $data['sort']=='' || $data['sort']=='2')?'active':''?>" title="most popular last 2 days">Right Now</a>
+		<a href="?sort=7" class="<?=($data['sort']=='7')?'active':''?>" title="most popular last 7 days">Past Week</a>
+		<a href="?sort=30" class="<?=($data['sort']=='30')?'active':''?>" title="most popular last 30 days">This Month</a>
+		<a href="?sort=all" class="<?=($data['sort']=='all')?'active':''?>" title="most popular all time">All-Time</a>
 		<a href="?sort=new" class="<?=($data['sort']=='new')?'active':''?>">Newest</a>
 	</div>
 	<div id="all-entries">

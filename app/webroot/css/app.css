@@ -511,6 +511,11 @@
         
         a.active{
             color: #333333;
+            background: #000;
+            color: #fff;
+            padding: 1px 3px 2px 3px;
+            border: 0;
+            border-radius: 2px;            
         }
         .bold{
             font-weight: bold;
@@ -946,7 +951,7 @@ background: #FFB32C;
             float:left;
             color:#fff;
             margin-right:40px;
-            padding:10px 0 2px;
+            padding:2px 0 2px;
             font-size: 16px;
             border-bottom: 1px solid transparent;
         }
@@ -1510,7 +1515,7 @@ ul.tag-list li a:hover{
 #createYourOwn{
     padding: 7px 10px;
     margin-left: 0;
-    margin-top: 3px;
+    margin-top: 3px !important;
     text-shadow: none;
     box-shadow: 1px 1px 10px rgba(0,0,0,.3);
     text-transform: uppercase;
