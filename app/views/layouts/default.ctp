@@ -12,7 +12,7 @@
 		<?=$html->css('/css/app.css')?>
 <!--		<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 		<script src="http://code.jquery.com/jquery-migrate-1.1.1.min.js"></script>-->
-		<?//=$html->css('/js/jquery-ui-1.8.14.custom.css')?>
+		<?=$html->css('/js/jquery-ui-1.8.14.custom.css')?>
     	<?=$javascript->link('/js/jquery-1.9.1.min.js')?>
     	<?//=$javascript->link('/js/jquery-1.6.1.min.js')?>
     	<?//=$javascript->link('/js/jquery-ui-1.8.14.custom.min.js')?>

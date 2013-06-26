@@ -1530,3 +1530,22 @@ ul.tag-list li a:hover{
   width: 250px;
   font-weight: bold;
 }
+
+/** Autocomplete override **/
+.ui-autocomplete.ui-menu .ui-menu-item{
+  border-bottom: 1px solid #e9e9e9;
+}
+.ui-autocomplete.ui-menu li.ui-menu-item{
+  padding:0;
+}
+.ui-autocomplete.ui-menu li.ui-menu-item a{
+  padding: 7px; 
+}
+.ui-autocomplete.ui-menu li.ui-menu-item:hover{
+  background: #303030;
+}
+.ui-autocomplete.ui-menu li.ui-menu-item:hover a{
+  background: #303030;
+  color: #ffffff;
+}
+/** End autocomplete override **/

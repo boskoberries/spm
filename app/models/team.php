@@ -37,11 +37,10 @@ class Team extends AppModel {
 		foreach($rows as $row){
 			$row_arr['label'] = $row['Team']['name'];
 			$row_arr['value'] = $row['Team']['name'];//id
-			$row_arr['url'] = $row['Team']['id'];
+			$row_arr['url'] = '/teams/'.$row['Team']['id'];
 			array_push($return_array,$row_arr);
 			//$data['results'][] = array('id'=>$row['Meme']['id'],'label'=>$row['Meme']['title'],'value'=>$row['Meme']['title']);
 		}
-
 
   		return $return_array;
 	}
