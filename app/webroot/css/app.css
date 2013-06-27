@@ -1192,10 +1192,10 @@ background: #FFB32C;
 	border:1px solid #999;
 }
 .bubble-font{
-	color:#fff;
+	color:#ffffff;
     text-shadow: 3px 3px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000; 
-    font-family: 'Impact' /*, Arial, sans-serif;*/;
-    -webkit-text-fill-color: white; /* Will override color (regardless of order) */
+    font-family: 'Impact';
+    /*-webkit-text-fill-color: white;*/ /* Will override color (regardless of order) */
     -webkit-text-stroke-width: 1px;
     -webkit-text-stroke-color: black;
 }

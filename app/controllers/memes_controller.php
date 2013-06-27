@@ -228,7 +228,7 @@ class MemesController extends AppController {
   		$this->loadModel('MemeTag');
   		
   		if(!empty($this->data)){
-  		//	pr($this->data);exit;
+  			//pr($this->data);exit;
 			if(isset($this->data['meme']['parent'])){
 				$new_meme = $this->Meme->baseOnParent($this->data['meme']['parent']);
 				$this->Meme->create();
@@ -283,7 +283,7 @@ class MemesController extends AppController {
 			
 			$text = $this->data['caption']['body'][0];
 			$font_file = WWW_ROOT.'phptxtonimage/Impact/Impact';
-			$font_color     = '#ffffff' ;
+			$font_color = (!empty($this->data['caption']['color']))?$this->data['caption']['color']:'#ffffff';
 		
 			$mime_type 	= $meme_img['Meme']['mime_type']; //image/png, image/jpeg, etc
 			$extension = '.'.trim(array_pop(explode("/",$mime_type)));//.png,.jpeg,.jpg,etc
@@ -321,6 +321,8 @@ class MemesController extends AppController {
 			// allocate colors and measure final text position
 			$font_color = ImageColorAllocate($image,$font_rgb['red'],$font_rgb['green'],$font_rgb['blue']);
 			$font_color2 =ImageColorAllocate($image,0,0,0);
+			$white = ImageColorAllocate($image,255,255,255);
+	
 			//$watermark = imagecolorallocatealpha($image,0,0,0,0);
 
 			$im = imagecreatetruecolor(400, 30);
@@ -386,7 +388,7 @@ class MemesController extends AppController {
 				    }
 				}
 			}
-			$this->Meme->imagettfstroketext($image, 8, 0, ($image_height[0]-90), ($image_height[1]-2), $font_color, $stroke_color, $font_file, 'SPORTSMEMES.COM', 1);
+			$this->Meme->imagettfstroketext($image, 8, 0, ($image_height[0]-90), ($image_height[1]-2), $white, $stroke_color, $font_file, 'SPORTSMEMES.COM', 1);
 
 			$new_path = WWW_ROOT."/img/user_memes/".$meme['image_url'];	
 			$cropped_path = WWW_ROOT."/img/user_memes/".$meme['image_url_medium'];
