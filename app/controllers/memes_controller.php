@@ -313,7 +313,18 @@ class MemesController extends AppController {
 			else{
 				$this->Meme->fatal_error('Error: Unsupported mime-type.  Please try again with a different image.');
 			}
-		
+
+			//imagefilter($image,IMG_FILTER_GRAYSCALE);
+			//imagefilter($image,IMG_FILTER_NEGATE);
+			// imagefilter($image,IMG_FILTER_BRIGHTNESS,50);
+			//imagefilter($image,IMG_FILTER_EDGEDETECT);
+			//imagefilter($image,IMG_FILTER_EMBOSS);
+			//imagefilter($image,IMG_FILTER_GAUSSIAN_BLUR);
+			// imagefilter($image,IMG_FILTER_SELECTIVE_BLUR);
+			//imagefilter($image,IMG_FILTER_MEAN_REMOVAL);
+			// imagefilter($image,IMG_FILTER_SMOOTH,2);
+			imagefilter($image,IMG_FILTER_PIXELATE,4,true);
+
 			if(!$image || !$box){ $this->Meme->fatal_error('Error: The server could not create this image.') ;}
 			// pr($image_file);
 			$image_height = getimagesize($image_file);
