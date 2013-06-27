@@ -204,7 +204,7 @@ class Meme extends AppModel {
 		$sort = (isset($params['sort']))?$params['sort']:'';
 
 		//league_id can be a single value OR an array.
-		$cond[] = array('league_id'=>$league_id,'active'=>1);
+		$cond[] = array('league_id'=>$league_id,'active'=>1,'image_url !='=>'');
 		if(isset($params['team_id']) && $params['team_id']>0){
 			$cond[] = array('team_id'=>$params['team_id']);
 		}

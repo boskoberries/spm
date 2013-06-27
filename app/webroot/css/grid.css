@@ -962,9 +962,9 @@ div.slider-nav span.left {
 		.row .phone-two.columns { width: 47.8% !important; }
 		.row .phone-three.columns { width: 73.9% !important; }
 		.row .phone-four.columns { width: 100% !important; }
-		#subnav{ padding-right: 10px !important;}
+		#subnav{ padding-right: 10px !important; }
 		#subnav a,#subnav span{ font-size: 11px !important; }
-
+		#subnav .logged-in{ display: none;}
 		
 	}
 	

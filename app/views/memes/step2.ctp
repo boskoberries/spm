@@ -126,12 +126,15 @@
 
 			<div class="panel-ct">
 				<label>Created By:</label>
-				<label><input type="radio" name="data[meme][creator]" value="anon" checked="checked" /> Anonymous</label>
-				<br />
-				<label>
+				<div class="sp left">
+					<label class="natural">
+						<input type="radio" name="data[meme][creator]" value="anon" checked="checked" /> Anonymous
+					</label>
+					<label class="natural">
 					<input type="radio" name="data[meme][creator]" value="user" /> 
-					<?=(!empty($data['user']))?$data['user']['User']['username']:'Username'?>
-				</label>
+						<?=(!empty($data['user']))?$data['user']['User']['username']:'Username'?>
+					</label>
+				</div>	
 			</div>
 
 
@@ -150,7 +153,7 @@
 		</div><!-- end panel-bottom -->
 	</form>
 	</div><!-- end control Panel -->
-	<div class="seven columns"> <!-- main content -->
+	<div id="imgContainer" class="seven columns"> <!-- main content -->
 		<? if(isset($data['remake'])){ ?>
 		<h2 class="meme-title"><?=ucwords($data['meme']['Meme']['title'])?></h2>
 		<? } ?>

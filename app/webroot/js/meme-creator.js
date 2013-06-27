@@ -398,55 +398,26 @@ $.fn.toUnit = function (unit, settings) {
 	  	}
 	});
 
-	// $("#tag-search")
-	// 	.bind( "keydown", function( event ) {
-	// 	  if ( event.keyCode === $.ui.keyCode.TAB &&
-	// 	      $( this ).data( "ui-autocomplete" ).menu.active ) {
-	// 	    event.preventDefault();
-	// 	  }
-	// 	})
-	// 	.autocomplete({
-	// 	  source: function( request, response ) {
-	// 	    $.getJSON( "/search", {
-	// 	      term: extractLast( request.term )
-	// 	    }, response );
-	// 	  },
-	// 	  search: function() {
-	// 	    // custom minLength
-	// 	    var term = extractLast( this.value );
-	// 	    if ( term.length < 2 ) {
-	// 	      return false;
-	// 	    }
-	// 	  },
-	// 	  focus: function() {
-	// 	    // prevent value inserted on focus
-	// 	    return false;
-	// 	  },
-	// 	  select: function( event, ui ) {
-	// 	    var terms = split( this.value );
-	// 	    // remove the current input
-	// 	    terms.pop();
-	// 	    // add the selected item
-	// 	    terms.push( ui.item.value );
-	// 	    // add placeholder to get the comma-and-space at the end
-	// 	    terms.push( "" );
-	// 	    this.value = terms.join( ", " );
-	// 	    return false;
-	// 	  }
-	// 	});
-
-	// 	//});
-
 	$('#meme-image-size').load(function(){
 		var w =    $(this).width();
 		var h =    $(this).height();
-			//alert(w); alert(h);
+		//alert(w); alert(h);
+		//if the width of the image is less than the width of the container, shrink the container.
 		if(w < $("#containable").width()){
 			$("#containable").css('width',w);
 		}		
 
 	}).error(function (){
 	   //$(this).remove();//remove image if it fails to load// or what ever u want
+	});
+
+	$(window).resize(function(){
+		if($("#containable").width() > $("#imgContainer").width()){
+			$("#containable").width($("#imgContainer").width()-10);
+		} 
+		//else{
+		//	$("#containable").width($("#imgContainer").width()-10);
+		//}
 	});
 	
 	$("form").submit(function(){
@@ -455,9 +426,6 @@ $.fn.toUnit = function (unit, settings) {
 	    // });
 		$("div.caption").each(function(){
 			var $obj = $(this);
-			// $obj.find("span").breakLines({
-			// 	lineBreakHtml : '<br class="automatic-line-break" />'				
-			// })
 			//var text = $obj.find("span").html().split("\n");//text();
 			var text = $obj.find("span").text();
 			//var current = $(this);
@@ -520,7 +488,15 @@ $.fn.toUnit = function (unit, settings) {
 					if(!newLine && $(this).position().top > first_word_top){
 						newLine=x;
 						console.log("WE FOUND A NEW LINE AT WORD "+x+" the word? "+$(this).text());
-						$block.find("input.caption-txt").
+						$(this).html('<pre class="identifier">'+$(this).text().charAt(0)+'</pre>'+$(this).text().substr(1));
+						var $letter = $(this).find("pre.identifier");
+						if($letter.length){
+							var $new_left_input = $block.find("input.caption-first-letter-left").clone();
+							var $new_top_input = $block.find("input.caption-first-letter-top").clone();
+							$block.append($new_left_input).append($new_top_input);
+							$new_left_input.val($letter.position().left);
+							$new_top_input.val($obj.position().top+$letter.height());
+						}
 						return;
 					}
 					x++;
@@ -530,7 +506,7 @@ $.fn.toUnit = function (unit, settings) {
 					var words = $block.find(".caption-txt-input").val().split(' ');
 					for(var word_number in words){
 						if(word_number==newLine){
-							words[word_number] = '01230'+words[word_number];
+							words[word_number] = '11024'+words[word_number];
 						}
 					}
 					$block.find(".caption-txt-input").val(words.join(' '));	

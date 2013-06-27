@@ -56,6 +56,9 @@ class MemesController extends AppController {
 
   	function sport($sport_name=null){
   		$data['sport'] = $this->Sport->checkForSport($sport_name,$this->params);  	
+  		if(!empty($this->params['form'])){ 
+  			$this->layout = null;
+  		}
   		$data['sort'] = $this->Meme->getSortParam($_GET,$this->params);
   		$data['sport_id'] = $this->Sport->findIdByName($data['sport']);
   		if($data['sport_id']===false){ $this->redirect("/"); }
@@ -242,7 +245,7 @@ class MemesController extends AppController {
   				$caption_count=count($this->data['caption']['body']);
   				$this->MemeCaption->deleteAll(array('meme_id'=>$data['meme_id'])); //remove previously saved memes here first.
   				for($i=0;$i<$caption_count;$i++){
-					$data['body']=str_replace('01230','',$this->data['caption']['body'][$i]);
+					$data['body']=str_replace('11024','',$this->data['caption']['body'][$i]);
 					if(!empty($this->data['caption']['auto_size'][$i]) && !is_numeric($this->data['caption']['size'][$i])){
 						$data['font_size']=$this->data['caption']['auto_size'][$i];
 					}
@@ -343,31 +346,35 @@ class MemesController extends AppController {
 					}
 
 					//$lines=explode("\n",$this->data['caption']['body'][$i]);
-					$lines = preg_split("/(\n|01230)/",$this->data['caption']['body'][$i]);
-					// if($i==1){
-					// 	pr($this->data);
-					// 	pr($lines);
-					// 	exit;
-					// }
+					$lines = preg_split("/(\n|11024)/",$this->data['caption']['body'][$i]);
 					$stroke_width = 3;
 					// if($font_size<65){
 					// 	$stroke_width=2;
 					// }
 //					print $font_size;exit;
+
 					for($z=0; $z< count($lines); $z++){
 						$newY = $y_coord + ($z * $font_size * 1)-5;//adding 5 for bottom padding considerations.
-						if($z>0){
+						$x2 = false;
+						if($z>0){//more than one line in this caption.  tricky.
 							// print $newY;
 							// print "font ".$font_size;
 							// exit;
-							$newY += ($stroke_width*2);//add extra cushion for stroke width top and bottom.//5; //for line height.. $font_size;
+							$newY += ($stroke_width*2)+5;//add extra cushion for stroke width top and bottom.//5; //for line height.. $font_size;
+							if(isset($this->data['caption_coords']['letter_left'][$i+$z])){
+								$x2 = $this->data['caption_coords']['letter_left'][$i+$z]+2;
+							}
 						}
-						// pr($newY);
-						// if($z==1){
-						// 	exit;
-						// }
+						if($x2!==false){
+							// print $x2;
+							// print $newY;exit;
+							$this->Meme->imagettfstroketext($image, $font_size, 0, $x2, $newY, $font_color, $stroke_color, $font_file, $lines[$z], $stroke_width);
+							$x2=false;
+						} else{
+							$this->Meme->imagettfstroketext($image, $font_size, 0, $x_coord, $newY, $font_color, $stroke_color, $font_file, $lines[$z], $stroke_width);
+						}
+						
 
-						$this->Meme->imagettfstroketext($image, $font_size, 0, $x_coord, $newY, $font_color, $stroke_color, $font_file, $lines[$z], $stroke_width);
 						
 				    }
 				}
