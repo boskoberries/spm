@@ -245,7 +245,7 @@ class MemesController extends AppController {
   				$caption_count=count($this->data['caption']['body']);
   				$this->MemeCaption->deleteAll(array('meme_id'=>$data['meme_id'])); //remove previously saved memes here first.
   				for($i=0;$i<$caption_count;$i++){
-					$data['body']=str_replace('11024','',$this->data['caption']['body'][$i]);
+					$data['body']=str_replace('<br>','',$this->data['caption']['body'][$i]);
 					if(!empty($this->data['caption']['auto_size'][$i]) && !is_numeric($this->data['caption']['size'][$i])){
 						$data['font_size']=$this->data['caption']['auto_size'][$i];
 					}
@@ -254,10 +254,10 @@ class MemesController extends AppController {
 					}
 					//$data['text_align']=$data['alignment_options'][$this->data['caption']['align'][$i]]; 				
   					$data['text_align'] = $this->data['caption']['align'][$i];
-  					$data['latitude']=$this->data['caption_coords']['left'][$i];
-  					$data['longitude']=$this->data['caption_coords']['top'][$i];
-  					$data['letter_left'] = $this->data['caption_coords']['letter_left'][$i];
-  					$data['letter_top'] = $this->data['caption_coords']['letter_top'][$i];
+  					$data['latitude']=$this->data['caption_coords'][$i+1]['left'][0];//[$i];
+  					$data['longitude']=$this->data['caption_coords'][$i+1]['top'][0];//[$i];
+  					$data['letter_left'] = $this->data['caption_coords'][$i+1]['letter_left'][0];//[$i];
+  					$data['letter_top'] = $this->data['caption_coords'][$i+1]['letter_top'][0];//[$i];
 
   					$this->MemeCaption->create();
   					$this->MemeCaption->save($data);
@@ -330,9 +330,11 @@ class MemesController extends AppController {
 			if(isset($caption_count)){
 				//$this->data['caption']['body'][1] = str_replace("like them apples ","\nlike them apples",$this->data['caption']['body'][1]);
 				for($i=0;$i<$caption_count;$i++){
+					$caption_number = $i+1; //starts at 1, not 0 on the form input side.
+
 					// x and y for the bottom right of the text so it expands like right aligned text
-					$x_coord = $this->data['caption_coords']['letter_left'][$i]+2;//for padding.
-					$y_coord = $this->data['caption_coords']['letter_top'][$i];
+					$x_coord = $this->data['caption_coords'][$caption_number]['letter_left'][0]+2;//for padding.
+					$y_coord = $this->data['caption_coords'][$caption_number]['letter_top'][0];
 					//print_r($this->data);exit;
 
 					//$font_Size
@@ -345,8 +347,9 @@ class MemesController extends AppController {
 						$this->data['caption']['body'][$i]= strtoupper($this->data['caption']['body'][$i]);
 					}
 
-					//$lines=explode("\n",$this->data['caption']['body'][$i]);
-					$lines = preg_split("/(\n|11024)/",$this->data['caption']['body'][$i]);
+					$lines=explode("<BR>",strtoupper($this->data['caption']['body'][$i]));
+
+//					$lines = preg_split("/(\n|<br>)/",$this->data['caption']['body'][$i]);
 					$stroke_width = 3;
 					// if($font_size<65){
 					// 	$stroke_width=2;
@@ -354,15 +357,19 @@ class MemesController extends AppController {
 //					print $font_size;exit;
 
 					for($z=0; $z< count($lines); $z++){
-						$newY = $y_coord + ($z * $font_size * 1)-5;//adding 5 for bottom padding considerations.
+						if(trim($lines[$z])==''){ continue; }
+					//	$newY = $y_coord + ($z * $font_size * 1)-5;//adding 5 for bottom padding considerations.
+						$newY = $y_coord;// + ($z * $font_size * 1)-5;//adding 5 for bottom padding considerations.
 						$x2 = false;
 						if($z>0){//more than one line in this caption.  tricky.
 							// print $newY;
 							// print "font ".$font_size;
 							// exit;
-							$newY += ($stroke_width*2)+5;//add extra cushion for stroke width top and bottom.//5; //for line height.. $font_size;
-							if(isset($this->data['caption_coords']['letter_left'][$i+$z])){
-								$x2 = $this->data['caption_coords']['letter_left'][$i+$z]+2;
+							//$newY += ($stroke_width*2)+5;//add extra cushion for stroke width top and bottom.//5; //for line height.. $font_size;
+							if(isset($this->data['caption_coords'][$caption_number]['letter_left'][$z])){
+								$newY = $y_coord+$this->data['caption_coords'][$caption_number]['letter_top'][$z];
+
+								$x2 = $this->data['caption_coords'][$caption_number]['letter_left'][$z]+2;
 							}
 						}
 						if($x2!==false){

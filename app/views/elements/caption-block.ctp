@@ -8,10 +8,10 @@
 			
 			<div class="select-inputs" >
 				<input class="caption-autosize-input" type="hidden" name="data[caption][auto_size][]" value="<?=(isset($caption))?$caption['font_size']:''?>" />
-				<input type="hidden" class="caption-pos-left" name="data[caption_coords][left][]" value="<?=(isset($caption))?$caption['latitude']:'0'?>" />
-				<input type="hidden" class="caption-pos-top" name="data[caption_coords][top][]" value="<?=(isset($caption))?$caption['longitude']:'0'?>" />
-				<input type="hidden" class="caption-first-letter-left" name="data[caption_coords][letter_left][]" value="<?=(isset($caption))?$caption['letter_left']:'0'?>" />
-				<input type="hidden" class="caption-first-letter-top" name="data[caption_coords][letter_top][]" value="<?=(isset($caption))?$caption['letter_top']:'0'?>" />
+				<input type="hidden" class="caption-pos-left" name="data[caption_coords][<?=$number?>][left][]" value="<?=(isset($caption))?$caption['latitude']:'0'?>" />
+				<input type="hidden" class="caption-pos-top" name="data[caption_coords][<?=$number?>][top][]" value="<?=(isset($caption))?$caption['longitude']:'0'?>" />
+				<input type="hidden" class="caption-first-letter-left" name="data[caption_coords][<?=$number?>][letter_left][]" value="<?=(isset($caption))?$caption['letter_left']:'0'?>" />
+				<input type="hidden" class="caption-first-letter-top" name="data[caption_coords][<?=$number?>][letter_top][]" value="<?=(isset($caption))?$caption['letter_top']:'0'?>" />
 
 				<select class="caption-size-input" name="data[caption][size][]">
 					<? foreach($data['caption_sizes'] as $size):?>

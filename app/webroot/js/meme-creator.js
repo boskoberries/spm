@@ -457,12 +457,14 @@ $.fn.toUnit = function (unit, settings) {
 			var len = word_array.length;
 			result = [];
 			for(var z=0;z<len;z++){
-				if(z==0){//first word.
-					var first_letter = word_array[z].charAt(0);
-					word_array[z].substr(1);
-					result[z] = '<pre class="idf"><pre class="identifier">'+first_letter+'</pre>'+word_array[z].substr(1)+'</pre>';
-				} else{
-					result[z] = '<pre class="idf">'+word_array[z]+'</pre>';
+				if($.trim(word_array[z])!=''){
+					if(z==0){//first word.
+						var first_letter = word_array[z].charAt(0);
+						word_array[z].substr(1);
+						result[z] = '<pre class="idf"><pre class="identifier">'+first_letter+'</pre>'+word_array[z].substr(1)+'</pre>';
+					} else{
+						result[z] = '<pre class="idf">'+word_array[z]+'</pre>';
+					}
 				}
 			}	     
 			$obj.find("span").html(result.join(' '));
@@ -482,33 +484,45 @@ $.fn.toUnit = function (unit, settings) {
 
 				//now loop through and see if we can find the line break.
 				var first_word_top = $first_letter.parent("pre.idf").position().top;
-				var newLine = false;
+				//var newLine = false;
 				var x = 0;
+				var newLines = [];
 				$obj.find("pre.idf").each(function(){
-					if(!newLine && $(this).position().top > first_word_top){
-						newLine=x;
+					//if(!newLine && $(this).position().top > first_word_top){
+					if($(this).position().top > first_word_top){
+						//newLine=x;
 						console.log("WE FOUND A NEW LINE AT WORD "+x+" the word? "+$(this).text());
 						$(this).html('<pre class="identifier">'+$(this).text().charAt(0)+'</pre>'+$(this).text().substr(1));
 						var $letter = $(this).find("pre.identifier");
 						if($letter.length){
+							newLines.push(x);
+							first_word_top = $letter.position().top;	
+							console.log("made it here "+$letter.text()+" - "+first_word_top);
 							var $new_left_input = $block.find("input.caption-first-letter-left").clone();
+
 							var $new_top_input = $block.find("input.caption-first-letter-top").clone();
 							$block.append($new_left_input).append($new_top_input);
 							$new_left_input.val($letter.position().left);
-							$new_top_input.val($obj.position().top+$letter.height());
+							//$new_top_input.val($obj.position().top+$letter.height());
+							$new_top_input.val($letter.position().top);//());
+							
 						}
-						return;
+						//return;
 					}
 					x++;
 				});
-				if(newLine!==false){
-					//newLine = the nth word in the sentence. now have to pass an identifier through to the input so we know where to do the word break!
+				if(newLines.length > 0){
+				//if(newLine!==false){
+					//newLines = the nth word in the sentence. now have to pass an identifier through to the input so we know where to do the word break[s]!
 					var words = $block.find(".caption-txt-input").val().split(' ');
-					for(var word_number in words){
-						if(word_number==newLine){
-							words[word_number] = '11024'+words[word_number];
+					for(var zz in newLines){
+						for(var word_number in words){
+							//if(word_number==newLine){
+							if(word_number==newLines[zz]){
+								words[word_number] = '<br>'+words[word_number];
+							}
 						}
-					}
+					}	
 					$block.find(".caption-txt-input").val(words.join(' '));	
 					console.log(' i think i did it.  '+words.join(' '));
 				}

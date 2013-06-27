@@ -942,12 +942,13 @@ background: #FFB32C;
     }
 
     nav.global {
-        margin:2px 0 0 0;
+        margin:6px 0 0 0;
         padding-left: 0;
      }
     
         nav.global a {
             float:left;
+            text-transform: uppercase;
             color:#fff;
             margin-right:40px;
             padding:2px 0 2px;
