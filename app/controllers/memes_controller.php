@@ -280,11 +280,12 @@ class MemesController extends AppController {
 
 			$meme['image_url'] = "final-".time()."-".$meme_img['Meme']['image_url_original'];	
 			$meme['image_url_medium'] = "medium-".time()."-".$meme_img['Meme']['image_url_original'];	
-			
+			$meme['color'] = (!empty($this->data['caption']['color']))?$this->data['caption']['color']:'#ffffff';
+
 			$text = $this->data['caption']['body'][0];
 			$font_file = WWW_ROOT.'phptxtonimage/Impact/Impact';
-			$font_color = (!empty($this->data['caption']['color']))?$this->data['caption']['color']:'#ffffff';
-		
+			$font_color = $meme['color'];
+
 			$mime_type 	= $meme_img['Meme']['mime_type']; //image/png, image/jpeg, etc
 			$extension = '.'.trim(array_pop(explode("/",$mime_type)));//.png,.jpeg,.jpg,etc
 			$s_end_buffer_size  = 4096 ;
@@ -323,7 +324,7 @@ class MemesController extends AppController {
 			// imagefilter($image,IMG_FILTER_SELECTIVE_BLUR);
 			//imagefilter($image,IMG_FILTER_MEAN_REMOVAL);
 			// imagefilter($image,IMG_FILTER_SMOOTH,2);
-			imagefilter($image,IMG_FILTER_PIXELATE,4,true);
+			//imagefilter($image,IMG_FILTER_PIXELATE,4,true);
 
 			if(!$image || !$box){ $this->Meme->fatal_error('Error: The server could not create this image.') ;}
 			// pr($image_file);

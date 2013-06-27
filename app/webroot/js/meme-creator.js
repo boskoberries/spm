@@ -416,6 +416,7 @@ $(document).ready(function(){
 			$("#containable").find(".caption").css('color',color.toHexString());
 		}
 	});
+	$("#containable").find(".caption").css('color','#'+$("#font-color").val());
 });//end of document ready
 
 	function reorderCaptionNumbers(){

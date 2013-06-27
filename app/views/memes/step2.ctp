@@ -36,11 +36,6 @@
 					<option value="upper">All Caps</option>
 					<option value="lower">Regular Text</option>
 				</select>
-				<select name="data[caption][filter]" id="filter" style="float:none;">
-					<option value="">No filter</option>
-					<option value="darker">Darker</option>
-					<option value="lighter">Lighter</option>
-				</select>
 				<input type="text" id="font-color" name="data[caption][color]" value="<?=(!empty($data['meme']['Meme']['color']))?$data['meme']['Meme']['color']:'#ffffff'?>" />
 			</div>
 				

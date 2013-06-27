@@ -310,6 +310,7 @@ class Meme extends AppModel {
   			'type_id'=>$meme_img['Meme']['type_id'],
   			'parent_id'=>$meme_img['Meme']['parent_id'],
   			'image_url_original'=>$meme_img['Meme']['image_url_original'],
+  			'color'=>$meme_img['Meme']['color'],
   			'mime_type'=>$meme_img['Meme']['mime_type'],
   			'active'=>1,
   			'league_id'=>$meme_img['Meme']['league_id']
