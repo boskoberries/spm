@@ -317,7 +317,7 @@ class MemesController extends AppController {
 
 			//imagefilter($image,IMG_FILTER_GRAYSCALE);
 			//imagefilter($image,IMG_FILTER_NEGATE);
-			// imagefilter($image,IMG_FILTER_BRIGHTNESS,50);
+			//imagefilter($image,IMG_FILTER_BRIGHTNESS,50);
 			//imagefilter($image,IMG_FILTER_EDGEDETECT);
 			//imagefilter($image,IMG_FILTER_EMBOSS);
 			//imagefilter($image,IMG_FILTER_GAUSSIAN_BLUR);

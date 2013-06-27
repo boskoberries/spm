@@ -44,19 +44,10 @@
 							<nav class="global nine columns">
 								<ul class="nav-links">
 									<? $i = 1;?>
-									<?/*<? foreach($leagues as $league){
-									if($i<=7){ //only show first 5 sports. for now. ?>
-										<li class="nav-link"> 
-											<a href="/<?=strtolower($league['League']['name'])?>"><?=$league['League']['name']?></a>
-										</li>
-									<? }
-										$i++;
-									 } ?> */?>
 									<li><a href="/football" class="nav-link ">Football</a></li>
 	     							<li><a href="/basketball" class="nav-link ">Basketball</a></li>
 	     							<li><a href="/baseball" class="nav-link ">Baseball</a></li>
 	     							<li><a href="/hockey" class="nav-link ">Hockey</a></li>
-	     							<li><a href="/soccer">Soccer</a></li>
 	     							<?/* <li class="has-children">
 	 									<a href="#" class="nav-link ">Other Sports <span class="icon-down"></span></a>
 	 									<ul class="">

@@ -747,7 +747,9 @@
             padding:7px 10px 7px 7px;
             text-shadow: -1px -1px 0 #EB9B21;
             border: 1px solid #D88F1F;
-            background: #FF7C11;
+/*            background: #FF7C11;*/
+background: yellow;
+color: #000;
             /*filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FCB040', endColorstr='#F3AB3C'); /* for IE 
             background: -webkit-gradient(linear, left top, left bottom, from(#FE9139), to(#FF7C11)); /* for webkit browsers */
             background: -moz-linear-gradient(top,  #FE9139,  #FF7C11); /* for firefox 3.6+ */*/
@@ -898,7 +900,7 @@ background: #FFB32C;
 /* -----------------------------------------
    Global Header
 ----------------------------------------- */
-
+  
     div.global-header {
         color:#ffffff;
         padding:15px 20px;
@@ -910,6 +912,10 @@ background: #FFB32C;
         border-bottom:1px solid #333333;
     }
 
+    div.global-header.black{
+      background: #303030;
+      border-bottom: 1px solid #333;
+    }
 /*    div.global-header #mainNavRow{
         margin-left: 0;
     }*/
@@ -1295,10 +1301,13 @@ span.delete{
     border-radius: 2px;
 	text-transform:uppercase;
 	font-size:14px;
-    background: #FFB32C;
-    background: -webkit-gradient(linear, left top, left bottom, from(#FFB32C), to(#FFAA12)); /* for webkit browsers */
-    background: -moz-linear-gradient(top,  #FFB32C,  #FFAA12); /* for firefox 3.6+ */*/
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFB32C', endColorstr='#FFAA12'); /* for IE */
+/*    background: #FFB32C;*/
+background: yellow;
+color:#000;
+
+/*    background: -webkit-gradient(linear, left top, left bottom, from(#FFB32C), to(#FFAA12)); 
+    background: -moz-linear-gradient(top,  #FFB32C,  #FFAA12); 
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFB32C', endColorstr='#FFAA12');*/
 }
 .button:hover{
     background: #FFAA12;
