@@ -9,7 +9,7 @@
 		</a>
 	</div>
 	<div class="clear"></div>
-	<p class="quick-stats"># of memes: <?=count($data['memes'])?></p>	
+	<p class="total-results">(<?=count($data['memes'])?> Total)</p>	
 
 
 	<div class="clear"></div>	

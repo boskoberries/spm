@@ -131,3 +131,9 @@ a.delete-meme{
 .action-box .favorite a:hover{
     text-decoration: none;
 }
+
+.total-results{
+    font-size: 16px;
+    font-family: 'gibsonSemiBold';
+    color: #000;
+}

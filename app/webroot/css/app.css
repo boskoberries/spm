@@ -1299,21 +1299,38 @@ span.delete{
 }
 .button{
     border-radius: 2px;
-	text-transform:uppercase;
-	font-size:14px;
-/*    background: #FFB32C;*/
-background: yellow;
-color:#000;
+    text-transform:uppercase;
+    font-size:14px;
+    background: rgb(255, 255, 0);
+    color:#000000;
+    transition: all .15s ease-in;
+    -webkit-transition: all .15s ease-in;
+    -moz-transition: all .15s ease-in;
+    box-shadow: 1px 1px 10px rgba(0,0,0,.3);
 
-/*    background: -webkit-gradient(linear, left top, left bottom, from(#FFB32C), to(#FFAA12)); 
+/*    box-shadow: 1px 1px 10px rgba(0,0,0,.3);
+    background: -webkit-gradient(linear, left top, left bottom, from(rgb(255, 255, 0)), to(rgb(184, 207, 14))); 
+    background: -moz-linear-gradient(top,  rgb(255, 255, 0),  rgb(184, 207, 14)); 
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=rgb(255, 255, 0), endColorstr='rgb(184, 207, 14)');*/
+/*  background: #FFB32C;
+    background: -webkit-gradient(linear, left top, left bottom, from(#FFB32C), to(#FFAA12)); 
     background: -moz-linear-gradient(top,  #FFB32C,  #FFAA12); 
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFB32C', endColorstr='#FFAA12');*/
 }
 .button:hover{
-    background: #FFAA12;
-    background: -webkit-gradient(linear, left top, left bottom, from(#FFAA12), to(#FFB32C)); /* for webkit browsers */
-    background: -moz-linear-gradient(top,  #FFAA12,  #FFB32C); /* for firefox 3.6+ */*/
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFAA12', endColorstr='#FFB32C'); /* for IE */   
+    color: #000000;
+    /*background: rgb(240,240,5);*/
+    background: rgb(255, 255, 0);
+
+    box-shadow: 1px 1px 10px rgba(0,0,0,.8);
+    /*background: rgb(184, 207, 14);*/
+/*    background: -webkit-gradient(linear, left top, left bottom, from(rgb(184, 207, 14)), to(rgb(255, 255, 0))); 
+    background: -moz-linear-gradient(top,  rgb(184, 207, 14),  rgb(255, 255, 0)); 
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=rgb(184, 207, 14), endColorstr=rgb(255, 255, 0));*/
+/*    background: #FFAA12;
+    background: -webkit-gradient(linear, left top, left bottom, from(#FFAA12), to(#FFB32C)); 
+    background: -moz-linear-gradient(top,  #FFAA12,  #FFB32C);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFAA12', endColorstr='#FFB32C');   */
     text-decoration: none;
 }
 .button:active{
@@ -1526,7 +1543,6 @@ ul.tag-list li a:hover{
     margin-left: 0;
     margin-top: 3px !important;
     text-shadow: none;
-    box-shadow: 1px 1px 10px rgba(0,0,0,.3);
     text-transform: uppercase;
 }
 #errorMessage{
