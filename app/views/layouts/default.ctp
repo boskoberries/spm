@@ -4,7 +4,7 @@
 <!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
 <!--[if gt IE 8]><!--> <html lang="en"> <!--<![endif]-->
 	<head>
- 		<title>Sports Memes</title>
+ 		<title>Sprts Memes</title>
 		<meta charset="utf-8" />	
 		<!-- Set the viewport width to device width for mobile -->
 		<meta name="viewport" content="width=device-width" />
@@ -17,7 +17,7 @@
     	<?//=$javascript->link('/js/jquery-1.6.1.min.js')?>
     	<?//=$javascript->link('/js/jquery-ui-1.8.14.custom.min.js')?>
     	<script type="text/javascript" src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
-    	<?=$javascript->link('/js/site-ui.js')?>
+    	<?=$javascript->link('site-ui.js')?>
 		<!--[if lt IE 9]>
 			<?php echo $html->css('/js/ie.css',"stylesheet",array('media'=>'all'));?>
 		<![endif]-->
@@ -133,6 +133,21 @@
 		<div id="container" class="container page-content">
 			<?php echo  $content_for_layout;?>
 			<?php //echo $cakeDebug; ;?>
+			<div id="simple-modal-wrap" class="simple-modal-wrap">
+				<div class="simple-modal-flow-control ">
+					<div id="sign-me-up" class="simple-modal ">
+						<h5>Hi, I'm Rhett</h5>
+						<div>
+							<label>This is my first simple modal.  What do we think? </label>
+							<p>I think that's pretty kewl.</p>
+							<div class="actions">
+								<a href="#" class="save">SavE</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
 		</div>
 		<!-- end body container -->    
     	<br clear="all" />
