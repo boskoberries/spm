@@ -4,7 +4,7 @@
 <!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
 <!--[if gt IE 8]><!--> <html lang="en"> <!--<![endif]-->
 	<head>
- 		<title>Sprts Memes</title>
+ 		<title>Sports Memes</title>
 		<meta charset="utf-8" />	
 		<!-- Set the viewport width to device width for mobile -->
 		<meta name="viewport" content="width=device-width" />
@@ -133,9 +133,9 @@
 		<div id="container" class="container page-content">
 			<?php echo  $content_for_layout;?>
 			<?php //echo $cakeDebug; ;?>
-			<div id="simple-modal-wrap" class="simple-modal-wrap">
+			<div id="simple-modal-wrap" class="simple-modal-wrap hide">
 				<div class="simple-modal-flow-control ">
-					<div id="sign-me-up" class="simple-modal ">
+					<div id="sign-me-up" class="simple-modal hide">
 						<h5>Hi, I'm Rhett</h5>
 						<div>
 							<label>This is my first simple modal.  What do we think? </label>
