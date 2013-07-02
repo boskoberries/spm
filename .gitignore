@@ -1,4 +1,4 @@
-pp/config/core.php
+app/config/core.php
 app/config/database.php
 app/vendors/cdn.gen.*
 
