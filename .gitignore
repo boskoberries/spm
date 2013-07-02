@@ -1,4 +1,6 @@
-pp/config/core.php
+##find . -type l
+
+app/config/core.php
 app/config/database.php
 app/vendors/cdn.gen.*
 
@@ -15,3 +17,5 @@ app/webroot/img/user_photos*
 app/webroot/img/events/*.*
 app/webroot/img/events/*/
 !app/webroot/img/events/splash
+
+!.gitignore
