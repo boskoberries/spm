@@ -23,6 +23,7 @@ class MemesController extends AppController {
   	function index($cat_id=null){
   		$data['sort'] = $this->Meme->getSortParam($_GET,$this->params);
 		$data['memes']=  $this->Meme->getMemesByPopularity($data,$this->params);
+  		
   		if(!empty($this->params['form'])){
   			$this->layout = '';
   			$this->set('data',$data);
