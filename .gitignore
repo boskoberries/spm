@@ -1,0 +1,17 @@
+pp/config/core.php
+app/config/database.php
+app/vendors/cdn.gen.*
+
+app/*.sublime-workspace
+
+## directories to keep but ignore files in - must have empty .gitignore files in them - find . -name '.gitignore'
+app/tmp/*
+app/webroot/userfiles*
+app/webroot/temp/*
+app/webroot/contract_files/*
+app/webroot/exp/*
+app/webroot/signed/*
+app/webroot/img/user_photos*
+app/webroot/img/events/*.*
+app/webroot/img/events/*/
+!app/webroot/img/events/splash

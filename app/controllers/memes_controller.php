@@ -264,7 +264,8 @@ class MemesController extends AppController {
   				}
   			
   			}
-  			
+//  			print `whoami`;exit;
+  	//		print WWW_ROOT;exit;
 			$image_file = WWW_ROOT.'img/user_memes/'.$meme_img['Meme']['image_url_original'];
 //			pr($this->data['meme']['league_id']);exit;
 
@@ -283,9 +284,10 @@ class MemesController extends AppController {
 			$meme['color'] = (!empty($this->data['caption']['color']))?$this->data['caption']['color']:'#ffffff';
 
 			$text = $this->data['caption']['body'][0];
-			$font_file = WWW_ROOT.'phptxtonimage/Impact/Impact';
+			$font_file = WWW_ROOT.'phptxtonimage/Impact/Impact.ttf';
+//			$font_file = WWW_ROOT.'phptxtonimage/Impact/INNER.ttf';
+//			pr($font_file);exit;
 			$font_color = $meme['color'];
-
 			$mime_type 	= $meme_img['Meme']['mime_type']; //image/png, image/jpeg, etc
 			$extension = '.'.trim(array_pop(explode("/",$mime_type)));//.png,.jpeg,.jpg,etc
 			$s_end_buffer_size  = 4096 ;
@@ -298,9 +300,11 @@ class MemesController extends AppController {
 			
 			// create and measure the text
 			$font_rgb = $this->Meme->hex_to_rgb($font_color) ;
-			$box = @ImageTTFBBox($font_size,0,$font_file,$text) ;
+			$font_size=12;
+			$box = ImageTTFBBox($font_size,0,$font_file,$text) ;
 
 			//$text_width = abs($box[2]-$box[0]);$text_height = abs($box[5]-$box[3]);
+			//print "ASdas";exit;
 
 			if($extension == '.png'){ 
 				$image =  imagecreatefrompng($image_file);
@@ -326,11 +330,16 @@ class MemesController extends AppController {
 			// imagefilter($image,IMG_FILTER_SMOOTH,2);
 			//imagefilter($image,IMG_FILTER_PIXELATE,4,true);
 
-			if(!$image || !$box){ $this->Meme->fatal_error('Error: The server could not create this image.') ;}
+			//if(!$image || !$box){ $this->Meme->fatal_error('Error: The server could not create this image.') ;}
+			if(!$image){ $this->Meme->fatal_error('Error: The server could not create this image.') ;}
 			// pr($image_file);
+		//	print "ASdasd";exit;
+
 			$image_height = getimagesize($image_file);
+
 			//pr($image_height);exit;
 			// allocate colors and measure final text position
+
 			$font_color = ImageColorAllocate($image,$font_rgb['red'],$font_rgb['green'],$font_rgb['blue']);
 			$font_color2 =ImageColorAllocate($image,0,0,0);
 			$white = ImageColorAllocate($image,255,255,255);
@@ -339,6 +348,8 @@ class MemesController extends AppController {
 
 			$im = imagecreatetruecolor(400, 30);
 			$stroke_color = imagecolorallocate($image, 0, 0, 0);
+
+
 
 			// Write the text
 			if(isset($caption_count)){
@@ -417,7 +428,6 @@ class MemesController extends AppController {
 			ImageDestroy($image);			
 			//header('Content-type: ' . $mime_type) ;ImagePNG($image) ;ImageDestroy($image);exit;
 
-			
 			$maxWidth  = 310;
 			$maxHeight = 310;
 

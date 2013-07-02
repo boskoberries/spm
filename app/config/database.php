@@ -77,9 +77,9 @@ class DATABASE_CONFIG {
 		'driver' => 'mysql',
 		'persistent' => false,
 		'host' => 'localhost',
-		'login' => 'root',
-		'password' => 'root',
-		'database' => 'sports_memes',
+		'login' => 'bboskoff7221',
+		'password' => 'U0p99ogPwBP1Ecwo6B',
+		'database' => 'dev',
 		'prefix' => '',
 	);
 
