@@ -106,7 +106,7 @@ a.delete-meme{
     margin:auto;
 }
 .action-box .favorite a{
-    font-size: 28px;
+    font-size: 33px;
     transition:all .35s linear;
     -webkit-transition:all .35s linear;
     -moz-transition:all .35s linear;
@@ -121,6 +121,7 @@ a.delete-meme{
 
 .action-box .favorite a.star:hover, .action-box .favorite a.star.favorite{
     color: yellow;
+    font-size: 34px;
 }
 .star.favorite.icon2-star-2{
     font-size: 34px;
