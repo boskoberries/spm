@@ -10,6 +10,7 @@
 		<meta name="viewport" content="width=device-width" />
 		<?=$html->css('/css/grid.css')?>
 		<?=$html->css('/css/app.css')?>
+		<?=$html->css('/css/ui-elements.css')?>
 <!--		<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 		<script src="http://code.jquery.com/jquery-migrate-1.1.1.min.js"></script>-->
 		<?=$html->css('/js/jquery-ui-1.8.14.custom.css')?>

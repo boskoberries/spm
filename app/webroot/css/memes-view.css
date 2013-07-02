@@ -18,7 +18,7 @@
 }
 
 #memes-sidebar .favorite a.star:hover, #memes-sidebar .favorite a.star.favorite{
-    color: rgb(173,154,52);
+    color: yellow;
 }
 #memes-sidebar .favorite a.boo:hover,#memes-sidebar .favorite a.boo.active{
     color: tomato;

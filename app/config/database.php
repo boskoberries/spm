@@ -78,8 +78,8 @@ class DATABASE_CONFIG {
 		'persistent' => false,
 		'host' => 'localhost',
 		'login' => 'bboskoff7221',
-		'password' => 'U0p99ogPwBP1Ecwo6B',
-		'database' => 'dev',
+		'password' => '',
+		'database' => 'sports_memes',
 		'prefix' => '',
 	);
 
