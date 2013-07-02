@@ -120,7 +120,10 @@ a.delete-meme{
 }
 
 .action-box .favorite a.star:hover, .action-box .favorite a.star.favorite{
-    color: rgb(173,154,52);
+    color: yellow;
+}
+.star.favorite.icon2-star-2{
+    font-size: 34px;
 }
 .action-box .favorite a.boo:hover,.action-box .favorite a.boo.active{
     color: tomato;
@@ -131,7 +134,9 @@ a.delete-meme{
 .action-box .favorite a:hover{
     text-decoration: none;
 }
-
+.action-box .favorite a.boo.active, .action-box .favorite a.root.active{
+    font-size: 33px;
+}
 .total-results{
     font-size: 16px;
     font-family: 'gibsonSemiBold';
