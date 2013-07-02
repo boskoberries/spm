@@ -122,16 +122,26 @@ class Meme extends AppModel {
 	}
 	function getMemesByPopularity($sort=null,$params=null){
 		//date range passed through in format of days.  ie 2, 7, 30, etc.
+		if(is_array($sort)){
+			$sort = $sort['sort'];
+		}
+		
 		$conditions[]=array('active'=>1);
 		if(is_numeric($sort) && in_array($sort,array('2','7','30'))){
 			$created = date('Y-m-d',strtotime("-".$sort." days"));
 			$conditions[] = array("DATE_FORMAT(Meme.created, '%Y-%m-%d') >="=>$created);
 		}
+		if($sort=='new'){
+			$order = 'Meme.id DESC';
+		} else{
+			$conditions[] = array("Meme.view_count >"=>1);
+			$order = 'Meme.view_count DESC';
+		}
 		$page = 1;
 		if(isset($params['form']['page'])){
 			$page = $params['form']['page'];
 		}
-		$data = $this->find('all',array('conditions'=>$conditions,'order'=>'Meme.view_count DESC','limit'=>30,'page'=>$page));
+		$data = $this->find('all',array('conditions'=>$conditions,'order'=>$order,'limit'=>30,'page'=>$page));
 		return $data;
 	}
 	function getMemes($category_id=null,$limit=null,$order=null,$page=null){
