@@ -27,7 +27,7 @@ $(document).ready(function(){
    		minLength: 2,
       delay: 300,
    		select: function(event,ui){
-   			window.location = '/memes/view/'+ui.item.url;
+   			window.location = '/tags/view/'+ui.item.slug;
    		},
       // select: function( event, ui ) {
       //   console.log(ui.item);

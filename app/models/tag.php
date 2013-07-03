@@ -54,6 +54,19 @@ class Tag extends AppModel {
 		}
 	}
 
+	function search($term){
+		$return_array = array();
+		$rows = $this->find('all',array('conditions'=>array('name LIKE'=>'%'.$term.'%')));
+		//pr($rows);
+		foreach($rows as $row){
+			$row_arr['label'] = $row['Tag']['name'];
+			$row_arr['value'] = $row['Tag']['name'];//id
+			$row_arr['slug'] = $row['Tag']['slug'];///teams/'.$row['Team']['id'];
+			array_push($return_array,$row_arr);
+			//$data['results'][] = array('id'=>$row['Meme']['id'],'label'=>$row['Meme']['title'],'value'=>$row['Meme']['title']);
+		}
+		return $return_array;
+	}
 	
 }
 ?>

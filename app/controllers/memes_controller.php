@@ -349,7 +349,7 @@ class MemesController extends AppController {
 
 			$im = imagecreatetruecolor(400, 30);
 			$stroke_color = imagecolorallocate($image, 0, 0, 0);
-
+//			$stroke_color = imagecolorallocate($image,255,255,255);//3px 3px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000
 
 
 			// Write the text
