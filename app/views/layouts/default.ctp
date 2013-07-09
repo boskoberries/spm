@@ -82,38 +82,11 @@
 		    	<a href="/users/logout">(sign out)</a>
 
 		    	<? } else { ?>
-		    	<a href="/users/login">Log-in</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="/users/signup">Sign Up</a>
+		    	<a id="loginBtn" href="#" reveal-href="/users/login">Log-in</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a id="signUpBtn" href="#" reveal-href="/users/signup">Sign Up</a>
 
 		    	<? } ?>
 		    	<input id="searchBar" type="text" placeholder="Search..." />
 		    </div>
-			<?php if(false && isset($info)){ ?>
-         		<div class="three columns">
-        		<a id="accountName" class="logout" >
-				<img src="/img/<?php echo $info['user']['User']['image_url'];?>" class="user-avatar" />
-				<?php echo $info['user']['User']['account_name'];?>&nbsp;&#9660;</a>
-		
-				<div id="accountDropDown" class="hide_me">
-					<div class="dropDownPointer">
-						<div class="dropDownArrow"></div>
-						<div class="dropDownArrowBorder"></div>
-					</div>
-					<div class="dropDownContent">
-					<ul>
-						<li><a href="/account">Account Settings</a></li>
-						<li><a href="/users/profile">View My Profile</a></li>
-		                <li><a href="/help">Help</a></li>
-						<li><a href="/about">About Us</a></li>
-						<li><a href="http://www.oneclipboard.com/blog" target="_blank">Blog</a></li>
-    	        		<?php if($info['User']['admin']=='1'){ ?>
-				    		<li><?php echo  $html->link('Admin Stuff','/admin');?></li>	
-						<?php } ?>			       
-		                <li class="last" style="border-bottom:0;"><a href="/users/logout">Logout</a></li>
-					</ul>
-					</div>
-				</div>
-			</div>
-			<?php } ?> 
 	    </div>   
 	    <? if(isset($error) && !empty($error)){ ?>
 		<div id="errorMessage">							
@@ -130,21 +103,20 @@
 			<?php unset($_SESSION['Message']['flash']['message']);?>
 		<?php } ?>
 	*/?>
+	<?php if(isset($_SESSION['Message']['flash']['message']) && !empty($_SESSION['Message']['flash']['message'])){ ?>
+		<?php $flash_class=(isset($_SESSION['Message']['flash']['params']['class']))?$_SESSION['Message']['flash']['params']['class']:'error_area';?>
+		<div id="flashMessage" class="<?php echo $flash_class;?>"><?php echo $_SESSION['Message']['flash']['message'];?> <i class="close-flash-message icon-close-2"></i></div>
+		<?php unset($_SESSION['Message']['flash']['message']);?>
+	<?php }?>
+
 		<!-- body container -->
 		<div id="container" class="container page-content">
-			<?php echo  $content_for_layout;?>
-			<?php //echo $cakeDebug; ;?>
+			<?php echo $content_for_layout;?>
+			<?php echo $this->element('sql_dump');?>
 			<div id="simple-modal-wrap" class="simple-modal-wrap hide">
 				<div class="simple-modal-flow-control ">
 					<div id="sign-me-up" class="simple-modal hide">
-						<h5>Hi, I'm Rhett</h5>
-						<div>
-							<label>This is my first simple modal.  What do we think? </label>
-							<p>I think that's pretty kewl.</p>
-							<div class="actions">
-								<a href="#" class="save">SavE</a>
-							</div>
-						</div>
+						<?=$this->element('signup-form')?>
 					</div>
 				</div>
 			</div>

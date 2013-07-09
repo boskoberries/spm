@@ -21,6 +21,15 @@ $(document).ready(function(){
       }
     });
 
+    $("#loginBtn").click(function(){
+      $("#sign-me-up").fireSimpleModal();
+      return false;
+    });
+
+    $(".close-flash-message").click(function(){
+      $("#flashMessage").fadeOut();
+    });
+
     //search bar functionality. 
    	$("#searchBar").autocomplete({
    		source:'/search',
@@ -42,20 +51,20 @@ $(document).ready(function(){
    	});
  
      $.fn.fireSimpleModal = function(args){
-      var $obj = $(this);
-      $("body").addClass('lockItUp showSimple');
-      var $wrap = $("#simple-modal-wrap");
-      if(args!=null){
-        if(args.persistent!=='undefined' && args.persistent){
-          $wrap.addClass('persistent');
+        var $obj = $(this);
+        $("body").addClass('lockItUp showSimple');
+        var $wrap = $("#simple-modal-wrap");
+        if(args!=null){
+          if(args.persistent!=='undefined' && args.persistent){
+            $wrap.addClass('persistent');
+          }
+        } else{
+          $wrap.removeClass('persistent');
         }
-      } else{
-        $wrap.removeClass('persistent');
-      }
-      $wrap.show().find(".simple-modal").hide();
-      $obj.show().css('display','inline-block');
-      openModal = true;
-      return $obj;
+        $wrap.show().find(".simple-modal").hide();
+        $obj.show().css('display','inline-block');
+        openModal = true;
+        return $obj;
     }
 
     function closeSimpleModal(){

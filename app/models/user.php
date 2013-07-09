@@ -84,6 +84,14 @@ class User extends AppModel {
 	            'message' => 'The passwords do not match',
 	        ),
 	    ),
+	    'password'=>
+	    	array(
+	    		'rule' => 'notEmpty',
+	    		'required' => true,
+	    		'allowEmpty' => false,
+	    		'on' => 'login',
+	    		'message' => 'Password is required'
+    		)
 	    // 'email' => array(
 	    //     'empty' => array(
 	    //         'rule' => 'notEmpty',

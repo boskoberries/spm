@@ -6,17 +6,25 @@
 	margin-left: 120px;
 	box-shadow: 1px 1px 5px #000000;
 }
+.simple-modal #signup-container{
+	margin-left: 0;
+}
 #signup-container h3{
 	text-transform: uppercase;
 	font-size: 22px;
+	margin:0 0 8px;
 }
 #signup-container label{
 	color: #333333;
+	text-align: left;
 	font-weight: bold;
 	margin:10px 0 0 0;
 }
 #signup-container input[type='text'],#signup-container input[type='password']{
 	width: 250px;
+}
+#signup-container .error-message{
+	text-align: left;
 }
 #signup-container .header{
 	background: #eeeeee;

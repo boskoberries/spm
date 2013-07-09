@@ -657,10 +657,15 @@
         text-align:center;
         width:100%;
         position:absolute;
-        top:59px;
+        top:103px;
         left:0;
         background:#c00000;
         color:#fff;
+    }
+
+    div#flashMessage.error_area i{
+      font-size: 16px;
+      cursor: pointer;
     }
         
         div#flashMessage.success_area {
@@ -1451,9 +1456,9 @@ ul.tag-list li a:hover{
     }
 
 .simple-modal {
-    background: #ffffff;
+/*    background: #ffffff;*/
     box-shadow: 0px 2px 16px rgba(0, 0, 0, .3);
-    padding: 20px;
+    padding: 0px;
     min-width: 315px;
     border-radius: 0;
     vertical-align: middle;
@@ -1462,7 +1467,7 @@ ul.tag-list li a:hover{
     display: inline-block;
     position: relative;
     margin: 40px 10px;
-    border-top: 2px solid #03e1ff;
+/*    border-top: 2px solid #03e1ff;*/
 }
 
 .simple-modal h5 {
@@ -1475,12 +1480,11 @@ ul.tag-list li a:hover{
     background: #3D3D3D;
     text-align: center;
     border-bottom: 1px solid #F0F0F0;
-    margin: -10px 0 10px 0;
+/*    margin: -10px 0 10px 0;*/
     color: white;
     text-shadow: none;
     padding: 4px 0 2px 0;
     border-radius: 2px;
-
     color: black;
     background: none;
     font-size: 20px;
@@ -1515,11 +1519,11 @@ ul.tag-list li a:hover{
 }
 
 
-.simple-modal div b {
+/*.simple-modal div b {
     display: inline-block;
     width: 70px;
     text-align: left;
-}
+}*/
 .simple-modal div input[type='text'] {
     width: 200px;
     padding: 6px;

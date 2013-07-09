@@ -38,6 +38,8 @@ class UsersController extends AppController {
             $this->User->saveField('last_login', date('Y-m-d H:i:s'));
             //$this->redirect($this->Auth->redirect());
             $this->redirect('/memes');          
+        } elseif(!empty($this->data)){
+            $this->Session->setFlash('Whoops, we didn\'t recognize that e-mail/password combination.', 'default');
         }
     }
     
