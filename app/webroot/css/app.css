@@ -812,26 +812,33 @@
         nav.global a {
             float:left;
             text-transform: uppercase;
-            color:#fff;
-            margin-right:40px;
-            padding:2px 0 2px;
+            color:#ffffff;
+            margin-right:20px;
+            padding:2px 10px;
             font-size: 16px;
             border-bottom: 1px solid transparent;
+            border-radius: 3px 3px 3px 3px;
             transition: all .25s linear;
             -webkit-transition: all .25s linear;
             -moz-transition: all .25s linear;       
         }
         
         nav.global a:hover {
-            border-bottom-color: rgba(255,255,255,.2);
+            background-color: #000000;
+            box-shadow: 1px 1px 3px #000;
+/*            border-bottom-color: rgba(255,255,255,.2);*/
         }
+        nav.global a:active{
+          box-shadow: none;
+/*          box-shadow: 1px 1px 1px #eee inset;*/
+        }           
+
 
         nav.global a.active {
             color:#fff;
             font-weight:bold;
             background-color: #000000;
-            padding:2px 10px;
-        }
+         }
             
                 nav.global > div > ul:hover > li > a.active {
                     margin-right:40px;
