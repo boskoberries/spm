@@ -11,8 +11,6 @@
 		<?=$html->css('/css/grid.css')?>
 		<?=$html->css('/css/app.css')?>
 		<?=$html->css('/css/ui-elements.css')?>
-<!--		<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-		<script src="http://code.jquery.com/jquery-migrate-1.1.1.min.js"></script>-->
 		<?=$html->css('/js/jquery-ui-1.8.14.custom.css')?>
     	<?=$javascript->link('/js/jquery-1.9.1.min.js')?>
     	<?//=$javascript->link('/js/jquery-1.6.1.min.js')?>
@@ -45,10 +43,11 @@
 							<nav class="global nine columns">
 								<ul class="nav-links">
 									<? $i = 1;?>
-									<li><a href="/football" class="nav-link ">Football</a></li>
-	     							<li><a href="/basketball" class="nav-link ">Basketball</a></li>
-	     							<li><a href="/baseball" class="nav-link ">Baseball</a></li>
-	     							<li><a href="/hockey" class="nav-link ">Hockey</a></li>
+									<li><a href="/" class="nav-link <?=(!isset($this->params['option'])||$this->params['option']=='')?'active':''?>">All Sports</a></li>
+									<li><a href="/football" class="nav-link <?=(isset($this->params['option'])&&$this->params['option']=='football')?'active':''?>">Football</a></li>
+	     							<li><a href="/basketball" class="nav-link <?=(isset($this->params['option'])&&$this->params['option']=='basketball')?'active':''?>">Basketball</a></li>
+	     							<li><a href="/baseball" class="nav-link <?=(isset($this->params['option'])&&$this->params['option']=='baseball')?'active':''?>">Baseball</a></li>
+	     							<li><a href="/hockey" class="nav-link <?=(isset($this->params['option'])&&$this->params['option']=='hockey')?'active':''?>">Hockey</a></li>
 	     							<?/* <li class="has-children">
 	 									<a href="#" class="nav-link ">Other Sports <span class="icon-down"></span></a>
 	 									<ul class="">
@@ -57,7 +56,6 @@
 	 										<li><a href="/nascar">NASCAR</a></li>
 	 									</ul>
 	 								</li> */?>
-	     							<li><a href="/" class="nav-link ">All Sports</a></li>
 	     						</ul>	    
 						</nav>
 						<a id="createYourOwn" href="/memes/create" class="nav-link button right three columns">Create Your Own!</a>
